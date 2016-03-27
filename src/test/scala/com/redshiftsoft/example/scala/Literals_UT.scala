@@ -17,16 +17,16 @@ class Literals_UT {
   }
 
   @Test
-  def integers(): Unit = {
+  def integers() {
     val x = 123456789
     Assert.assertEquals(123456789, x)
 
-    val aLong = 8000000000L;
+    val aLong = 8000000000L
     Assert.assertEquals(8000000000L, aLong)
   }
 
   @Test
-  def integers_hex(): Unit = {
+  def integers_hex() {
     val x = 0xfff
     Assert.assertEquals(4095, x)
   }
