@@ -4,7 +4,7 @@ import org.junit.{Assert, Test}
 
 class Expressions_UT {
 
-  @Test def expression(): Unit = {
+  @Test def expressionBlock(): Unit = {
     val x = {
       val y = 100
       val z = 10
@@ -12,5 +12,17 @@ class Expressions_UT {
     }
     Assert.assertEquals(111, x)
   }
+
+  @Test def expressionBlockNested(): Unit = {
+    val x = {
+      val y = 100
+      val z = {
+        5
+      }
+      y + 1 + z
+    }
+    Assert.assertEquals(106, x)
+  }
+
 
 }
