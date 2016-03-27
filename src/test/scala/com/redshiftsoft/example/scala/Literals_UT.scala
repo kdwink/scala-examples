@@ -31,5 +31,12 @@ class Literals_UT {
     Assert.assertEquals(4095, x)
   }
 
+  @Test
+  def unit(): Unit = {
+    val x = ()
+    val y: Unit = ()
+    Assert.assertEquals(x, y)
+  }
+
 
 }
