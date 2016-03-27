@@ -47,4 +47,11 @@ class Literals_UT {
     Assert.assertEquals(twoTuple1, twoTuple2)
   }
 
+  @Test
+  def regex(): Unit = {
+    val regex = "\\d+".r
+    val in: Option[String] = regex.findFirstIn("whatever 435")
+    Assert.assertEquals("435", in.get)
+  }
+
 }
