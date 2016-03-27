@@ -45,9 +45,6 @@ class Literals_UT {
     val twoTuple1 = (100, "whatever")
     val twoTuple2 = 100 -> "whatever"
     Assert.assertEquals(twoTuple1, twoTuple2)
-
-
   }
-
 
 }
