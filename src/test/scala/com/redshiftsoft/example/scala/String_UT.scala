@@ -1,11 +1,11 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.Test
+import org.junit.{Assert, Test}
 
 class String_UT {
 
 
-  @Test def verifyEasy() {
+  @Test def multiLineStrings() {
     val multiLineString =
       """
         stuff
@@ -13,6 +13,7 @@ class String_UT {
       """.stripMargin
 
 
+    Assert.assertEquals("        stuff        and more stuff      ", multiLineString.replace("\n", ""))
   }
 
 
