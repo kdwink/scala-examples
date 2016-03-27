@@ -16,4 +16,14 @@ class Literals_UT {
     Assert.assertEquals("2.3333333", z.toString)
   }
 
+  @Test
+  def integers(): Unit = {
+    val x = 123456789
+    Assert.assertEquals(123456789, x)
+
+    val aLong = 8000000000L;
+    Assert.assertEquals(8000000000L, aLong)
+  }
+
+
 }
