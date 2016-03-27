@@ -25,5 +25,11 @@ class Literals_UT {
     Assert.assertEquals(8000000000L, aLong)
   }
 
+  @Test
+  def integers_hex(): Unit = {
+    val x = 0xfff
+    Assert.assertEquals(4095, x)
+  }
+
 
 }
