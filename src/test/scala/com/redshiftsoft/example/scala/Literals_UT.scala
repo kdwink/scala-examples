@@ -38,5 +38,10 @@ class Literals_UT {
     Assert.assertEquals(x, y)
   }
 
+  @Test def tuple(): Unit = {
+    val x = (1, 2, "whatever")
+    Assert.assertEquals((1, 2, "whatever"), x);
+  }
+
 
 }
