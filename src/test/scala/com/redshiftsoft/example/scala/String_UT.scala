@@ -16,5 +16,10 @@ class String_UT {
     Assert.assertEquals("        stuff        and more stuff      ", multiLineString.replace("\n", ""))
   }
 
+  @Test def interpolation(): Unit = {
+    val pi = 3.14159d
+    Assert.assertEquals("value is 3.14159", s"value is $pi")
+  }
+
 
 }
