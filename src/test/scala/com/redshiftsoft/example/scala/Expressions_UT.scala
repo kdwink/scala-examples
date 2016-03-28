@@ -4,7 +4,7 @@ import org.junit.{Assert, Test}
 
 class Expressions_UT {
 
-  @Test def expressionBlock(): Unit = {
+  @Test def block(): Unit = {
     val x = {
       val y = 100
       val z = 10
@@ -13,7 +13,7 @@ class Expressions_UT {
     Assert.assertEquals(111, x)
   }
 
-  @Test def expressionBlockNested(): Unit = {
+  @Test def blockNested(): Unit = {
     val x = {
       val y = 100
       val z = {
@@ -25,7 +25,7 @@ class Expressions_UT {
   }
 
   @Test
-  def expressionIfElse(): Unit = {
+  def ifElse(): Unit = {
     val x = 10
     val y = 100
     val z = if (x > y) -10 else 10
@@ -36,6 +36,22 @@ class Expressions_UT {
       flag = true
     }
     Assert.assertTrue(flag)
+  }
+
+  @Test
+  def matchExpression() {
+    val x = 100
+    val message = x match {
+      case 2 | 3 | 7 =>
+        "ok"
+      case 1 | 4 | 6 =>
+        "bad"
+      case 100 =>
+        println("somethign")
+        println("somethign else")
+        "error"
+    }
+    Assert.assertEquals("error", message)
   }
 
 
