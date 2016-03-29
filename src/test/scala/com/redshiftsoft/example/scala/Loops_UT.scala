@@ -6,7 +6,7 @@ class Loops_UT {
 
   @Test
   def forYields() = {
-    var result = for {x <- 1 to 3
+    val result = for {x <- 1 to 3
                       y <- 4 to 5} yield {
       s"$x-$y"
     }
