@@ -85,5 +85,13 @@ class Functions_UT {
     Assert.assertEquals(10, add(1, 2, 3, 4))
   }
 
+  @Test
+  def typeParameter(): Unit = {
+    def identity[A](a: A): A = a
+    Assert.assertEquals("whatever", identity("whatever"))
+    Assert.assertEquals(42, identity(42))
+    Assert.assertEquals(0.42, identity(0.42), 1e-9)
+  }
+
 
 }
