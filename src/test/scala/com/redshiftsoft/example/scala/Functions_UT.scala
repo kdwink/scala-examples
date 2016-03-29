@@ -18,8 +18,8 @@ class Functions_UT {
     def f6(x: Int, y: Int) = {
       x + y
     }
-    def f7(x: Int, y: Int) : Int = x + y
-    def f8(x: Int, y: Int) : Int = {
+    def f7(x: Int, y: Int): Int = x + y
+    def f8(x: Int, y: Int): Int = {
       x + y
     }
 
@@ -36,5 +36,20 @@ class Functions_UT {
     Assert.assertEquals(21, f8(10, 11))
 
   }
+
+  @Test
+  def tailRecursiveDoNotStackOverflow(): Unit = {
+    @annotation.tailrec
+    def add(n: Int, sum: Int): Int = {
+      if (n < 1) {
+        return sum
+      }
+      add(n - 1, sum + n)
+    }
+    Assert.assertEquals(10, add(4, 0))
+    Assert.assertEquals(80200, add(400, 0))
+    Assert.assertEquals(800020000, add(40000, 0))
+  }
+
 
 }
