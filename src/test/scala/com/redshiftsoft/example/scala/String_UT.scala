@@ -12,7 +12,6 @@ class String_UT {
         and more stuff
       """.stripMargin
 
-
     Assert.assertEquals("        stuff        and more stuff      ", multiLineString.replace("\n", ""))
   }
 
@@ -26,6 +25,5 @@ class String_UT {
     val pi = 3.14159d
     Assert.assertEquals("part1: 3.14159 part2: $pi", s"part1: $pi" + " part2: $pi")
   }
-
 
 }

@@ -4,8 +4,7 @@ import org.junit.{Assert, Test}
 
 class Literals_UT {
 
-  @Test
-  def floatingPoint() {
+  @Test def floatingPoint() {
     val x = 2.333333333333333d
     val y = 2.333333333333333
     val z = 2.333333333333333f
@@ -16,8 +15,7 @@ class Literals_UT {
     Assert.assertEquals("2.3333333", z.toString)
   }
 
-  @Test
-  def integers() {
+  @Test def integers() {
     val x = 123456789
     Assert.assertEquals(123456789, x)
 
@@ -25,14 +23,12 @@ class Literals_UT {
     Assert.assertEquals(8000000000L, aLong)
   }
 
-  @Test
-  def integers_hex() {
+  @Test def integers_hex() {
     val x = 0xfff
     Assert.assertEquals(4095, x)
   }
 
-  @Test
-  def unit(): Unit = {
+  @Test def unit(): Unit = {
     val x = ()
     val y: Unit = ()
     Assert.assertEquals(x, y)

@@ -4,12 +4,24 @@ import org.junit.{Assert, Test}
 
 class Functions_UT {
 
-  @Test
-  def declaring(): Unit = {
-
+  @Test def declaringNoParams(): Unit = {
     def f0() = "String"
     def f1 = "String"
     def f2 = 5
+    def f3 = {
+      9
+    }
+    def f4: Int = 19 - 11
+
+    Assert.assertEquals("String", f0)
+    Assert.assertEquals("String", f0())
+    Assert.assertEquals("String", f1)
+    Assert.assertEquals(5, f2)
+    Assert.assertEquals(9, f3)
+    Assert.assertEquals(8, f4)
+  }
+
+  @Test def declaringWithParams(): Unit = {
 
     def f3(x: Int) = 5
 
@@ -23,10 +35,6 @@ class Functions_UT {
       x + y
     }
 
-    Assert.assertEquals("String", f0)
-    Assert.assertEquals("String", f0())
-    Assert.assertEquals("String", f1)
-    Assert.assertEquals(5, f2)
     Assert.assertEquals(5, f3(0))
 
     Assert.assertEquals(12, f4(10))
@@ -37,8 +45,7 @@ class Functions_UT {
 
   }
 
-  @Test
-  def tailRecursiveDoNotStackOverflow(): Unit = {
+  @Test def tailRecursiveDoNotStackOverflow(): Unit = {
     @annotation.tailrec
     def add(n: Int, sum: Int): Int = {
       if (n < 1) {
@@ -51,8 +58,7 @@ class Functions_UT {
     Assert.assertEquals(800020000, add(40000, 0))
   }
 
-  @Test
-  def namedParameters(): Unit = {
+  @Test def namedParameters(): Unit = {
     @annotation.tailrec
     def add(n: Int, sum: Int): Int = {
       if (n < 1) {
@@ -63,8 +69,7 @@ class Functions_UT {
     Assert.assertEquals(800020000, add(sum = 0, n = 40000))
   }
 
-  @Test
-  def defaultValues(): Unit = {
+  @Test def defaultValues(): Unit = {
     @annotation.tailrec
     def add(n: Int, sum: Int = 0): Int = {
       if (n < 1) {
@@ -75,8 +80,7 @@ class Functions_UT {
     Assert.assertEquals(800020000, add(n = 40000))
   }
 
-  @Test
-  def varArg(): Unit = {
+  @Test def varArg(): Unit = {
     def add(n: Int*): Int = {
       var sum = 0
       for (i <- n) sum = sum + i
@@ -85,8 +89,7 @@ class Functions_UT {
     Assert.assertEquals(10, add(1, 2, 3, 4))
   }
 
-  @Test
-  def typeParameter(): Unit = {
+  @Test def typeParameter(): Unit = {
     def identity[A](a: A): A = a
 
     Assert.assertEquals("whatever", identity[String]("whatever"))
@@ -103,5 +106,13 @@ class Functions_UT {
     Assert.assertEquals("ei", "Keith" substring(1, 3))
   }
 
+  @Test def byNameParameter(): Unit = {
+    def accessDBFunc(): Int = 20
+    def triple(x: => Int) = 3 * x
+
+    Assert.assertEquals(20, accessDBFunc)
+    Assert.assertEquals(15, triple(5))
+    Assert.assertEquals(60, triple(accessDBFunc))
+  }
 
 }

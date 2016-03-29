@@ -1,0 +1,53 @@
+package com.redshiftsoft.example.scala
+
+import org.junit.{Assert, Test}
+
+class Functions_ParameterGrouping_UT {
+
+
+  @Test def parameterGrouping(): Unit = {
+
+    def f(x: Int)(y: Int, z: Int) = x + y * z
+
+    Assert.assertEquals(7, f(1)(2, 3))
+    Assert.assertEquals(7, f(1)(2, 3))
+  }
+
+  @Test def parameterGrouping_WithFunctionParam_1(): Unit = {
+    def f(x: Int)(y: Int => Int) = y(x) * 3
+    Assert.assertEquals(12, f(3) { s => s + 1 })
+    Assert.assertEquals(12, f(3)({ s => s + 1 }))
+  }
+
+  @Test def parameterGrouping_WithFunctionParam_2(): Unit = {
+    def f(x: Int)(y: Int => Int, z: Int => Int) = y(x) * z(x)
+    Assert.assertEquals(9, f(2)({ s => s + 1 }, { s => s + 1 }))
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Currying: parameter grouping can be used for a slightly more concise function currying
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @Test def curryingWithNoGrouping(): Unit = {
+    def factorOf(x: Int, y: Int) = y % x == 0
+
+    def isEven(x: Int) = factorOf(2, x)
+
+    Assert.assertTrue(isEven(32))
+    Assert.assertFalse(isEven(31))
+  }
+
+  @Test def curryingWithParameterGrouping(): Unit = {
+    def factorOf(x: Int)(y: Int) = y % x == 0
+
+    val isEven1 = factorOf(2) _
+    val isEven2 = factorOf(2)(_)
+
+    Assert.assertTrue(isEven1(32))
+    Assert.assertFalse(isEven1(31))
+
+    Assert.assertTrue(isEven2(32))
+    Assert.assertFalse(isEven2(31))
+  }
+
+}

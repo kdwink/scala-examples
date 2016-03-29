@@ -4,8 +4,7 @@ import org.junit.Test
 
 class Procedures_UT {
 
-  @Test
-  def declaring() = {
+  @Test def declaring() = {
 
     def aProcedure1(x: Int): Unit = {
       println(100 +x)
