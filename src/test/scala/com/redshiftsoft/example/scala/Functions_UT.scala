@@ -17,6 +17,10 @@ class Functions_UT {
     def f6(x: Int, y: Int) = {
       x + y
     }
+    def f7(x: Int, y: Int) : Int = x + y
+    def f8(x: Int, y: Int) : Int = {
+      x + y
+    }
 
     Assert.assertEquals("String", f1)
     Assert.assertEquals(5, f2)
@@ -25,6 +29,8 @@ class Functions_UT {
     Assert.assertEquals(12, f4(10))
     Assert.assertEquals(21, f5(10, 11))
     Assert.assertEquals(21, f6(10, 11))
+    Assert.assertEquals(21, f7(10, 11))
+    Assert.assertEquals(21, f8(10, 11))
 
   }
 
