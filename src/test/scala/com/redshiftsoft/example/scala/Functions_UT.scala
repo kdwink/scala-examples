@@ -99,6 +99,7 @@ class Functions_UT {
   }
 
   @Test def invokeWithOperatorNotation(): Unit = {
+    Assert.assertEquals("eith", "Keith" substring 1)
     Assert.assertEquals("ei", "Keith" substring(1, 3))
   }
 
