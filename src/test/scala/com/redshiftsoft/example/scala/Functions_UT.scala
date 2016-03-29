@@ -75,5 +75,15 @@ class Functions_UT {
     Assert.assertEquals(800020000, add(n = 40000))
   }
 
+  @Test
+  def varArg(): Unit = {
+    def add(n: Int*): Int = {
+      var sum = 0;
+      for (i <- n) sum = sum + i;
+      sum
+    }
+    Assert.assertEquals(10, add(1, 2, 3, 4))
+  }
+
 
 }
