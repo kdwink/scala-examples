@@ -7,6 +7,7 @@ class Functions_UT {
   @Test
   def declaring(): Unit = {
 
+    def f0() = "String"
     def f1 = "String"
     def f2 = 5
 
@@ -22,6 +23,8 @@ class Functions_UT {
       x + y
     }
 
+    Assert.assertEquals("String", f0)
+    Assert.assertEquals("String", f0())
     Assert.assertEquals("String", f1)
     Assert.assertEquals(5, f2)
     Assert.assertEquals(5, f3(0))
