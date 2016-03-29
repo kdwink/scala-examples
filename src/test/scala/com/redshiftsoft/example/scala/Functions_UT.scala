@@ -51,5 +51,29 @@ class Functions_UT {
     Assert.assertEquals(800020000, add(40000, 0))
   }
 
+  @Test
+  def namedParameters(): Unit = {
+    @annotation.tailrec
+    def add(n: Int, sum: Int): Int = {
+      if (n < 1) {
+        return sum
+      }
+      add(n - 1, sum + n)
+    }
+    Assert.assertEquals(800020000, add(sum = 0, n = 40000))
+  }
+
+  @Test
+  def defaultValues(): Unit = {
+    @annotation.tailrec
+    def add(n: Int, sum: Int = 0): Int = {
+      if (n < 1) {
+        return sum
+      }
+      add(n - 1, sum + n)
+    }
+    Assert.assertEquals(800020000, add(n = 40000))
+  }
+
 
 }
