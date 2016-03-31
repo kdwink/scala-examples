@@ -3,7 +3,9 @@ package com.redshiftsoft.example.scala.collections.monadic
 
 import org.junit.{Assert, Test}
 
-import scala.concurrent.ExecutionContext.Implicits.{Future, global}
+import scala.concurrent.Await
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 
 class Future_UT {
@@ -19,7 +21,7 @@ class Future_UT {
   @Test def complex(): Unit = {
     /* These run in 50 ms each so running 20 of them serially would take 1s */
     def slowFunction(name: String): Int = {
-      Thread.sleep(100)
+      Thread.sleep(50)
       123
     }
 
@@ -31,6 +33,8 @@ class Future_UT {
       Future(slowFunction("s2"))
     )
 
+    val result = Await.result(s, Duration(10, SECONDS))
+    Assert.assertEquals(List(123, 123, 123, 123, 123), result.toList)
   }
 
 
