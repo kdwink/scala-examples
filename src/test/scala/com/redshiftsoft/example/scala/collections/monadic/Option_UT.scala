@@ -1,8 +1,23 @@
-package com.redshiftsoft.example.scala.collections
+package com.redshiftsoft.example.scala.collections.monadic
 
 import org.junit.{Assert, Test}
 
 class Option_UT {
+
+  @Test def get(): Unit = {
+    val none: Option[String] = None
+    try {
+      none.get
+      Assert.fail()
+    } catch {
+      case e: NoSuchElementException =>
+    }
+  }
+
+  @Test def getOrElse(): Unit = {
+    val none: Option[String] = None
+    Assert.assertEquals(100, none.getOrElse(100))
+  }
 
   @Test def option(): Unit = {
     var x: String = "stuff"
