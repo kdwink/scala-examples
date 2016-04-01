@@ -77,11 +77,16 @@ class Class_UT {
 
   @Test def abstractClass(): Unit = {
     abstract class Car {
-      val year: Int
-      val automatic: Boolean
-
-      def color: String
+      def size: String
     }
+    // Wow, implement abstract method with constructor parameter!
+    class HondaFit(val year: Int, val automatic: Boolean, val size: String) extends Car {
+    }
+
+    val car = new HondaFit(2010, true, "small")
+    Assert.assertEquals(2010, car.year)
+    Assert.assertEquals(true, car.automatic)
+    Assert.assertEquals("small", car.size)
   }
 
 }
