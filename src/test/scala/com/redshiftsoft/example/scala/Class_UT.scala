@@ -27,5 +27,20 @@ class Class_UT {
     Assert.assertEquals("User(keith)", u.toString)
   }
 
+  @Test def inheritance(): Unit = {
+    class A {
+      def method1 = "hello 1"
+
+      def method2 = "hello 2"
+    }
+    class B extends A {
+      override def method2 = "hello B"
+    }
+    class C extends B
+
+    val c = new C
+    Assert.assertEquals("hello 1", c.method1)
+    Assert.assertEquals("hello B", c.method2)
+  }
 
 }
