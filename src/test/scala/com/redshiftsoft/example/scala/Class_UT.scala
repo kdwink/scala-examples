@@ -75,4 +75,13 @@ class Class_UT {
     Assert.assertEquals("hello", fooString.get)
   }
 
+  @Test def abstractClass(): Unit = {
+    abstract class Car {
+      val year: Int
+      val automatic: Boolean
+
+      def color: String
+    }
+  }
+
 }
