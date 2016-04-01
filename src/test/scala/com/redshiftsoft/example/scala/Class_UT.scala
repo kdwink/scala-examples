@@ -62,4 +62,17 @@ class Class_UT {
     Assert.assertEquals("hello B", c1.method2)
   }
 
+  @Test def typeParameters(): Unit = {
+
+    class Foo[Type](element: Type) {
+      def get: Type = element
+    }
+
+    val fooString = new Foo("hello")
+    val fooInt = new Foo(42)
+
+    Assert.assertEquals(42, fooInt.get)
+    Assert.assertEquals("hello", fooString.get)
+  }
+
 }
