@@ -4,7 +4,7 @@ import org.junit.{Assert, Test}
 
 class Class_UT {
 
-  @Test def testClass(): Unit = {
+  @Test def simplest(): Unit = {
     class User
     val u = new User
     Assert.assertTrue(u.isInstanceOf[User])
@@ -15,7 +15,6 @@ class Class_UT {
       val name: String = n
 
       def greet: String = s"hello from $name"
-
       override def toString = s"User($name)"
     }
 
