@@ -51,11 +51,15 @@ class Future_UT {
     Assert.assertEquals(60, Await.result(race, Duration(250, MILLISECONDS)))
   }
 
-  def successRace[T](f: Future[T], g: Future[T]): Future[T] = {
+  def successRace[T](f1: Future[T], f2: Future[T]): Future[T] = {
     val promise = Promise[T]()
 
-    f onComplete (promise.tryComplete(_))
-    g onComplete (promise.tryComplete(_))
+    f1.onComplete(x => {
+      promise.tryComplete(x)
+    })
+    f2.onComplete(x => {
+      promise.tryComplete(x)
+    })
 
     promise.future
   }
