@@ -23,4 +23,14 @@ class Try_UT {
     Assert.assertFalse(s.isFailure)
   }
 
+  @Test
+  def tryWithFunction(): Unit = {
+    val f: Try[Int] = Try(1 / 0)
+
+    Assert.assertTrue(f.isFailure)
+    Assert.assertFalse(f.isSuccess)
+    Assert.assertEquals(classOf[ArithmeticException], f.failed.get.getClass)
+  }
+
+
 }
