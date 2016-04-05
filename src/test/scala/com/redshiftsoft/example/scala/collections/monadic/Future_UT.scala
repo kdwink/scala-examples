@@ -3,10 +3,9 @@ package com.redshiftsoft.example.scala.collections.monadic
 
 import org.junit.{Assert, Test}
 
-import scala.concurrent.Await
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
+import scala.concurrent.{Await, Future, Promise}
 
 class Future_UT {
 
@@ -35,6 +34,30 @@ class Future_UT {
 
     val result = Await.result(s, Duration(10, SECONDS))
     Assert.assertEquals(List(123, 123, 123, 123, 123), result.toList)
+  }
+
+  @Test def firstCompleted(): Unit = {
+    /* These run in 50 ms each so running 20 of them serially would take 1s */
+    def sleepFunction(ms: Long): Long = {
+      Thread.sleep(ms)
+      ms
+    }
+
+    val race: Future[Long] = successRace(
+      Future(sleepFunction(120)),
+      Future(sleepFunction(60))
+    )
+
+    Assert.assertEquals(60, Await.result(race, Duration(250, MILLISECONDS)))
+  }
+
+  def successRace[T](f: Future[T], g: Future[T]): Future[T] = {
+    val promise = Promise[T]()
+
+    f onComplete (promise.tryComplete(_))
+    g onComplete (promise.tryComplete(_))
+
+    promise.future
   }
 
 
