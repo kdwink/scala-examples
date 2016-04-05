@@ -27,7 +27,7 @@ class String_UT {
   }
 
   @Test def split(): Unit = {
-    val string = "one,two,three,four,five,six"
+    val string = "one,two,  three  ,four,  five, six"
     val split: Array[String] = string.split(",").toStream.map(_.trim).toArray
     Assert.assertEquals(6, split.length)
     Assert.assertEquals("one", split(0))
