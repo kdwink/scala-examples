@@ -6,6 +6,7 @@ import org.junit.{Assert, Test}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future, Promise}
+import scala.util.Try
 
 class Future_UT {
 
@@ -44,25 +45,32 @@ class Future_UT {
     }
 
     val race: Future[Long] = successRace(
-      Future(sleepFunction(120)),
-      Future(sleepFunction(60))
+      List(
+        Future(sleepFunction(120)),
+        Future(sleepFunction(30)),
+        Future(sleepFunction(-1)),
+        Future(sleepFunction(240)),
+        Future(sleepFunction(3)),
+        Future(sleepFunction(60))
+      )
     )
 
-    Assert.assertEquals(60, Await.result(race, Duration(250, MILLISECONDS)))
+    Assert.assertEquals(3, Await.result(race, Duration(250, MILLISECONDS)))
   }
 
-  def successRace[T](f1: Future[T], f2: Future[T]): Future[T] = {
+  /**
+    * Takes a list of futures and returns the result from the first Successful one.
+    */
+  def successRace[T](futureList: List[Future[T]]): Future[T] = {
     val promise = Promise[T]()
 
-    f1.onComplete(x => {
-      promise.tryComplete(x)
-    })
-    f2.onComplete(x => {
-      promise.tryComplete(x)
-    })
+    def individualCompletionHandler(theTry: Try[T]): Unit = {
+      if (theTry.isSuccess)
+        promise.tryComplete(theTry)
+    }
+    futureList.foreach(f => f.onComplete(individualCompletionHandler))
 
     promise.future
   }
-
 
 }
