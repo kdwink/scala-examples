@@ -26,4 +26,13 @@ class String_UT {
     Assert.assertEquals("part1: 3.14159 part2: $pi", s"part1: $pi" + " part2: $pi")
   }
 
+  @Test def split(): Unit = {
+    val string = "one,two,three,four,five,six"
+    val split: Array[String] = string.split(",").toStream.map(_.trim).toArray
+    Assert.assertEquals(6, split.length)
+    Assert.assertEquals("one", split(0))
+    Assert.assertEquals("two", split(1))
+    Assert.assertEquals("three", split(2))
+  }
+
 }
