@@ -46,16 +46,20 @@ class Future_UT {
 
     val race: Future[Long] = successRace(
       List(
+        Future(sleepFunction(12000)), // really slow
         Future(sleepFunction(120)),
         Future(sleepFunction(30)),
-        Future(sleepFunction(-1)),
+        Future(sleepFunction(-1)), // throws exception
         Future(sleepFunction(240)),
         Future(sleepFunction(3)),
-        Future(sleepFunction(60))
+        Future(sleepFunction(60)),
+        Future(sleepFunction(6000)) // pretty slow
       )
     )
 
-    Assert.assertEquals(3, Await.result(race, Duration(250, MILLISECONDS)))
+    // This will throw if it takes longer than 250ms, so we know we are returning sooner.
+    val result: Long = Await.result(race, Duration(250, MILLISECONDS))
+    Assert.assertEquals(3, result)
   }
 
   /**
