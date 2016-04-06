@@ -15,7 +15,7 @@ import scala.util.{Failure, Success, Try}
 class Try_UT {
 
   @Test
-  def test(): Unit = {
+  def construction(): Unit = {
     val s: Try[Int] = Success(100)
     val f: Try[Int] = Failure(new AssertionError())
 
@@ -25,11 +25,20 @@ class Try_UT {
 
   @Test
   def tryWithFunction(): Unit = {
-    val f: Try[Int] = Try(1 / 0)
+    val theTry: Try[Int] = Try(1 / 0)
 
-    Assert.assertTrue(f.isFailure)
-    Assert.assertFalse(f.isSuccess)
-    Assert.assertEquals(classOf[ArithmeticException], f.failed.get.getClass)
+    Assert.assertTrue(theTry.isFailure)
+    Assert.assertFalse(theTry.isSuccess)
+    Assert.assertEquals(classOf[ArithmeticException], theTry.failed.get.getClass)
+  }
+
+  @Test def getOrElse(): Unit = {
+    try {
+      Try(1 / 0).getOrElse(throw new IllegalStateException())
+      Assert.fail()
+    } catch {
+      case e: IllegalStateException =>
+    }
   }
 
   @Test
@@ -44,8 +53,6 @@ class Try_UT {
     }
 
     Assert.assertEquals("bad:java.lang.AssertionError", r)
-
-
   }
 
 }
