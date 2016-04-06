@@ -32,5 +32,20 @@ class Try_UT {
     Assert.assertEquals(classOf[ArithmeticException], f.failed.get.getClass)
   }
 
+  @Test
+  def matching(): Unit = {
+    val theTry: Try[Int] = Failure(new AssertionError())
+
+    val r = theTry match {
+      case Success(s) =>
+        "good:" + s.toString
+      case Failure(x) =>
+        "bad:" + x.toString
+    }
+
+    Assert.assertEquals("bad:java.lang.AssertionError", r)
+
+
+  }
 
 }
