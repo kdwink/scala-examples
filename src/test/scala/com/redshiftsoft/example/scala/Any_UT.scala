@@ -13,6 +13,8 @@ class Any_UT {
       val otherPerson = other.asInstanceOf[Person]
       this.name.equals(otherPerson.name) && Math.abs(age - otherPerson.age) < 10
     }
+
+    override def hashCode = name.hashCode
   }
 
   /* In scala "==" is equals  */
