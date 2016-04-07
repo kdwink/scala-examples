@@ -10,11 +10,12 @@ class Class_UT {
     Assert.assertTrue(u.isInstanceOf[User])
   }
 
-  @Test def testClass2(): Unit = {
+  @Test def constructor(): Unit = {
     class User(n: String) {
       val name: String = n
 
       def greet: String = s"hello from $name"
+
       override def toString = s"User($name)"
     }
 
@@ -86,6 +87,20 @@ class Class_UT {
     Assert.assertEquals(2010, car.year)
     Assert.assertEquals(true, car.automatic)
     Assert.assertEquals("small", car.size)
+  }
+
+  @Test def applyMethod(): Unit = {
+    class Car {
+      var thing: Int = 100
+
+      def apply(x: Int): Unit = {
+        thing = x
+      }
+    }
+    val car = new Car
+    car(77)
+    Assert.assertEquals(77, car.thing);
+
   }
 
 }
