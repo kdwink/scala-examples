@@ -15,6 +15,7 @@ class Any_UT {
     }
   }
 
+  /* In scala "==" is equals  */
   @Test def equals(): Unit = {
     val person1 = new Person("keith", 200)
     val person2 = new Person("keith", 205)
@@ -22,7 +23,6 @@ class Any_UT {
 
     Assert.assertTrue(person1 == person2)
     Assert.assertFalse(person1 == person3)
-
   }
 
 }
