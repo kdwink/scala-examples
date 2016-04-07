@@ -18,28 +18,32 @@ class Objects_UT {
 
   }
 
+  /* Companion object can access private fields of class. */
   @Test
   def objectApplyAsFactoryPattern(): Unit = {
 
     class MyObject {
       val WHATEVER = 100
-      var age: Int = 10
-      var name: String = "george"
+      private var age: Int = 10
+      private var name: String = "george"
 
-
+      def getName: String = {
+        name
+      }
     }
     object MyObject {
 
       def apply(s: String): MyObject = {
         val m = new MyObject
         m.name = s
+        m.age = 100
         m
       }
     }
 
     val s = MyObject("Keith")
 
-    Assert.assertEquals("Keith", s.name)
+    Assert.assertEquals("Keith", s.getName)
   }
 
 }
