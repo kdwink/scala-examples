@@ -6,7 +6,7 @@ import org.junit.{Assert, Test}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future, Promise}
-import scala.util.Try
+import scala.util.{Random, Try}
 
 class Future_UT {
 
@@ -44,18 +44,19 @@ class Future_UT {
       ms
     }
 
-    val race: Future[Long] = successRace(
-      List(
-        Future(sleepFunction(12000)), // really slow
-        Future(sleepFunction(120)),
-        Future(sleepFunction(90)),
-        Future(sleepFunction(-1)), // throws exception
-        Future(sleepFunction(240)),
-        Future(sleepFunction(3)),
-        Future(sleepFunction(99)),
-        Future(sleepFunction(6000)) // pretty slow
-      )
+    var list = List(
+      Future(sleepFunction(12000)), // really slow
+      Future(sleepFunction(120)),
+      Future(sleepFunction(90)),
+      Future(sleepFunction(-1)), // throws exception
+      Future(sleepFunction(240)),
+      Future(sleepFunction(3)),
+      Future(sleepFunction(99)),
+      Future(sleepFunction(6000)) // pretty slow
     )
+    list = Random.shuffle(list)
+
+    val race: Future[Long] = successRace(list)
 
     // This will throw if it takes longer than 250ms, so we know we are returning sooner.
     val result: Long = Await.result(race, Duration(250, MILLISECONDS))
