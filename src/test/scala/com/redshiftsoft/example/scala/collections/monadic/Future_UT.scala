@@ -45,14 +45,14 @@ class Future_UT {
     }
 
     var list = List(
-      Future(sleepFunction(12000)), // really slow
-      Future(sleepFunction(120)),
-      Future(sleepFunction(90)),
-      Future(sleepFunction(-1)), // throws exception
+      Future(sleepFunction(24000)), // really slow
       Future(sleepFunction(240)),
+      Future(sleepFunction(180)),
+      Future(sleepFunction(-1)), // throws exception
+      Future(sleepFunction(480)),
       Future(sleepFunction(3)),
-      Future(sleepFunction(99)),
-      Future(sleepFunction(6000)) // pretty slow
+      Future(sleepFunction(200)),
+      Future(sleepFunction(12000)) // pretty slow
     )
     list = Random.shuffle(list)
 
