@@ -33,4 +33,12 @@ class Case_Class_UT {
     Assert.assertEquals(c1, c2)
   }
 
+  @Test
+  def unapply(): Unit = {
+    val c1 = Character("George", isThief = true)
+    val tupple = Character.unapply(c1).get
+    Assert.assertEquals("George", tupple._1)
+    Assert.assertEquals(true, tupple._2)
+  }
+
 }
