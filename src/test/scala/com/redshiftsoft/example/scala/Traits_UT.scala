@@ -32,27 +32,26 @@ class Traits_UT {
   }
 
   trait Flying {
-    def flyMessage: String
+    def flyMessage: String = ""
 
     def fly() = println(flyMessage)
   }
 
   class Pigeon extends Bird with Swimming with Flying {
-    val flyMessage = "I'm a good flyer"
+    override val flyMessage = "I'm a good flyer"
   }
 
   class Hawk extends Bird with Swimming with Flying {
-    val flyMessage = "I'm an excellent flyer"
+    override val flyMessage = "I'm an excellent flyer"
   }
 
   class Frigatebird extends Bird with Flying {
-    val flyMessage = "I'm an excellent flyer"
+    override val flyMessage = "I'm an excellent flyer"
   }
 
   class Penguin extends Bird with Swimming
 
-  @Test
-  def birdsExample(): Unit = {
+  @Test def birdsExample(): Unit = {
     val flyingBirds = List(
       new Pigeon,
       new Hawk,
@@ -66,6 +65,11 @@ class Traits_UT {
       new Penguin)
 
     swimmingBirds.foreach(bird => bird.swim())
+  }
+
+  @Test def birdsFlyingPenguinExample(): Unit = {
+    val flyingPenguin = new Penguin with Flying
+    flyingPenguin.fly()
   }
 
 }
