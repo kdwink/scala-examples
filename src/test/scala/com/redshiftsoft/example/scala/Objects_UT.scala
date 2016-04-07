@@ -19,21 +19,27 @@ class Objects_UT {
   }
 
   @Test
-  def apply(): Unit = {
+  def objectApplyAsFactoryPattern(): Unit = {
 
-    object MyObject {
+    class MyObject {
       val WHATEVER = 100
       var age: Int = 10
       var name: String = "george"
 
-      def apply(s: String): Unit = {
-        this.name = s
+
+    }
+    object MyObject {
+
+      def apply(s: String): MyObject = {
+        val m = new MyObject
+        m.name = s
+        m
       }
     }
 
-    MyObject("Stuff")
-    Assert.assertEquals("Stuff", MyObject.name)
+    val s = MyObject("Keith")
 
+    Assert.assertEquals("Keith", s.name)
   }
 
 }
