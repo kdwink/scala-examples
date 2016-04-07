@@ -108,7 +108,9 @@ class Class_UT {
 
       def name = privateName
 
-      def name_=(value: String) = privateName = value
+      def name_=(value: String): Unit = {
+        privateName = value
+      }
     }
     val john = new Person
     john.name = "John Doe"
