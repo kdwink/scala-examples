@@ -17,14 +17,21 @@ class Any_UT {
     override def hashCode = name.hashCode
   }
 
+  val person1 = new Person("keith", 200)
+  val person2 = new Person("keith", 205)
+  val person3 = new Person("keith", 300)
+
   /* In scala "==" is equals  */
   @Test def equals(): Unit = {
-    val person1 = new Person("keith", 200)
-    val person2 = new Person("keith", 205)
-    val person3 = new Person("keith", 300)
-
     Assert.assertTrue(person1 == person2)
     Assert.assertFalse(person1 == person3)
   }
+
+  /* In scala "==" is equals  */
+  @Test def referenceEqulity(): Unit = {
+    Assert.assertTrue(person1.eq(person1))
+    Assert.assertFalse(person1.eq(person2))
+  }
+
 
 }
