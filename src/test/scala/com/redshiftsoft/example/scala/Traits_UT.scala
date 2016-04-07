@@ -20,5 +20,52 @@ class Traits_UT {
     Assert.assertFalse(person.isChild())
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  abstract class Bird {
+  }
+
+  trait Swimming {
+    def swim() = println("I'm swimming")
+  }
+
+  trait Flying {
+    def flyMessage: String
+
+    def fly() = println(flyMessage)
+  }
+
+  class Pigeon extends Bird with Swimming with Flying {
+    val flyMessage = "I'm a good flyer"
+  }
+
+  class Hawk extends Bird with Swimming with Flying {
+    val flyMessage = "I'm an excellent flyer"
+  }
+
+  class Frigatebird extends Bird with Flying {
+    val flyMessage = "I'm an excellent flyer"
+  }
+
+  class Penguin extends Bird with Swimming
+
+  @Test
+  def birdsExample(): Unit = {
+    val flyingBirds = List(
+      new Pigeon,
+      new Hawk,
+      new Frigatebird)
+
+    flyingBirds.foreach(bird => bird.fly())
+
+    val swimmingBirds = List(
+      new Pigeon,
+      new Hawk,
+      new Penguin)
+
+    swimmingBirds.foreach(bird => bird.swim())
+  }
 
 }
