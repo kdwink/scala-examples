@@ -14,7 +14,6 @@ class Traits_UT {
     override def isChild(x: Any): Boolean = false
   }
 
-
   @Test
   def polymorphism(): Unit = {
     val person: Person = new Teacher
