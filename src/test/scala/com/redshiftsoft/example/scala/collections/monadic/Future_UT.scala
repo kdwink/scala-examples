@@ -1,14 +1,18 @@
 package com.redshiftsoft.example.scala.collections.monadic
 
 
+import java.util.concurrent.Executors
+
 import org.junit.{Assert, Test}
 
-import scala.concurrent.ExecutionContext.Implicits.global
+//import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
-import scala.concurrent.{Await, Future, Promise}
+import scala.concurrent.{Await, ExecutionContext, Future, Promise}
 import scala.util.{Random, Try}
 
 class Future_UT {
+
+  implicit val ec = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(16))
 
   @Test def simple(): Unit = {
     val someFuture = Future {
@@ -38,6 +42,7 @@ class Future_UT {
   }
 
   @Test def firstCompleted(): Unit = {
+
     /* These run in 50 ms each so running 20 of them serially would take 1s */
     def sleepFunction(ms: Long): Long = {
       Thread.sleep(ms)
