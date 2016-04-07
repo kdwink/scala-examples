@@ -9,25 +9,28 @@ import org.junit.{Assert, Test}
   */
 class Case_Class_UT {
 
+  case class Character(name: String, isThief: Boolean)
+
   @Test
-  def go(): Unit = {
-
-    case class Character(name: String, isThief: Boolean)
-
-    val c1 = Character("George", isThief = true)
-    val c2 = Character("Bill", isThief = false)
-    val c3 = new Character("George", isThief = true)
-    val c4 = new Character("Bill", isThief = false)
-
-    Assert.assertEquals("George", c1.name)
-    Assert.assertEquals("Bill", c2.name)
-    Assert.assertEquals("George", c3.name)
-    Assert.assertEquals("Bill", c4.name)
-
-    // this works since we get an auto generated equals method that compares fields
-    Assert.assertEquals(c1, c3)
-    Assert.assertEquals(c2, c4)
+  def fields(): Unit = {
+    val c = Character("Bill", isThief = false)
+    Assert.assertEquals("Bill", c.name)
+    Assert.assertEquals(false, c.isThief)
   }
 
+  @Test
+  def testEquals(): Unit = {
+    val c1 = Character("George", isThief = true)
+    val c2 = new Character("George", isThief = true)
+    // this works since we get an auto generated equals method that compares fields
+    Assert.assertEquals(c1, c2)
+  }
+
+  @Test
+  def copy(): Unit = {
+    val c1 = Character("George", isThief = true)
+    val c2 = c1.copy()
+    Assert.assertEquals(c1, c2)
+  }
 
 }
