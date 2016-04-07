@@ -99,7 +99,20 @@ class Class_UT {
     }
     val car = new Car
     car(77)
-    Assert.assertEquals(77, car.thing);
+    Assert.assertEquals(77, car.thing)
+  }
+
+  @Test def setter(): Unit = {
+    class Person {
+      private var privateName = ""
+
+      def name = privateName
+
+      def name_=(value: String) = privateName = value
+    }
+    val john = new Person
+    john.name = "John Doe"
+    Assert.assertEquals("John Doe", john.name)
 
   }
 
