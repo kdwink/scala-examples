@@ -26,8 +26,8 @@ class Array_UT {
 
   @Test def update(): Unit = {
     val colors: Array[String] = Array("red", "green", "blue")
-    colors.update(0, "blue")
-    Assert.assertEquals(Array("blue", "green", "blue"), colors)
+    colors.update(0, "black")
+    Assert.assertTrue(Array("black", "green", "blue") sameElements colors)
   }
 
 
