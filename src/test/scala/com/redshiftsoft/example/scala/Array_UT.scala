@@ -9,12 +9,19 @@ import org.junit.{Assert, Test}
   */
 class Array_UT {
 
-  @Test def example(): Unit = {
+  @Test def declaring(): Unit = {
+    var arrayChar: Array[Char] = new Array[Char](3)
+    var arrayString: Array[String] = new Array[String](3)
+    val colors: Array[String] = Array("red", "green", "blue")
+  }
 
-    val colors = Array("red", "green", "blue")
+  @Test def accessing(): Unit = {
+    val colors: Array[String] = Array("red", "green", "blue")
     colors(0) = "purple"
+    colors(1) = "orange"
 
     Assert.assertEquals("purple", colors(0))
+    Assert.assertEquals("orange", colors(1))
   }
 
 }
