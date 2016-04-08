@@ -9,14 +9,14 @@ import org.junit.{Assert, Test}
   */
 class Array_UT {
 
+  val colors: Array[String] = Array("red", "green", "blue")
+
   @Test def declaring(): Unit = {
     var arrayChar: Array[Char] = new Array[Char](3)
     var arrayString: Array[String] = new Array[String](3)
-    val colors: Array[String] = Array("red", "green", "blue")
   }
 
   @Test def accessing(): Unit = {
-    val colors: Array[String] = Array("red", "green", "blue")
     colors(0) = "purple"
     colors(1) = "orange"
 
@@ -25,10 +25,14 @@ class Array_UT {
   }
 
   @Test def update(): Unit = {
-    val colors: Array[String] = Array("red", "green", "blue")
     colors.update(0, "black")
     Assert.assertTrue(Array("black", "green", "blue") sameElements colors)
+    Assert.assertFalse(Array("black", "green", "blue").equals(colors))
   }
 
+  @Test def equality(): Unit = {
+    Assert.assertTrue(Array("red", "green", "blue") sameElements colors)
+    Assert.assertFalse(Array("red", "green", "blue").equals(colors))
+  }
 
 }
