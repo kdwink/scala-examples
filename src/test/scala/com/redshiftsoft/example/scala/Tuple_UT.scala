@@ -24,5 +24,24 @@ class Tuple_UT {
     Assert.assertEquals(2, x._2)
   }
 
+  @Test def swap(): Unit = {
+    Assert.assertEquals((2, "keith"), ("keith", 2).swap)
+  }
+
+  @Test def productArity(): Unit = {
+    Assert.assertEquals(3, ("keith", 2, 3.14159).productArity)
+  }
+
+  @Test def productPrefix(): Unit = {
+    Assert.assertEquals("Tuple3", ("keith", 2, 3.14159).productPrefix)
+  }
+
+  @Test def productElement(): Unit = {
+    Assert.assertEquals(42, ("keith", 42, 3.14159, 'a').productElement(1))
+  }
+
+  @Test def copy(): Unit = {
+    Assert.assertEquals(("keith", 42, 3.14159, 'a'), ("keith", 42, 3.14159, 'a').copy())
+  }
 
 }
