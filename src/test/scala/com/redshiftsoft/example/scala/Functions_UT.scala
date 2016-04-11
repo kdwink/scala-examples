@@ -5,20 +5,26 @@ import org.junit.{Assert, Test}
 class Functions_UT {
 
   @Test def declaringNoParams(): Unit = {
-    def f0() = "String"
-    def f1 = "String"
-    def f2 = 5
-    def f3 = {
-      9
+    def f0() = 41 + 1
+    def f1 = 41 + 1
+    def f2 = {
+      41 + 1
     }
-    def f4: Int = 19 - 11
+    def f3: Int = 41 + 1
+    def f4: Function0[Int] = new Function0[Int] {
+      def apply: Int = 41 + 1
+    }
+    def f5: () => Int = new Function0[Int] {
+      def apply: Int = 41 + 1
+    }
 
-    Assert.assertEquals("String", f0)
-    Assert.assertEquals("String", f0())
-    Assert.assertEquals("String", f1)
-    Assert.assertEquals(5, f2)
-    Assert.assertEquals(9, f3)
-    Assert.assertEquals(8, f4)
+    Assert.assertEquals(42, f0)
+    Assert.assertEquals(42, f0())
+    Assert.assertEquals(42, f1)
+    Assert.assertEquals(42, f2)
+    Assert.assertEquals(42, f3)
+    Assert.assertEquals(42, f4())
+    Assert.assertEquals(42, f5())
   }
 
   @Test def declaringWithParams(): Unit = {
