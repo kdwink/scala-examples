@@ -10,19 +10,19 @@ class Traits_Self_UT {
 
   @Test def test(): Unit = {
 
-    class A {
+    class A(name: String) {
       def hi = "hi"
     }
 
-    /* 'self' here can actually be any identifier */
+    /* B can't extend A directly because A has parameters. 'self' here can actually be any identifier */
     trait B {
       self: A =>
       override def toString = "B: " + hi
     }
 
-    class C extends A with B
+    class C(name: String) extends A(name) with B
 
-    val c: C = new C
+    val c: C = new C("n")
 
     Assert.assertEquals("B: hi", c.toString)
   }
