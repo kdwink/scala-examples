@@ -2,7 +2,7 @@ package com.redshiftsoft.example.scala
 
 import org.junit.{Assert, Test}
 
-class Functions_ParameterGrouping_UT {
+class Functions_Parameters_Grouping_UT {
 
 
   @Test def parameterGrouping(): Unit = {
