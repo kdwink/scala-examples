@@ -17,9 +17,9 @@ class Tuple_UT {
     }
   }
 
-  @Test def declarigOperator(): Unit = {
+  @Test def declarigTwoTuplesWithArrow(): Unit = {
+    /* arrow operator only works for 2-tuples */
     val x = "keith" -> 2
-
     Assert.assertEquals("keith", x._1)
     Assert.assertEquals(2, x._2)
   }
