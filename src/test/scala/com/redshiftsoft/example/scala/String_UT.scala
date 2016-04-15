@@ -4,6 +4,9 @@ import org.junit.{Assert, Test}
 
 class String_UT {
 
+  @Test def constructor(): Unit = {
+    val string1 = new String("this is a string")
+  }
 
   @Test def multiLineStrings() {
     val multiLineString =
