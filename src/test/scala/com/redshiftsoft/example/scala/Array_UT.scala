@@ -1,5 +1,7 @@
 package com.redshiftsoft.example.scala
 
+import java.nio.ByteBuffer
+
 import org.junit.{Assert, Test}
 
 /**
@@ -39,5 +41,13 @@ class Array_UT {
     Assert.assertTrue(Array("green", "blue") sameElements colors.slice(1, 3))
   }
 
+  @Test def readingByteArrayWithBuffer(): Unit = {
+    val byteArray = Array[Byte](50, 41, 32, 23, 64, 75, 86, 97, 108)
+    val buffer = ByteBuffer.wrap(byteArray)
+    val float1: Float = buffer.getFloat(0)
+    val float2: Float = buffer.getFloat(4)
+    Assert.assertEquals(9.844391080093828E-9f, float1, 1e-9)
+    Assert.assertEquals(3.177147150039673f, float2, 1e-9)
+  }
 
 }
