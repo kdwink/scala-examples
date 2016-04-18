@@ -34,4 +34,13 @@ class Map_UT {
     Assert.assertTrue(resultList(1).isInstanceOf[Tuple2[String, Int]])
   }
 
+  @Test def mapToTuples(): Unit = {
+    val tuplesIterator: Iterable[(String, Int)] = colorMap.keys.map(k => (k, colorMap(k)))
+    var count = 0
+    for (x <- tuplesIterator) {
+      count = count + 1
+    }
+    Assert.assertEquals(3, count)
+  }
+
 }
