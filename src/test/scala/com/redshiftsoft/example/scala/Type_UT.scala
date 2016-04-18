@@ -1,0 +1,12 @@
+package com.redshiftsoft.example.scala
+
+import org.junit.Test
+
+class Type_UT {
+
+  @Test def tupleType(): Unit = {
+    type UserInfo = Tuple2[String, Int]
+    val UserInfo = ("George", 21)
+  }
+
+}
