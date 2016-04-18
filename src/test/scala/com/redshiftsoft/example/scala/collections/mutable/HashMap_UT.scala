@@ -4,7 +4,7 @@ import org.junit.{Assert, Test}
 
 import scala.collection.mutable
 
-class Map_UT {
+class HashMap_UT {
 
   @Test def put(): Unit = {
     val map: mutable.Map[String, String] = mutable.HashMap.empty
