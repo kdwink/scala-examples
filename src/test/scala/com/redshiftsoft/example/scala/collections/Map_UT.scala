@@ -28,4 +28,10 @@ class Map_UT {
     Assert.assertEquals(16715775, sum)
   }
 
+  @Test def testToSeq(): Unit = {
+    val resultList: List[(String, Int)] = colorMap.toSeq.toList
+    Assert.assertEquals(3, resultList.size)
+    Assert.assertTrue(resultList(1).isInstanceOf[Tuple2[String, Int]])
+  }
+
 }
