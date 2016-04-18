@@ -20,4 +20,10 @@ class Buffer_UT {
     Assert.assertEquals("ArrayBuffer(5, 6, 7)", slice1.toString)
   }
 
+  @Test def append(): Unit = {
+    val nums = collection.mutable.Buffer(1, 2, 3)
+    nums.append(100)
+    Assert.assertEquals("ArrayBuffer(1, 2, 3, 100)", nums.toString)
+  }
+
 }
