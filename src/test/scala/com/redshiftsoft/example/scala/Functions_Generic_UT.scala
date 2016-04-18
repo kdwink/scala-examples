@@ -15,4 +15,25 @@ class Functions_Generic_UT {
   }
 
 
+  @Test def tryIt(): Unit = {
+
+    def f1(x: Int): List[Int] = {
+      List(1, 2, 3, x)
+    }
+    def f2(x: Int): String = {
+      "hello" + x
+    }
+
+    def takesFunction[T](x: Int, func: Int => T): T = {
+      func(x)
+    }
+
+    val result1: List[Int] = takesFunction(10, f1)
+    val result2: String = takesFunction(10, f2)
+
+    Assert.assertEquals(List(1, 2, 3, 10), result1)
+    Assert.assertEquals("hello10", result2)
+
+  }
+
 }
