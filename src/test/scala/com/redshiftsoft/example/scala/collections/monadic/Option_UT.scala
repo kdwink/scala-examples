@@ -14,6 +14,12 @@ class Option_UT {
     }
   }
 
+  @Test def none() = {
+    val none: Option[String] = None
+    Assert.assertTrue(none.isEmpty)
+    Assert.assertFalse(none.isDefined)
+  }
+
   @Test def getOrElse(): Unit = {
     val none: Option[String] = None
     Assert.assertEquals(100, none.getOrElse(100))
