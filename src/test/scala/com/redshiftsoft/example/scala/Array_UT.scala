@@ -14,8 +14,11 @@ class Array_UT {
   val colors: Array[String] = Array("red", "green", "blue", "white")
 
   @Test def declaring(): Unit = {
-    var arrayChar: Array[Char] = new Array[Char](3)
-    var arrayString: Array[String] = new Array[String](3)
+    var arrayChar: Array[Char] = new Array[Char](300)
+    var arrayString: Array[String] = new Array[String](300)
+
+    // The above arrays are declared with the specified SIZE (not just capacity)
+    Assert.assertNull(arrayString(150))
   }
 
   @Test def accessing(): Unit = {
