@@ -32,6 +32,12 @@ class Stream_UT {
   @Test def takeWhile(): Unit = {
     val streamResult = fibFrom(1, 1)
     Assert.assertEquals(List(1, 1, 2, 3, 5, 8, 13, 21), streamResult.takeWhile(_ < 30).toList)
+
+    val streamResult2 = List(1, 2, 3, 232, 32, 4, 4000, 5000).toStream
+    Assert.assertEquals(List(1, 2, 3, 232, 32, 4), streamResult2.takeWhile(x => {
+      x < 1000
+    }).toList)
+
   }
 
 
