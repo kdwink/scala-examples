@@ -156,6 +156,16 @@ class List_UT {
     Assert.assertEquals("ArrayBuffer(aa, bb, cc)", List("aa", "bb", "cc").toBuffer.toString())
   }
 
+  @Test def find(): Unit = {
+    val list: List[String] = List("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh", "ii", "jj", "kk", "ll", "mm")
+    var findCount = 0
+    val maybeString: Option[String] = list.find(x => {
+      findCount = findCount + 1
+      x.startsWith("h")
+    })
+    Assert.assertEquals(8, findCount)
+  }
+
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Symbolic operators.  Really these are just methods in List
