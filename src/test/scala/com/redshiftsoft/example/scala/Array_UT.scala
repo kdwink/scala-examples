@@ -4,6 +4,8 @@ import java.nio.ByteBuffer
 
 import org.junit.{Assert, Test}
 
+import scala.collection.mutable
+
 /**
   * Array is not a member of the Scala collections.  It is provided for JVM compatibility.
   *
@@ -42,6 +44,12 @@ class Array_UT {
 
   @Test def slice(): Unit = {
     Assert.assertTrue(Array("green", "blue") sameElements colors.slice(1, 3))
+  }
+
+  @Test def slice_IsAlwaysCopy(): Unit = {
+    val allSlice: mutable.WrappedArray[String] = colors.slice(0, 4)
+    Assert.assertTrue(colors sameElements allSlice)
+    Assert.assertFalse(colors.equals(allSlice))
   }
 
   @Test def readingByteArrayWithBuffer(): Unit = {
