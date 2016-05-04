@@ -1,6 +1,7 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.Assert._
+import org.junit.Test
 
 class Expressions_Match_UT {
 
@@ -18,7 +19,7 @@ class Expressions_Match_UT {
       case others =>
         "other"
     }
-    Assert.assertEquals("error", message)
+    assertEquals("error", message)
   }
 
   @Test def matchExpressionOther(): Unit = {
@@ -29,7 +30,7 @@ class Expressions_Match_UT {
       case _ =>
         "could not find case"
     }
-    Assert.assertEquals("could not find case", message)
+    assertEquals("could not find case", message)
   }
 
   @Test def matchExpressionOtherWithBindVariable(): Unit = {
@@ -40,7 +41,7 @@ class Expressions_Match_UT {
       case somethingOther =>
         s"could not find case for: $somethingOther"
     }
-    Assert.assertEquals("could not find case for: 100", message)
+    assertEquals("could not find case for: 100", message)
   }
 
   @Test def matchTuples(): Unit = {
@@ -50,7 +51,20 @@ class Expressions_Match_UT {
       case ('h', x, true) => x
       case (c, x, true) => -1
     }
-    Assert.assertEquals(204, code)
+    assertEquals(204, code)
   }
+
+  @Test def matchingOption() = {
+    // cautionary tale
+    val x = 100
+    val code = Some(3) match {
+      case Some(x) =>
+        "but get this because of shadowing: " + x
+      case Some(3) =>
+        "expect this"
+    }
+    assertEquals("but get this because of shadowing: 3", code)
+  }
+
 
 }
