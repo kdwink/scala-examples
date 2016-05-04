@@ -3,6 +3,7 @@ package com.redshiftsoft.example.scala.collections
 import java.util.NoSuchElementException
 
 import org.junit.{Assert, Test}
+import org.junit.Assert._
 
 class List_UT {
 
@@ -17,16 +18,16 @@ class List_UT {
   @Test def accessing(): Unit = {
     val colors = List("red", "blue", "green")
 
-    Assert.assertEquals("red", colors(0))
-    Assert.assertEquals("blue", colors(1))
-    Assert.assertEquals("red", colors.head)
+    assertEquals("red", colors(0))
+    assertEquals("blue", colors(1))
+    assertEquals("red", colors.head)
   }
 
   @Test def iterating(): Unit = {
     val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
     var sum = 0
     for (x <- numbers) sum += x
-    Assert.assertEquals(45, sum)
+    assertEquals(45, sum)
   }
 
   @Test def iterating_manually(): Unit = {
@@ -42,59 +43,28 @@ class List_UT {
     val inputList = List(1, 2, 3, 4, 5)
     val output = StringBuilder.newBuilder
     visit(inputList, output)
-    Assert.assertEquals("1,2,3,4,5,", output.toString())
-  }
-
-  @Test def map(): Unit = {
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val result = numbers.map(s => s * 2)
-    Assert.assertEquals(List(2, 4, 6, 8, 10, 12, 14, 16, 18), result)
-  }
-
-  @Test def map_withPlaceholders(): Unit = {
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val result = numbers.map(_ * 2)
-    Assert.assertEquals(List(2, 4, 6, 8, 10, 12, 14, 16, 18), result)
-  }
-
-  @Test def reduce(): Unit = {
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val result = numbers.reduce((a, b) => 1 + a + b)
-    Assert.assertEquals(53, result)
-  }
-
-  @Test def reduce_withPlaceholders(): Unit = {
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val result = numbers.reduce(1 + _ + _)
-    Assert.assertEquals(53, result)
-  }
-
-  /* Fold is similar to reduce, expect you can provided a starting value */
-  @Test def fold(): Unit = {
-    val numbers = List(1, 2, 3, 4)
-    val result = numbers.fold(100) { (a, b) => a + b }
-    Assert.assertEquals(110, result)
+    assertEquals("1,2,3,4,5,", output.toString())
   }
 
   @Test def sum(): Unit = {
     val numbers = List(1, 2, 3, 4)
     val result = numbers.sum
-    Assert.assertEquals(10, result)
+    assertEquals(10, result)
   }
 
   @Test def empty(): Unit = {
     val list1 = List()
     val list2 = List(1, 2, 3)
-    Assert.assertTrue(list1.isEmpty)
-    Assert.assertFalse(list2.isEmpty)
-    Assert.assertEquals(Nil, list1)
+    assertTrue(list1.isEmpty)
+    assertFalse(list2.isEmpty)
+    assertEquals(Nil, list1)
   }
 
   @Test def empty_head(): Unit = {
     val list = List()
     try {
       list.head
-      Assert.fail()
+      fail()
     } catch {
       case e: NoSuchElementException =>
     }
@@ -104,7 +74,7 @@ class List_UT {
     val list = List()
     try {
       list.tail
-      Assert.fail()
+      fail()
     } catch {
       case e: UnsupportedOperationException =>
     }
@@ -113,17 +83,17 @@ class List_UT {
   @Test def splitAt(): Unit = {
     val list = List("aa", "bb", "cc", "dd", "ee", "ff", "gg")
     val listTuple = list.splitAt(4)
-    Assert.assertEquals(4, listTuple._1.size)
-    Assert.assertEquals(3, listTuple._2.size)
+    assertEquals(4, listTuple._1.size)
+    assertEquals(3, listTuple._2.size)
   }
 
   @Test def zip(): Unit = {
     val list1 = List("aa", "bb", "cc", "dd", "ee", "ff", "gg")
     val list2 = List("11", "22", "33", "44", "44", "66", "77")
     val tupleList = list1.zip(list2)
-    Assert.assertEquals(7, tupleList.size)
-    Assert.assertEquals("bb", tupleList(1)._1)
-    Assert.assertEquals("22", tupleList(1)._2)
+    assertEquals(7, tupleList.size)
+    assertEquals("bb", tupleList(1)._1)
+    assertEquals("22", tupleList(1)._2)
   }
 
   @Test def flatten(): Unit = {
@@ -133,27 +103,27 @@ class List_UT {
     val list4 = List(list1, list2, list3)
     val list5 = list4.flatten
 
-    Assert.assertEquals(6, list5.size)
-    Assert.assertEquals("aa", list5(0))
-    Assert.assertEquals("++", list5(5))
+    assertEquals(6, list5.size)
+    assertEquals("aa", list5(0))
+    assertEquals("++", list5(5))
   }
 
   @Test def sortBy(): Unit = {
     val list = List("a", "ccc", "bb", "ddddd", "eee", "fffffff", "gggg")
     val sortedList: List[String] = list.sortBy(x => x.length)
-    Assert.assertEquals(List("a", "bb", "ccc", "eee", "gggg", "ddddd", "fffffff"), sortedList)
+    assertEquals(List("a", "bb", "ccc", "eee", "gggg", "ddddd", "fffffff"), sortedList)
   }
 
   @Test def mkString(): Unit = {
-    Assert.assertEquals("aa, bb, cc", List("aa", "bb", "cc").mkString(", "))
+    assertEquals("aa, bb, cc", List("aa", "bb", "cc").mkString(", "))
   }
 
   @Test def testToString(): Unit = {
-    Assert.assertEquals("List(aa, bb, cc)", List("aa", "bb", "cc").toString)
+    assertEquals("List(aa, bb, cc)", List("aa", "bb", "cc").toString)
   }
 
   @Test def testToBuffer(): Unit = {
-    Assert.assertEquals("ArrayBuffer(aa, bb, cc)", List("aa", "bb", "cc").toBuffer.toString())
+    assertEquals("ArrayBuffer(aa, bb, cc)", List("aa", "bb", "cc").toBuffer.toString())
   }
 
   @Test def find(): Unit = {
@@ -163,7 +133,7 @@ class List_UT {
       findCount = findCount + 1
       x.startsWith("h")
     })
-    Assert.assertEquals(8, findCount)
+    assertEquals(8, findCount)
   }
 
 
@@ -175,7 +145,7 @@ class List_UT {
     val numbers1 = 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: 7 :: 8 :: Nil
     val numbers2: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8)
 
-    Assert.assertEquals(numbers1, numbers2)
+    assertEquals(numbers1, numbers2)
   }
 
   @Test def operator_appendList(): Unit = {
@@ -183,18 +153,18 @@ class List_UT {
     val list2 = List("11", "22")
     val list3 = list1 ::: list2
 
-    Assert.assertEquals(4, list3.size)
-    Assert.assertEquals("aa", list3.head)
+    assertEquals(4, list3.size)
+    assertEquals("aa", list3.head)
   }
 
   @Test def operator_appendElement(): Unit = {
     val list1 = List("aa", "bb")
     val list2 = list1 :+ "cc"
 
-    Assert.assertEquals(3, list2.size)
-    Assert.assertEquals("aa", list2.head)
-    Assert.assertEquals("bb", list2(1))
-    Assert.assertEquals("cc", list2(2))
+    assertEquals(3, list2.size)
+    assertEquals("aa", list2.head)
+    assertEquals("bb", list2(1))
+    assertEquals("cc", list2(2))
   }
 
   @Test def operator_appendSet(): Unit = {
@@ -202,8 +172,8 @@ class List_UT {
     val set2 = Set("11", "22")
     val list3 = list1 ++ set2
 
-    Assert.assertEquals(4, list3.size)
-    Assert.assertEquals("aa", list3.head)
+    assertEquals(4, list3.size)
+    assertEquals("aa", list3.head)
   }
 
   @Test def operator_equals(): Unit = {
@@ -212,10 +182,44 @@ class List_UT {
     val list3 = List("aa", "bb")
 
 
-    Assert.assertTrue(list1 == list1)
-    Assert.assertTrue(list1 == list3)
-    Assert.assertFalse(list1 == list2)
+    assertTrue(list1 == list1)
+    assertTrue(list1 == list3)
+    assertFalse(list1 == list2)
   }
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // stream operations
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  @Test def map(): Unit = {
+    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val result = numbers.map(s => s * 2)
+    assertEquals(List(2, 4, 6, 8, 10, 12, 14, 16, 18), result)
+  }
+
+  @Test def map_withPlaceholders(): Unit = {
+    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val result = numbers.map(_ * 2)
+    assertEquals(List(2, 4, 6, 8, 10, 12, 14, 16, 18), result)
+  }
+
+  @Test def reduce(): Unit = {
+    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val result = numbers.reduce((a, b) => 1 + a + b)
+    assertEquals(53, result)
+  }
+
+  @Test def reduce_withPlaceholders(): Unit = {
+    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val result = numbers.reduce(1 + _ + _)
+    assertEquals(53, result)
+  }
+
+  /* Fold is similar to reduce, expect you can provided a starting value */
+  @Test def fold(): Unit = {
+    val numbers = List(1, 2, 3, 4)
+    val result = numbers.fold(100) { (a, b) => a + b }
+    assertEquals(110, result)
+  }
 
 }
