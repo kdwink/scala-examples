@@ -2,9 +2,12 @@ package com.redshiftsoft.example.scala.collections
 
 import java.util.NoSuchElementException
 
-import org.junit.{Assert, Test}
 import org.junit.Assert._
+import org.junit.Test
 
+/**
+  * Immutable linked list.
+  */
 class List_UT {
 
   @Test def declaring(): Unit = {
