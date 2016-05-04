@@ -54,16 +54,27 @@ class Expressions_Match_UT {
     assertEquals(204, code)
   }
 
-  @Test def matchingOption() = {
+  @Test def matchingOption_withShadowingInPatternMatching() = {
     // cautionary tale
-    val x = 100
+    val someValue = 100
     val code = Some(3) match {
-      case Some(x) =>
-        "but get this because of shadowing: " + x
+      case Some(someValue) =>
+        "but get this because of shadowing: " + someValue
       case Some(3) =>
         "expect this"
     }
     assertEquals("but get this because of shadowing: 3", code)
+  }
+
+  @Test def matchingOption_wtfScalaVariableCaseAffectsLogic() = {
+    val SomeValue = 100
+    val code = Some(3) match {
+      case Some(SomeValue) =>
+        "but get this because of shadowing: " + SomeValue
+      case Some(3) =>
+        "expect this"
+    }
+    assertEquals("expect this", code)
   }
 
 
