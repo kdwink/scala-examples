@@ -1,6 +1,7 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.Assert._
+import org.junit.Test
 
 class Values_UT {
 
@@ -15,10 +16,17 @@ class Values_UT {
     val y2: String = "abcd"
     val z2: Char = 'c'
 
-    Assert.assertEquals(x1, x2)
-    Assert.assertEquals(y1, y2)
-    Assert.assertEquals(z1, z2)
+    assertEquals(x1, x2)
+    assertEquals(y1, y2)
+    assertEquals(z1, z2)
   }
 
+  @Test
+  def tupleUnpacking(): Unit = {
+    val (x, y, z) = (1, 2, 3)
+    assertEquals(x, 1)
+    assertEquals(y, 2)
+    assertEquals(z, 3)
+  }
 
 }
