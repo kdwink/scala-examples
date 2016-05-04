@@ -5,7 +5,7 @@ import org.junit.{Assert, Test}
 class Functions_HighOrder_UT {
 
   @Test
-  def test: Unit = {
+  def test(): Unit = {
 
     def stringFunc(s: String): Char = s.charAt(2)
 

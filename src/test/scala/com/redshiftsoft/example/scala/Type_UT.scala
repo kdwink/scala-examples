@@ -6,7 +6,7 @@ class Type_UT {
 
   @Test def tupleType(): Unit = {
     type UserInfo = Tuple2[String, Int]
-    val UserInfo = ("George", 21)
+    val UserInfo: UserInfo = ("George", 21)
   }
 
 }
