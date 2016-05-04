@@ -1,13 +1,14 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.Assert._
+import org.junit.Test
 
 class Class_UT {
 
   @Test def simplest(): Unit = {
     class User
     val u = new User
-    Assert.assertTrue(u.isInstanceOf[User])
+    assertTrue(u.isInstanceOf[User])
   }
 
   @Test def constructor(): Unit = {
@@ -21,10 +22,20 @@ class Class_UT {
 
     val u = new User("keith")
 
-    Assert.assertTrue(u.isInstanceOf[User])
-    Assert.assertEquals("keith", u.name)
-    Assert.assertEquals("hello from keith", u.greet)
-    Assert.assertEquals("User(keith)", u.toString)
+    assertTrue(u.isInstanceOf[User])
+    assertEquals("keith", u.name)
+    assertEquals("hello from keith", u.greet)
+    assertEquals("User(keith)", u.toString)
+  }
+
+  @Test def constructor_alternate(): Unit = {
+    class User(n: String) {
+      val name: String = n
+
+      def this(x: String, y: String) = this(x + "-" + y)
+    }
+    val u = new User("keith", "winkler")
+    assertEquals("keith-winkler", u.name)
   }
 
   @Test def inheritance(): Unit = {
@@ -39,8 +50,8 @@ class Class_UT {
     class C extends B
 
     val c = new C
-    Assert.assertEquals("hello 1", c.method1)
-    Assert.assertEquals("hello B", c.method2)
+    assertEquals("hello 1", c.method1)
+    assertEquals("hello B", c.method2)
   }
 
   @Test def polymorphism(): Unit = {
@@ -57,9 +68,9 @@ class Class_UT {
     val c1: A = new C
     val c2: B = new C
     val c3: C = new C
-    Assert.assertEquals("hello B", c1.method2)
-    Assert.assertEquals("hello B", c1.method2)
-    Assert.assertEquals("hello B", c1.method2)
+    assertEquals("hello B", c1.method2)
+    assertEquals("hello B", c1.method2)
+    assertEquals("hello B", c1.method2)
   }
 
   @Test def typeParameters(): Unit = {
@@ -71,8 +82,8 @@ class Class_UT {
     val fooString = new Foo("hello")
     val fooInt = new Foo(42)
 
-    Assert.assertEquals(42, fooInt.get)
-    Assert.assertEquals("hello", fooString.get)
+    assertEquals(42, fooInt.get)
+    assertEquals("hello", fooString.get)
   }
 
   @Test def abstractClass(): Unit = {
@@ -84,9 +95,9 @@ class Class_UT {
     }
 
     val car = new HondaFit(2010, true, "small")
-    Assert.assertEquals(2010, car.year)
-    Assert.assertEquals(true, car.automatic)
-    Assert.assertEquals("small", car.size)
+    assertEquals(2010, car.year)
+    assertEquals(true, car.automatic)
+    assertEquals("small", car.size)
   }
 
   @Test def applyMethod(): Unit = {
@@ -99,7 +110,7 @@ class Class_UT {
     }
     val car = new Car
     car(77)
-    Assert.assertEquals(77, car.thing)
+    assertEquals(77, car.thing)
   }
 
   @Test def setter(): Unit = {
@@ -114,7 +125,7 @@ class Class_UT {
     }
     val john = new Person
     john.name = "John Doe"
-    Assert.assertEquals("John Doe", john.name)
+    assertEquals("John Doe", john.name)
 
   }
 
