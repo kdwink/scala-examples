@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala
+package com.redshiftsoft.example.scala.functions
 
 import org.junit.{Assert, Test}
 
