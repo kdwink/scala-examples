@@ -25,6 +25,12 @@ class Option_UT {
     Assert.assertEquals(100, none.getOrElse(100))
   }
 
+  @Test(expected = classOf[IllegalStateException])
+  def getOrElseThrow(): Unit = {
+    val none = None
+    none.getOrElse(throw new IllegalStateException())
+  }
+
   @Test def option(): Unit = {
     var x: String = "stuff"
     val option = Option(x)
@@ -72,6 +78,5 @@ class Option_UT {
     Assert.assertFalse(upperCaseSizes.isDefined)
     Assert.assertEquals(None, upperCaseSizes)
   }
-
 
 }
