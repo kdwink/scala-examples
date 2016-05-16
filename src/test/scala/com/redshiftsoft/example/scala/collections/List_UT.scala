@@ -225,4 +225,17 @@ class List_UT {
     assertEquals(110, result)
   }
 
+  @Test def foldLeft(): Unit = {
+    val numbers = List(1, 2, 3, 4)
+    val result = numbers.foldLeft(100) { (a, b) => a + b }
+    assertEquals(110, result)
+  }
+
+  @Test def foldRight(): Unit = {
+    val numbers = List(1, 2, 3, 4)
+    val result = numbers.foldRight(100) { (a, b) => a + b }
+    assertEquals(110, result)
+  }
+
+
 }
