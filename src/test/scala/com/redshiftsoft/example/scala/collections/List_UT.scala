@@ -218,7 +218,8 @@ class List_UT {
     assertEquals(53, result)
   }
 
-  /* Fold is similar to reduce, expect you can provided a starting value */
+  /* Fold is similar to reduce, expect you can provided a starting value/accumulator, which lets you use a
+   * different accumulator type than the list type if desired */
   @Test def fold(): Unit = {
     val numbers = List(1, 2, 3, 4)
     val result = numbers.fold(100) { (a, b) => a + b }
