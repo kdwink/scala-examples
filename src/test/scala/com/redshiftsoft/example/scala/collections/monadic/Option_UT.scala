@@ -73,7 +73,7 @@ class Option_UT {
 
   @Test def findOperatingOnOptional(): Unit = {
     val words = List("risible", "scavenger", "gist")
-    val upperCaseSizes = words.find(w => w == w.toUpperCase()).map(_.size)
+    val upperCaseSizes = words.find(w => w == w.toUpperCase()).map(_.length)
 
     Assert.assertFalse(upperCaseSizes.isDefined)
     Assert.assertEquals(None, upperCaseSizes)
