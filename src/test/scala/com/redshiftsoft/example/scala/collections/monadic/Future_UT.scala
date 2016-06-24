@@ -42,13 +42,22 @@ class Future_UT {
     Assert.assertEquals(List(123, 123, 123, 123, 123), result.toList)
   }
 
+  /**
+    * Calling map on a function lets you map the result of the future and returns another future.
+    */
+  @Test def map(): Unit = {
+    val lngFuture: Future[Long] = Future(sleepFunction(100))
+    val strFuture: Future[String] = lngFuture.map(intResult => "" + intResult)
+    val tupleFuture: Future[(String, String)] = strFuture.map(str => ("1-" + str, "2-" + str))
+
+    while (!tupleFuture.isCompleted) {
+    }
+    Assert.assertEquals("Success((1-100,2-100))", tupleFuture.value.get.toString)
+  }
+
+
   @Test def firstCompleted(): Unit = {
 
-    /* These run in 50 ms each so running 20 of them serially would take 1s */
-    def sleepFunction(ms: Long): Long = {
-      Thread.sleep(ms)
-      ms
-    }
 
     var list = List(
       Future(sleepFunction(24000)), // really slow
@@ -67,6 +76,18 @@ class Future_UT {
     // This will throw if it takes longer than 250ms, so we know we are returning sooner.
     val result: Long = Await.result(race, Duration(250, MILLISECONDS))
     Assert.assertEquals(3, result)
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  //
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  /* These run in 50 ms each so running 20 of them serially would take 1s */
+  def sleepFunction(ms: Long): Long = {
+    Thread.sleep(ms)
+    ms
   }
 
   /**
