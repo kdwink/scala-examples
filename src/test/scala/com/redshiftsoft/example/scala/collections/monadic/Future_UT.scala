@@ -11,9 +11,11 @@ import scala.util.{Random, Try}
 
 class Future_UT {
 
+  val ThreadPoolSize = 16
+
   /* The default seems to be # of cores, or close to.  Some of the tests in this class assume 10+ executors
      will run concurrently so the following is necessary for them to pass on a low core machine.*/
-  implicit val ec = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(16))
+  implicit val ec = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(ThreadPoolSize))
 
   @Test def simple(): Unit = {
     val someFuture = Future {
@@ -23,23 +25,24 @@ class Future_UT {
     Assert.assertEquals(123, Await.result(someFuture, maxTime))
   }
 
-  @Test def complex(): Unit = {
+  @Test def waitingForCollectionOfFutures(): Unit = {
     /* These run in 50 ms each so running 20 of them serially would take 1s */
-    def slowFunction(name: String): Int = {
+    def slowFunction(name: String): String = {
       Thread.sleep(50)
-      123
+      name
     }
 
-    val s = Future sequence Seq(
-      Future(slowFunction("s1")),
-      Future(slowFunction("s1")),
-      Future(slowFunction("s1")),
-      Future(slowFunction("s1")),
-      Future(slowFunction("s2"))
-    )
+    val startTime = System.currentTimeMillis()
+    var futureSeq: Seq[Future[String]] = Seq()
+    for (i <- 1 to ThreadPoolSize) {
+      futureSeq = futureSeq :+ Future(slowFunction("s" + i))
+    }
 
-    val result = Await.result(s, Duration(10, SECONDS))
-    Assert.assertEquals(List(123, 123, 123, 123, 123), result.toList)
+    val topFuture = Future.sequence(futureSeq)
+
+    /* These all run in parallel so they should take approx 50 ms */
+    val result = Await.result(topFuture, Duration(400, MILLISECONDS))
+    Assert.assertEquals(List("s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"), result.toList)
   }
 
   /**
