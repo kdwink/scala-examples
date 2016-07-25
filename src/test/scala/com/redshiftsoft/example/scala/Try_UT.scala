@@ -56,7 +56,7 @@ class Try_UT {
   }
 
   def failure() : Unit = {
-    val theTry: Try[Int] = Failure()
+    val theTry: Try[Int] = Failure(new NullPointerException)
   }
 
 }
