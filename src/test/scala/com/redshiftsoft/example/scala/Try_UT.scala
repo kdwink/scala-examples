@@ -55,4 +55,8 @@ class Try_UT {
     Assert.assertEquals("bad:java.lang.AssertionError", r)
   }
 
+  def failure() : Unit = {
+    val theTry: Try[Int] = Failure()
+  }
+
 }
