@@ -27,9 +27,15 @@ class Class_Constructor_UT {
       val name: String = n
 
       def this(x: String, y: String) = this(x + "-" + y)
+
+      def this() = this("John", "Smith")
     }
-    val u = new User("keith", "winkler")
-    assertEquals("keith-winkler", u.name)
+
+    val twoArg = new User("keith", "winkler")
+    assertEquals("keith-winkler", twoArg.name)
+
+    val noArg = new User()
+    assertEquals("John-Smith", noArg.name)
   }
 
 
