@@ -38,5 +38,26 @@ class Class_Constructor_UT {
     assertEquals("John-Smith", noArg.name)
   }
 
+  @Test def constructor_inCompanionObject(): Unit = {
+    class User(n: String) {
+      val name: String = n
+    }
+    object User {
+      def apply(x: String, y: String): User = {
+        new User(x + "==" + y)
+      }
+
+      def apply(): User = {
+        User("John", "Smith")
+      }
+    }
+
+    val twoArg = User("keith", "winkler")
+    assertEquals("keith==winkler", twoArg.name)
+
+    val noArg = User()
+    assertEquals("John==Smith", noArg.name)
+  }
+
 
 }
