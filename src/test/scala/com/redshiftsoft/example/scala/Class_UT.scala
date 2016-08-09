@@ -11,33 +11,6 @@ class Class_UT {
     assertTrue(u.isInstanceOf[User])
   }
 
-  @Test def constructor(): Unit = {
-    class User(n: String) {
-      val name: String = n
-
-      def greet: String = s"hello from $name"
-
-      override def toString = s"User($name)"
-    }
-
-    val u = new User("keith")
-
-    assertTrue(u.isInstanceOf[User])
-    assertEquals("keith", u.name)
-    assertEquals("hello from keith", u.greet)
-    assertEquals("User(keith)", u.toString)
-  }
-
-  @Test def constructor_alternate(): Unit = {
-    class User(n: String) {
-      val name: String = n
-
-      def this(x: String, y: String) = this(x + "-" + y)
-    }
-    val u = new User("keith", "winkler")
-    assertEquals("keith-winkler", u.name)
-  }
-
   @Test def inheritance(): Unit = {
     class A {
       def method1 = "hello 1"
