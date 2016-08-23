@@ -14,6 +14,21 @@ class Map_UT {
     Assert.assertEquals(0xFF0000, colorMap("red"))
   }
 
+  @Test(expected = classOf[java.util.NoSuchElementException])
+  def accessing_NonExistingKey(): Unit = {
+    Assert.assertEquals(0xFF0000, colorMap("frank"))
+  }
+
+  @Test def accessing_WithGet(): Unit = {
+    Assert.assertEquals(0xFF0000, colorMap.get("red").get)
+  }
+
+  @Test(expected = classOf[java.util.NoSuchElementException])
+  def accessing_WithGet_NonExistingKey(): Unit = {
+    val maybeInt: Option[Int] = colorMap.get("frank")
+    Assert.assertEquals(0xFF0000, maybeInt.get)
+  }
+
   @Test def contains(): Unit = {
     Assert.assertTrue(colorMap.contains("red"))
     Assert.assertFalse(colorMap.contains("yellow"))
