@@ -111,6 +111,14 @@ class List_UT {
     assertEquals("++", list5(5))
   }
 
+  @Test def filter(): Unit = {
+    val list1 = List("aa", "bb", "cc")
+    val list2 = list1.filter(e => e.startsWith("bb"))
+
+    assertEquals(1, list2.size)
+    assertEquals("bb", list2.head)
+  }
+
   @Test def sortBy(): Unit = {
     val list = List("a", "ccc", "bb", "ddddd", "eee", "fffffff", "gggg")
     val sortedList: List[String] = list.sortBy(x => x.length)
