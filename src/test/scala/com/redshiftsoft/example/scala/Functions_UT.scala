@@ -51,6 +51,28 @@ class Functions_UT {
 
   }
 
+  @Test def declaringByExtending(): Unit = {
+    class FooFunction extends (Int => String) {
+      def apply(x: Int): String = {
+        "somethingFoo" + x
+      }
+    }
+    class BarFunction extends Function1[Int, String] {
+      def apply(x: Int): String = {
+        "somethingBar" + x
+      }
+    }
+
+    val fooFunction = new FooFunction
+    val barFunction = new BarFunction
+    def takesFunction(fun: Int => String, x: Int): String = {
+      fun(x)
+    }
+    Assert.assertEquals("somethingFoo20", takesFunction(fooFunction, 20))
+    Assert.assertEquals("somethingBar40", takesFunction(barFunction, 40))
+  }
+
+
   @Test def tailRecursiveDoNotStackOverflow(): Unit = {
     @annotation.tailrec
     def add(n: Int, sum: Int): Int = {
