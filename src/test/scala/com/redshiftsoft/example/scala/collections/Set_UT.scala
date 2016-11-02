@@ -12,6 +12,7 @@ class Set_UT {
   @Test def accessing(): Unit = {
     val colors = Set("red", "blue", "green")
     Assert.assertEquals("red", colors.head)
+    Assert.assertEquals("green", colors.tail)
   }
 
   @Test def iterating(): Unit = {
