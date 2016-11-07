@@ -119,6 +119,13 @@ class List_UT {
     assertEquals("bb", list2.head)
   }
 
+  @Test def filterNone(): Unit = {
+    val list1 = List("aa", "bb", "cc")
+    val list2 = list1.filter(e => e.startsWith("xxx"))
+
+    assertEquals(0, list2.size)
+  }
+
   @Test def sortBy(): Unit = {
     val list = List("a", "ccc", "bb", "ddddd", "eee", "fffffff", "gggg")
     val sortedList: List[String] = list.sortBy(x => x.length)
