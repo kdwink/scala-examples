@@ -14,6 +14,12 @@ class Option_UT {
     }
   }
 
+  @Test def constructWithNull(): Unit = {
+    val option = Option(null)
+    Assert.assertTrue(option.isEmpty)
+    Assert.assertFalse(option.isDefined)
+  }
+
   @Test def none() = {
     val none: Option[String] = None
     Assert.assertTrue(none.isEmpty)
@@ -43,7 +49,7 @@ class Option_UT {
     Assert.assertTrue(option.isDefined)
   }
 
-  @Test def example(): Unit = {
+  @Test def optionalArithmeticResult(): Unit = {
     def divide(n: Double, d: Double): Option[Double] = {
       if (d == 0) None
       else Option(n / d)
