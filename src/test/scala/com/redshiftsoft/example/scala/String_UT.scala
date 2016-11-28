@@ -22,6 +22,8 @@ class String_UT {
     val pi = 3.14159d
     Assert.assertEquals("value is 3.14159", s"value is $pi")
     Assert.assertEquals("2pi is 6.28318", s"2pi is ${pi * 2}")
+
+    Assert.assertEquals("value is 204,686,706", f"value is ${102343353 * 2}%,d")
   }
 
   @Test def interpolationOnMultipleStrings(): Unit = {
