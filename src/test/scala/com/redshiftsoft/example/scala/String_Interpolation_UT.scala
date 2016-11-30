@@ -2,7 +2,7 @@ package com.redshiftsoft.example.scala
 
 import org.junit.{Assert, Test}
 
-class StringInterpolation_UT {
+class String_Interpolation_UT {
 
   @Test def interpolation(): Unit = {
     val pi = 3.14159d
