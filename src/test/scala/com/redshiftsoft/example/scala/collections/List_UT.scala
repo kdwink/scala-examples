@@ -262,4 +262,11 @@ class List_UT {
     assertEquals("List(1, 3, 5, 7, 9)", resultMap(1).toString)
   }
 
+  @Test def group(): Unit = {
+    val numbers = List(1, 1, 1, 2, 2, 2, 3, 3, 3, 4)
+    val sizes = numbers.grouped(3).map(list => list.size).toList
+
+    assertEquals("List(3, 3, 3, 1)", sizes.toString)
+  }
+
 }
