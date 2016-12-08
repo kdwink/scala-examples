@@ -24,6 +24,14 @@ class Try_UT {
   }
 
   @Test
+  def constructionWithNull(): Unit = {
+    val count: String = null
+    val s: Try[String] = Try(count)
+
+    Assert.assertFalse(s.isFailure)
+  }
+
+  @Test
   def tryWithFunction(): Unit = {
     val theTry: Try[Int] = Try(1 / 0)
 
