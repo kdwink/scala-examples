@@ -3,7 +3,7 @@ package com.redshiftsoft.example.scala
 import org.junit.{Assert, Test}
 
 /**
-  * Case classes get automatically generated companion object with appply method and:
+  * Case classes get automatically generated companion object with apply method and:
   *
   * copy, equals, hashCode, toString, unapply
   */
@@ -21,7 +21,7 @@ class Case_Class_UT {
   @Test
   def testEquals(): Unit = {
     val c1 = Character("George", isThief = true)
-    val c2 = new Character("George", isThief = true)
+    val c2 = Character("George", isThief = true)
     // this works since we get an auto generated equals method that compares fields
     Assert.assertEquals(c1, c2)
   }
