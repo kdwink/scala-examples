@@ -8,6 +8,10 @@ class String_UT {
     val string1 = new String("this is a string")
   }
 
+  @Test(expected = classOf[NullPointerException]) def constructorNull(): Unit = {
+    new String(null, "UTF-8")
+  }
+
   @Test def multiLineStrings() {
     val multiLineString =
       """
