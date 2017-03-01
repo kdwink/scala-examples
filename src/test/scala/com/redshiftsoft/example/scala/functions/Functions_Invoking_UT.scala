@@ -16,4 +16,11 @@ class Functions_Invoking_UT {
     Assert.assertEquals(20, accessDBFunc())
   }
 
+  @Test def withApply(): Unit = {
+    val doubler = (i: Int) => i * 2
+
+    Assert.assertEquals(14, doubler(7))
+    Assert.assertEquals(14, doubler.apply(7))
+  }
+
 }
