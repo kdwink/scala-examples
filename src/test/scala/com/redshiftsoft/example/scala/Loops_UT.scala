@@ -2,11 +2,13 @@ package com.redshiftsoft.example.scala
 
 import org.junit.{Assert, Test}
 
+import scala.collection.immutable.Seq
+
 class Loops_UT {
 
   @Test def forYields() = {
-    val result = for {x <- 1 to 3
-                      y <- 4 to 5} yield {
+    val result: Seq[String] = for {x <- 1 to 3
+                                   y <- 4 to 5} yield {
       s"$x-$y"
     }
     Assert.assertEquals("Vector(1-4, 1-5, 2-4, 2-5, 3-4, 3-5)", result.toString)
