@@ -32,12 +32,37 @@ class Try_UT {
   }
 
   @Test
-  def tryWithFunction(): Unit = {
+  def tryWithExpression(): Unit = {
     val theTry: Try[Int] = Try(1 / 0)
 
     Assert.assertTrue(theTry.isFailure)
     Assert.assertFalse(theTry.isSuccess)
     Assert.assertEquals(classOf[ArithmeticException], theTry.failed.get.getClass)
+  }
+
+  @Test def tryWithFunction(): Unit = {
+
+    def loopAndFail(end: Int, failAt: Int): Int = {
+      for (i <- 1 to end) {
+        if (i == failAt) throw new Exception("Too many iterations")
+      }
+      end
+    }
+
+    val trySuccess = util.Try(loopAndFail(5, 9))
+    val tryFail = util.Try(loopAndFail(5, 2))
+
+    Assert.assertTrue(trySuccess.isSuccess)
+    Assert.assertEquals(5, trySuccess.get)
+    Assert.assertTrue(tryFail.isFailure)
+
+  }
+
+
+  @Test def orElse(): Unit = {
+    val inputString = " 123 "
+    val inputInt = Try(inputString.toInt).orElse(Try(inputString.trim.toInt))
+    Assert.assertEquals(123, inputInt.get)
   }
 
   @Test def getOrElse(): Unit = {
@@ -61,10 +86,6 @@ class Try_UT {
     }
 
     Assert.assertEquals("bad:java.lang.AssertionError", r)
-  }
-
-  def failure() : Unit = {
-    val theTry: Try[Int] = Failure(new NullPointerException)
   }
 
 }
