@@ -59,6 +59,7 @@ class Option_UT {
     Assert.assertEquals(None, divide(3, 0))
   }
 
+  //noinspection FilterHeadOption
   @Test def headOption(): Unit = {
     val odds = List(1, 3, 5)
     val firstOdd = odds.headOption
@@ -77,12 +78,12 @@ class Option_UT {
     Assert.assertFalse(uppercase.isDefined)
   }
 
-  @Test def findOperatingOnOptional(): Unit = {
-    val words = List("risible", "scavenger", "gist")
-    val upperCaseSizes = words.find(w => w == w.toUpperCase()).map(_.length)
+  @Test def map(): Unit = {
+    val option1: Option[String] = Some("word")
+    val option2: Option[String] = None
 
-    Assert.assertFalse(upperCaseSizes.isDefined)
-    Assert.assertEquals(None, upperCaseSizes)
+    Assert.assertEquals(Some("WORD"), option1.map(_.toUpperCase()))
+    Assert.assertEquals(None, option2.map(_.toUpperCase()))
   }
 
 }
