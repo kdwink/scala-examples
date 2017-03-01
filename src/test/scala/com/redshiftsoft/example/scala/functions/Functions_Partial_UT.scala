@@ -31,10 +31,16 @@ class Functions_Partial_UT {
     Assert.assertTrue(flag)
   }
 
+  //noinspection AccessorLikeMethodIsUnit
   @Test def isDefinedAt(): Unit = {
     Assert.assertTrue(statusHandler1.isDefinedAt(100))
     Assert.assertFalse(statusHandler1.isDefinedAt(200))
     Assert.assertTrue(statusHandler2.isDefinedAt(200))
+  }
+
+  @Test def orElse(): Unit = {
+    Assert.assertEquals("Huh", statusHandler1.orElse(statusHandler2)(100))
+    Assert.assertEquals("Our Error", statusHandler1.orElse(statusHandler2)(500))
   }
 
 }
