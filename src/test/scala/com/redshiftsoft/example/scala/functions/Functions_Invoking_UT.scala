@@ -17,10 +17,22 @@ class Functions_Invoking_UT {
   }
 
   @Test def withApply(): Unit = {
-    val doubler = (i: Int) => i * 2
 
-    Assert.assertEquals(14, doubler(7))
-    Assert.assertEquals(14, doubler.apply(7))
+    val doubler1: Int => Int = (i: Int) => i * 2
+
+    def doubler2(i: Int): Int = i * 2
+
+    def invokeIt[T](f: Int => T): T = f(8)
+
+    Assert.assertEquals(14, doubler1(7))
+    Assert.assertEquals(14, doubler2(7))
+
+    Assert.assertEquals(16, invokeIt(doubler1))
+    Assert.assertEquals(16, invokeIt(doubler2))
+
+    Assert.assertEquals(14, doubler1.apply(7))
+    //Assert.assertEquals(14, doubler2.apply(7))
+
   }
 
 }
