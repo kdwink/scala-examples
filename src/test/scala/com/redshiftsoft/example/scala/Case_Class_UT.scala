@@ -45,12 +45,17 @@ class Case_Class_UT {
   def multipleConstructors(): Unit = {
     case class Foo(bar: Int, baz: Int) {
       def this(bar: Int) = this(bar, 100)
+
+      def this(bar: Int, x: Int, y: Int) = this(bar, x + y)
     }
 
     val f1 = Foo(1, 2)
     val f2 = new Foo(1)
+    val f3 = new Foo(1, 2, 3)
+
 
     Assert.assertEquals(2, f1.baz)
     Assert.assertEquals(100, f2.baz)
+    Assert.assertEquals(5, f3.baz)
   }
 }
