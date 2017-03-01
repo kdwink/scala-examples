@@ -1,6 +1,6 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.Test
+import org.junit.{Assert, Test}
 
 class Range_UT {
 
@@ -10,5 +10,18 @@ class Range_UT {
     val range2 = 1.0 to 15.5 by .5
 
   }
+
+  @Test
+  def foreach(): Unit = {
+    var count = 0
+
+    1 to 10 foreach (i => {
+      count = count + 1
+    })
+
+    Assert.assertEquals(10, count)
+
+  }
+
 
 }
