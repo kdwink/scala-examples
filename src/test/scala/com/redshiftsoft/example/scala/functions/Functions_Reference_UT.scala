@@ -5,18 +5,20 @@ import org.junit.{Assert, Test}
 class Functions_Reference_UT {
 
   @Test def functionReference(): Unit = {
-    def literal() = "whatever"
-    def double(x: Int): Int = 2 * x
-    def sum(x: Int, y: Int): Int = x + y
+    def doString() = "whatever"
+
+    def doDouble(x: Int): Int = 2 * x
+
+    def doSum(x: Int, y: Int): Int = x + y
 
 
-    val literalPointer: () => String = literal
-    val doublePointer1: Int => Int = double
-    val doublePointer2: (Int) => Int = double
-    val doublePointer3 = double _
+    val literalPointer: () => String = doString
+    val doublePointer1: Int => Int = doDouble
+    val doublePointer2: (Int) => Int = doDouble
+    val doublePointer3 = doDouble _
 
-    val sumPointer1: (Int, Int) => Int = sum
-    val sumPointer2 = sum _
+    val sumPointer1: (Int, Int) => Int = doSum
+    val sumPointer2 = doSum _
 
     Assert.assertEquals("whatever", literalPointer())
 
