@@ -20,6 +20,7 @@ class Functions_Generic_UT {
     def f1(x: Int): List[Int] = {
       List(1, 2, 3, x)
     }
+
     def f2(x: Int): String = {
       "hello" + x
     }
@@ -34,6 +35,18 @@ class Functions_Generic_UT {
     Assert.assertEquals(List(1, 2, 3, 10), result1)
     Assert.assertEquals("hello10", result2)
 
+  }
+
+  @Test def identityFunction(): Unit = {
+    def identity[A](a: A): A = a
+
+    Assert.assertEquals("whatever", identity[String]("whatever"))
+    Assert.assertEquals(42, identity[Int](42))
+    Assert.assertEquals(0.42, identity[Double](0.42), 1e-9)
+
+    Assert.assertEquals("whatever", identity("whatever"))
+    Assert.assertEquals(42, identity(42))
+    Assert.assertEquals(0.42, identity(0.42), 1e-9)
   }
 
 }
