@@ -58,7 +58,6 @@ class Try_UT {
 
   }
 
-
   @Test def orElse(): Unit = {
     val inputString = " 123 "
     val inputInt = Try(inputString.toInt).orElse(Try(inputString.trim.toInt))
