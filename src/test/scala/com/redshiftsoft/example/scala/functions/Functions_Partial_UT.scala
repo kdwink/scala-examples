@@ -4,26 +4,37 @@ import org.junit.{Assert, Test}
 
 class Functions_Partial_UT {
 
-  val statusHandler: Int => String = {
+  private val statusHandler1: PartialFunction[Int, String] = {
+    case 100 => "Huh"
+  }
+
+  private val statusHandler2: PartialFunction[Int, String] = {
     case 200 => "Okay"
     case 400 => "Error"
     case 500 => "Our Error"
   }
 
-  @Test def partial(): Unit = {
-    Assert.assertEquals("Okay", statusHandler(200))
-    Assert.assertEquals("Error", statusHandler(400))
-    Assert.assertEquals("Our Error", statusHandler(500))
+  @Test def invokeDirectly(): Unit = {
+    Assert.assertEquals("Okay", statusHandler2(200))
+    Assert.assertEquals("Error", statusHandler2(400))
+    Assert.assertEquals("Our Error", statusHandler2(500))
   }
 
   @Test def partialMatchError(): Unit = {
     var flag: Boolean = false
     try {
-      Assert.assertEquals("Our Error", statusHandler(550))
+      Assert.assertEquals("Our Error", statusHandler2(550))
     } catch {
       case e: MatchError =>
         flag = true
     }
     Assert.assertTrue(flag)
   }
+
+  @Test def isDefinedAt(): Unit = {
+    Assert.assertTrue(statusHandler1.isDefinedAt(100))
+    Assert.assertFalse(statusHandler1.isDefinedAt(200))
+    Assert.assertTrue(statusHandler2.isDefinedAt(200))
+  }
+
 }
