@@ -19,10 +19,12 @@ class TryCollections_UT {
       }
       end
     }
+
     val trySuccess = util.Try(loopAndFail(5, 9))
     val tryFail = util.Try(loopAndFail(5, 2))
 
     Assert.assertTrue(trySuccess.isSuccess)
+    Assert.assertEquals(5, trySuccess.get)
     Assert.assertTrue(tryFail.isFailure)
 
   }
