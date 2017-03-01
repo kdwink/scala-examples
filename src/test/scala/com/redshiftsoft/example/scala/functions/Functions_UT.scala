@@ -4,16 +4,6 @@ import org.junit.{Assert, Test}
 
 class Functions_UT {
 
-  @Test def namedParameters(): Unit = {
-    def add(n: Int, sum: Int): Int = {
-      if (n < 1) {
-        return sum
-      }
-      add(n - 1, sum + n)
-    }
-    Assert.assertEquals(800020000, add(sum = 0, n = 40000))
-  }
-
   @Test def typeParameter(): Unit = {
     def identity[A](a: A): A = a
 

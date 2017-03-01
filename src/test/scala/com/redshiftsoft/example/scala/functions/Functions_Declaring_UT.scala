@@ -107,4 +107,16 @@ class Functions_Declaring_UT {
     Assert.assertEquals(10, add(1, 2, 3, 4))
   }
 
+  @Test def declaringWithNamedParameters(): Unit = {
+    def add(n: Int, sum: Int): Int = {
+      if (n < 1) {
+        return sum
+      }
+      add(n - 1, sum + n)
+    }
+
+    Assert.assertEquals(800020000, add(sum = 0, n = 40000))
+    Assert.assertEquals(800020000, add(n = 40000, sum = 0))
+  }
+
 }
