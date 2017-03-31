@@ -186,6 +186,17 @@ class List_UT {
     assertEquals("cc", list2(2))
   }
 
+  @Test def operator_prependElement(): Unit = {
+    val list1 = List("aa", "bb")
+    val list2 = "cc" :: list1
+
+    assertEquals(2, list1.size)
+    assertEquals(3, list2.size)
+    assertEquals("cc", list2.head)
+    assertEquals("aa", list2(1))
+    assertEquals("bb", list2(2))
+  }
+
   @Test def operator_appendSet(): Unit = {
     val list1 = List("aa", "bb")
     val set2 = Set("11", "22")
