@@ -179,6 +179,7 @@ class List_UT {
     val list1 = List("aa", "bb")
     val list2 = list1 :+ "cc"
 
+    assertEquals(2, list1.size)
     assertEquals(3, list2.size)
     assertEquals("aa", list2.head)
     assertEquals("bb", list2(1))
