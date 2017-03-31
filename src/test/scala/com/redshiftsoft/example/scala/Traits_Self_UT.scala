@@ -17,7 +17,7 @@ class Traits_Self_UT {
     /* B can't extend A directly because A has parameters. 'self' here can actually be any identifier */
     trait B {
       self: A =>
-      override def toString = "B: " + hi
+      override def toString: String = "B: " + hi
     }
 
     class C(name: String) extends A(name) with B

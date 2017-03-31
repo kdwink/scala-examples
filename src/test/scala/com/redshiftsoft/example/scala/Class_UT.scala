@@ -90,7 +90,7 @@ class Class_UT {
     class Person {
       private var privateName = ""
 
-      def name = privateName
+      def name: String = privateName
 
       def name_=(value: String): Unit = {
         privateName = value

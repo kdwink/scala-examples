@@ -22,6 +22,20 @@ class String_UT {
     Assert.assertEquals("        stuff        and more stuff      ", multiLineString.replace("\n", ""))
   }
 
+  /**
+    * stripMargin removes the pipe and whitespace before the pipe.
+    */
+  @Test def multiLineStrings_stripMargin(): Unit = {
+    val x =
+      """
+        |line zero
+        | line one
+        |  line two
+        |   line three""".stripMargin
+
+    Assert.assertEquals("\nline zero\n line one\n  line two\n   line three", x)
+  }
+
   @Test def split(): Unit = {
     val string = "one,two,  three  ,four,  five, six"
     val split: Array[String] = string.split(",").toStream.map(_.trim).toArray

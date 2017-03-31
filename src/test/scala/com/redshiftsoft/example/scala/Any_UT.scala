@@ -14,7 +14,7 @@ class Any_UT {
       this.name.equals(otherPerson.name) && Math.abs(age - otherPerson.age) < 10
     }
 
-    override def hashCode = name.hashCode
+    override def hashCode: Int = name.hashCode
   }
 
   val person1 = new Person("keith", 200)
