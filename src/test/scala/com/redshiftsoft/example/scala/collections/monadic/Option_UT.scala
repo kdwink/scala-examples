@@ -86,4 +86,13 @@ class Option_UT {
     Assert.assertEquals(None, option2.map(_.toUpperCase()))
   }
 
+  @Test def mapCollectionOfOptions(): Unit = {
+    val intOptions = Seq(None, Some(1), Some(2), None, Some(3))
+
+    Assert.assertEquals(Seq(2, 4, 6), intOptions.map(intOp => intOp.map(int => int * 2)).filter(x => x.isDefined).map(x => x.get))
+    Assert.assertEquals(Seq(2, 4, 6), intOptions.filter(intOp => intOp.isDefined).map(intOp => intOp.get).map(x => x * 2))
+    Assert.assertEquals(Seq(2, 4, 6), intOptions.filter(_.isDefined).map(_.get).map(_ * 2))
+    Assert.assertEquals(Seq(2, 4, 6), intOptions.filter(_.isDefined).map(_.get * 2))
+  }
+
 }
