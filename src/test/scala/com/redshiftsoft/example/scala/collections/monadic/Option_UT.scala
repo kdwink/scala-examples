@@ -87,7 +87,7 @@ class Option_UT {
   }
 
   @Test def mapCollectionOfOptions(): Unit = {
-    val intOptions = Seq(None, Some(1), Some(2), None, Some(3))
+    val intOptions = Seq(None, Some(1), Some(2), None, Some(3), None, None)
 
     Assert.assertEquals(Seq(2, 4, 6), intOptions.map(intOp => intOp.map(int => int * 2)).filter(x => x.isDefined).map(x => x.get))
     Assert.assertEquals(Seq(2, 4, 6), intOptions.filter(intOp => intOp.isDefined).map(intOp => intOp.get).map(x => x * 2))
