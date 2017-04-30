@@ -58,4 +58,10 @@ class Map_UT {
     Assert.assertEquals(3, count)
   }
 
+  @Test def values(): Unit = {
+    val values = colorMap.values.toSeq
+    Assert.assertEquals(Seq(0xFF0000, 0xF00, 0xFF), values)
+  }
+
+
 }
