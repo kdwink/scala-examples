@@ -17,7 +17,7 @@ class Tuple_UT {
     }
   }
 
-  @Test def declarigTwoTuplesWithArrow(): Unit = {
+  @Test def declaringTwoTuplesWithArrow(): Unit = {
     /* arrow operator only works for 2-tuples */
     val x = "keith" -> 2
     Assert.assertEquals("keith", x._1)
@@ -42,6 +42,19 @@ class Tuple_UT {
 
   @Test def copy(): Unit = {
     Assert.assertEquals(("keith", 42, 3.14159, 'a'), ("keith", 42, 3.14159, 'a').copy())
+  }
+
+  @Test def extending(): Unit = {
+    // You can't extend, but you can define a type.
+
+    type XX = Tuple3[String, Option[String], Option[Int]]
+    type YY = (String, Option[String], Option[Int])
+
+    val x: XX = ("string", Some("optionalString"), Some(100))
+    val y: YY = ("string", Some("optionalString"), Some(100))
+
+    Assert.assertEquals("optionalString", x._2.get)
+    Assert.assertEquals("optionalString", y._2.get)
   }
 
 }
