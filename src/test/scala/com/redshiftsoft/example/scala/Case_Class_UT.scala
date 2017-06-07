@@ -34,6 +34,13 @@ class Case_Class_UT {
   }
 
   @Test
+  def copyWithArg(): Unit = {
+    val c1 = Character("George", isThief = true)
+    val c2 = c1.copy(name = "Keith")
+    Assert.assertEquals(Character("Keith", isThief = true), c2)
+  }
+
+  @Test
   def unapply(): Unit = {
     val c1 = Character("George", isThief = true)
     val tupple = Character.unapply(c1).get
