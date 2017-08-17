@@ -20,6 +20,11 @@ class Option_UT {
     Assert.assertFalse(option.isDefined)
   }
 
+  @Test def constructSomeWithNull(): Unit = {
+    val option = Some(null)
+    Assert.assertTrue(option.isDefined)
+  }
+
   @Test def none() = {
     val none: Option[String] = None
     Assert.assertTrue(none.isEmpty)
