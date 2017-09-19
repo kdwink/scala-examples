@@ -92,6 +92,20 @@ class Option_UT {
     Assert.assertEquals(None, option2.map(_.toUpperCase()))
   }
 
+  @Test def mapTwice(): Unit = {
+    // given
+    class XX(var size: Option[Int]) {
+    }
+    val x1 = Some(new XX(Some(400)))
+    val x2 = Some(new XX(None))
+    val x3 = Option[XX](null)
+
+    // when/then
+    Assert.assertEquals(400, x1.map(_.size.getOrElse(0)).getOrElse(0))
+    Assert.assertEquals(0, x2.map(_.size.getOrElse(0)).getOrElse(0))
+    Assert.assertEquals(0, x3.map(_.size.getOrElse(0)).getOrElse(0))
+  }
+
   @Test def mapCollectionOfOptions(): Unit = {
     val intOptions = Seq(None, Some(1), Some(2), None, Some(3), None, None)
 
