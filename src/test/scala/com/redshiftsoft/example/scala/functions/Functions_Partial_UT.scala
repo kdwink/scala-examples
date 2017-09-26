@@ -2,6 +2,8 @@ package com.redshiftsoft.example.scala.functions
 
 import org.junit.{Assert, Test}
 
+import scala.util.Try
+
 class Functions_Partial_UT {
 
   private val statusHandler1: PartialFunction[Int, String] = {
@@ -41,6 +43,25 @@ class Functions_Partial_UT {
   @Test def orElse(): Unit = {
     Assert.assertEquals("Huh", statusHandler1.orElse(statusHandler2)(100))
     Assert.assertEquals("Our Error", statusHandler1.orElse(statusHandler2)(500))
+  }
+
+  @Test def useWithTry(): Unit = {
+    val theTry = Try(errorMethod())
+    Assert.assertTrue(theTry.isFailure)
+    val recoveredTry = theTry.recover(handleError)
+    Assert.assertTrue(recoveredTry.isSuccess)
+    Assert.assertEquals(111, recoveredTry.get)
+  }
+
+  private def handleError: PartialFunction[Throwable, Int] = {
+    case t: IllegalStateException =>
+      111
+    case t: Throwable =>
+      222
+  }
+
+  def errorMethod(): String = {
+    throw new IllegalStateException()
   }
 
 }
