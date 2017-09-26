@@ -73,8 +73,7 @@ class Try_UT {
     }
   }
 
-  @Test
-  def matching(): Unit = {
+  @Test def matching(): Unit = {
     val theTry: Try[Int] = Failure(new AssertionError())
 
     val r = theTry match {
@@ -85,6 +84,17 @@ class Try_UT {
     }
 
     Assert.assertEquals("bad:java.lang.AssertionError", r)
+  }
+
+  @Test def map(): Unit = {
+    // map failure
+    val r1 = Try(throw new IllegalStateException()).map(x => 42)
+    Assert.assertTrue(r1.isFailure)
+    Assert.assertTrue(r1.failed.get.isInstanceOf[IllegalStateException])
+
+    // map success
+    val r2 = Try(1 + 1).map(x => 2000)
+    Assert.assertEquals(2000, r2.get)
   }
 
 }
