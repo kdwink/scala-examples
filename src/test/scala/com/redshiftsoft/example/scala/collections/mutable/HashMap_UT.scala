@@ -17,7 +17,8 @@ class HashMap_UT {
     val map: mutable.Map[String, Double] = mutable.HashMap.empty
     // when/then
     iTakeMutableMap(map)
-    iTakeImmutableMap(map.toMap)
+    iTakeImmutableMap1(map.toMap)
+    iTakeImmutableMap2(map.toMap)
   }
 
 
@@ -25,7 +26,11 @@ class HashMap_UT {
 
   }
 
-  private def iTakeImmutableMap(m: collection.immutable.Map[String, Double]): Unit = {
+  private def iTakeImmutableMap1(m: collection.immutable.Map[String, Double]): Unit = {
+
+  }
+
+  private def iTakeImmutableMap2(m: Map[String, Double]): Unit = {
 
   }
 
