@@ -12,4 +12,13 @@ class HashMap_UT {
     Assert.assertEquals(1, map.size)
   }
 
+  @Test def passMutableMap(): Unit = {
+    val map: mutable.Map[String, Double] = mutable.HashMap.empty
+    functionThatTakesMap(map)
+  }
+
+  def functionThatTakesMap(m: mutable.Map[String, Double]): Unit = {
+
+  }
+
 }
