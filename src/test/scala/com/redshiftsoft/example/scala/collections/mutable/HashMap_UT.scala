@@ -13,11 +13,19 @@ class HashMap_UT {
   }
 
   @Test def passMutableMap(): Unit = {
+    // given
     val map: mutable.Map[String, Double] = mutable.HashMap.empty
-    functionThatTakesMap(map)
+    // when/then
+    iTakeMutableMap(map)
+    iTakeImmutableMap(map.toMap)
   }
 
-  def functionThatTakesMap(m: mutable.Map[String, Double]): Unit = {
+
+  private def iTakeMutableMap(m: mutable.Map[String, Double]): Unit = {
+
+  }
+
+  private def iTakeImmutableMap(m: collection.immutable.Map[String, Double]): Unit = {
 
   }
 
