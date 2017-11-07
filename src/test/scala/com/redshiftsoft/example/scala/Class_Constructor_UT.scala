@@ -22,6 +22,17 @@ class Class_Constructor_UT {
     assertEquals("User(keith)", u.toString)
   }
 
+  @Test def constructor_withVal(): Unit = {
+    class User(val name: String) {
+      def greet: String = s"hello from $name"
+      override def toString = s"User($name)"
+    }
+
+    val u = new User("keith")
+    // Can't do this unless constructor arg has 'val' modifier.
+    assertEquals("keith", u.name)
+  }
+
   @Test def constructor_alternate(): Unit = {
     class User(n: String) {
       val name: String = n
