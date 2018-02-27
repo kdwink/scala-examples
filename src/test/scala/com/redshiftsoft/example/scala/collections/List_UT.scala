@@ -6,7 +6,7 @@ import org.junit.Assert._
 import org.junit.Test
 
 /**
-  * Immutable linked list.
+  * Immutable linked list. Better to use Vector.
   */
 class List_UT {
 
@@ -16,6 +16,10 @@ class List_UT {
 
     val colors1 = List("red", "blue", "green")
     val colors2: List[String] = List("red", "blue", "green")
+  }
+
+  @Test def declaring_listIsASeq(): Unit = {
+    val seq: Seq[String] = List("aa", "bb", "cc")
   }
 
   @Test def accessing(): Unit = {
