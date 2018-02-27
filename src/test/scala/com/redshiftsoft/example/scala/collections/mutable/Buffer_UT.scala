@@ -26,4 +26,26 @@ class Buffer_UT {
     Assert.assertEquals("ArrayBuffer(1, 2, 3, 100)", nums.toString)
   }
 
+  @Test def take(): Unit = {
+    val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    val slice1: mutable.Buffer[String] = buffer.take(3)
+    Assert.assertEquals("ArrayBuffer(aa, bb, cc)", slice1.toString)
+    Assert.assertEquals("ArrayBuffer(aa, bb, cc, dd, ee, ff, gg, hh)", buffer.toString)
+  }
+
+  @Test def drop(): Unit = {
+    val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    val slice1: mutable.Buffer[String] = buffer.drop(3)
+    Assert.assertEquals("ArrayBuffer(dd, ee, ff, gg, hh)", slice1.toString)
+    Assert.assertEquals("ArrayBuffer(aa, bb, cc, dd, ee, ff, gg, hh)", buffer.toString)
+  }
+
+  @Test def remove(): Unit = {
+    val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    buffer.remove(0, 3)
+    Assert.assertEquals("ArrayBuffer(dd, ee, ff, gg, hh)", buffer.toString)
+  }
+
+
+
 }
