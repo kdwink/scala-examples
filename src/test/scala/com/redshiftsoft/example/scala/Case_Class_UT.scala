@@ -65,4 +65,18 @@ class Case_Class_UT {
     Assert.assertEquals(100, f2.baz)
     Assert.assertEquals(5, f3.baz)
   }
+
+  /* A case class can NOT extends another case class. */
+  @Test
+  def inheritance(): Unit = {
+    case class Foo(a: String, b: String)
+    class Bar(val c: String) extends Foo("aaa", "bbb")
+
+    val bar = new Bar("ccc")
+
+    Assert.assertEquals("aaa", bar.a)
+    Assert.assertEquals("bbb", bar.b)
+    Assert.assertEquals("ccc", bar.c)
+  }
+
 }
