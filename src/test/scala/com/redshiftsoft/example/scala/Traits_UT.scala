@@ -28,13 +28,13 @@ class Traits_UT {
   }
 
   trait Swimming {
-    def swim() = println("I'm swimming")
+    def swim(): Unit = println("I'm swimming")
   }
 
   trait Flying {
     def flyMessage: String = ""
 
-    def fly() = println(flyMessage)
+    def fly(): Unit = println(flyMessage)
   }
 
   class Pigeon extends Bird with Swimming with Flying {
