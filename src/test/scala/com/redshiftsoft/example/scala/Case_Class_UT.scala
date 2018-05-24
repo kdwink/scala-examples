@@ -43,10 +43,10 @@ class Case_Class_UT {
   @Test
   def unapply(): Unit = {
     val c1 = Character("George", isThief = true, age = 25)
-    val tupple = Character.unapply(c1).get
-    Assert.assertEquals("George", tupple._1)
-    Assert.assertEquals(true, tupple._2)
-    Assert.assertEquals(25, tupple._3)
+    val tuple = Character.unapply(c1).get
+    Assert.assertEquals("George", tuple._1)
+    Assert.assertEquals(true, tuple._2)
+    Assert.assertEquals(25, tuple._3)
   }
 
   @Test
