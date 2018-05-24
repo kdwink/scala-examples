@@ -9,7 +9,7 @@ import org.junit.{Assert, Test}
   */
 class Case_Class_UT {
 
-  case class Character(name: String, isThief: Boolean)
+  case class Character(name: String, isThief: Boolean, age: Int = 18)
 
   @Test
   def fields(): Unit = {
@@ -42,10 +42,11 @@ class Case_Class_UT {
 
   @Test
   def unapply(): Unit = {
-    val c1 = Character("George", isThief = true)
+    val c1 = Character("George", isThief = true, age = 25)
     val tupple = Character.unapply(c1).get
     Assert.assertEquals("George", tupple._1)
     Assert.assertEquals(true, tupple._2)
+    Assert.assertEquals(25, tupple._3)
   }
 
   @Test
