@@ -278,6 +278,23 @@ class List_UT {
     assertEquals("List(1, 3, 5, 7, 9)", resultMap(1).toString)
   }
 
+  @Test def groupByObject(): Unit = {
+    // given
+    case class X(id: Int, name: String)
+    val seq = Seq(
+      X(10, "11"),
+      X(20, "21"), X(20, "22"),
+      X(30, "31"), X(30, "32"), X(30, "33")
+    )
+    // when
+    val map = seq.groupBy(_.id)
+    // then
+    assertEquals(3, map.size)
+    assertEquals(1, map(10).size)
+    assertEquals(2, map(20).size)
+    assertEquals(3, map(30).size)
+  }
+
   @Test def group(): Unit = {
     val numbers = List(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5)
     val sizes = numbers.grouped(3).map(list => list.size).toList
