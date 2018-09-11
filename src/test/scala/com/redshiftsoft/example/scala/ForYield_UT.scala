@@ -34,6 +34,15 @@ class ForYield_UT {
     assertEquals("Vector(1-4, 1-5, 2-4, 2-5, 3-4, 3-5)", result.toString)
   }
 
+  @Test def for_yield_two_variables_two_guards(): Unit = {
+    val result: Seq[String] = for {x <- 1 to 3 if x == 1
+                                   y <- 4 to 5 if y == 5} yield {
+      s"$x-$y"
+    }
+    assertEquals("Vector(1-5)", result.toString)
+  }
+
+
   @Test def for_yield_two_variables_second_dependent_on_first(): Unit = {
     val result: Seq[String] = for {x <- 1 to 6
                                    y = 2 * x} yield {
