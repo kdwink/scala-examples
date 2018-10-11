@@ -95,6 +95,23 @@ class Try_UT {
     // map success
     val r2 = Try(1 + 1).map(x => 2000)
     Assert.assertEquals(2000, r2.get)
+
+    // map with partial matching case statements
+    val r3 = Try(1 + 1).map {
+      case 20 => 4000
+      case 30 => 3000
+    }
+    Assert.assertTrue(r3.isFailure)
+    Assert.assertTrue(r3.failed.get.isInstanceOf[MatchError])
+
+    // map with partial matching case statements
+    val r4 = Try(1 + 1).map {
+      case 2 => throw new IllegalStateException("x y z")
+      case 3 => 3000
+    }
+    Assert.assertTrue(r4.isFailure)
+    Assert.assertEquals(r4.failed.get.getMessage, "x y z")
+
   }
 
 }
