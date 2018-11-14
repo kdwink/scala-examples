@@ -36,4 +36,11 @@ class Operators_UT {
 
   }
 
+  @Test def plusEqual() : Unit = {
+    var x = 1
+    x += 2
+
+    Assert.assertEquals(3, x)
+  }
+
 }
