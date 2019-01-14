@@ -23,5 +23,16 @@ class Range_UT {
 
   }
 
+  @Test
+  def map(): Unit = {
+    val seq1 = (1 to 5).map(x => 2 * x)
+    Assert.assertEquals(5, seq1.size)
+
+    val seq2 = (1 to 1).map(x => 2 * x)
+    Assert.assertEquals(1, seq2.size)
+
+    val seq3 = (1 to 0).map(x => 2 * x)
+    Assert.assertEquals(0, seq3.size)
+  }
 
 }
