@@ -104,15 +104,18 @@ class List_UT {
   }
 
   @Test def flatten(): Unit = {
+    // given
     val list1 = List("aa", "bb")
     val list2 = List("11", "22")
     val list3 = List("--", "++")
     val list4 = List(list1, list2, list3)
-    val list5 = list4.flatten
 
-    assertEquals(6, list5.size)
-    assertEquals("aa", list5(0))
-    assertEquals("++", list5(5))
+    // when
+    val flatList = list4.flatten
+
+    // then
+    assertEquals(6, flatList.size)
+    assertEquals("aa,bb,11,22,--,++", flatList.mkString(","))
   }
 
   @Test def filter(): Unit = {
