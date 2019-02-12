@@ -15,6 +15,12 @@ class String_Interpolation_UT {
     Assert.assertEquals("value is 12,792,919.13", f"value is ${102343353.0 / 8}%,.2f")
   }
 
+  @Test def interpolationWithPadding(): Unit = {
+    val s = "hi"
+    Assert.assertEquals("value:        hi", f"value: $s%9s")
+    Assert.assertEquals("value: hi       ", f"value: $s%-9s")
+  }
+
   @Test def interpolationOnMultipleStrings(): Unit = {
     val pi = 3.14159d
     Assert.assertEquals("part1: 3.14159 part2: $pi", s"part1: $pi" + " part2: $pi")
