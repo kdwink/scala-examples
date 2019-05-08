@@ -57,6 +57,22 @@ class Functions_Partial_UT {
     Assert.assertEquals("List(ten, twenty, hundred)", Seq(10, 20, 30, 40, 50, 60, 100).collect(stringify).toString)
   }
 
+  /** collect will filter stream to only elements on which partial function is defined. */
+  @Test def useWithMap(): Unit = {
+    // given
+    def stringify: PartialFunction[Int, String] = {
+      case 10 => "ten"
+      case 20 => "twenty"
+    }
+    // when
+    val theTry = Try(Seq(1, 2).map(stringify))
+
+    // then
+    Assert.assertFalse(theTry.isSuccess)
+    Assert.assertTrue(theTry.failed.get.isInstanceOf[MatchError])
+  }
+
+
   @Test def useWithTry(): Unit = {
     def handleError: PartialFunction[Throwable, Int] = {
       case t: IllegalStateException =>
