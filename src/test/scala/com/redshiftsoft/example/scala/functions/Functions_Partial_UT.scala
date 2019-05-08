@@ -45,7 +45,30 @@ class Functions_Partial_UT {
     Assert.assertEquals("Our Error", statusHandler1.orElse(statusHandler2)(500))
   }
 
+  /** collect will filter stream to only elements on which partial function is defined. */
+  @Test def useWithCollect(): Unit = {
+    // given
+    def stringify: PartialFunction[Int, String] = {
+      case 10 => "ten"
+      case 20 => "twenty"
+      case 100 => "hundred"
+    }
+    // when/then
+    Assert.assertEquals("List(ten, twenty, hundred)", Seq(10, 20, 30, 40, 50, 60, 100).collect(stringify).toString)
+  }
+
   @Test def useWithTry(): Unit = {
+    def handleError: PartialFunction[Throwable, Int] = {
+      case t: IllegalStateException =>
+        111
+      case t: Throwable =>
+        222
+    }
+
+    def errorMethod(): String = {
+      throw new IllegalStateException()
+    }
+
     val theTry = Try(errorMethod())
     Assert.assertTrue(theTry.isFailure)
     val recoveredTry = theTry.recover(handleError)
@@ -53,15 +76,5 @@ class Functions_Partial_UT {
     Assert.assertEquals(111, recoveredTry.get)
   }
 
-  private def handleError: PartialFunction[Throwable, Int] = {
-    case t: IllegalStateException =>
-      111
-    case t: Throwable =>
-      222
-  }
-
-  def errorMethod(): String = {
-    throw new IllegalStateException()
-  }
 
 }
