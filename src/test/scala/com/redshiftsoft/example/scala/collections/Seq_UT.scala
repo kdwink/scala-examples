@@ -30,5 +30,15 @@ class Seq_UT {
     assertEquals("aa,bb,11,22,--,++", flatSeq.mkString(","))
   }
 
+  @Test def diff(): Unit = {
+    val seq1 = Seq(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    val seq2 = Seq(4, 5, 6)
+
+    val diff = seq1.diff(seq2)
+
+    assertEquals("1,2,3,7,8,9,10", diff.mkString(","))
+  }
+
+
 
 }
