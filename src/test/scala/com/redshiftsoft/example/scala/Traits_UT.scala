@@ -4,37 +4,68 @@ import org.junit.{Assert, Test}
 
 class Traits_UT {
 
-  trait Person {
-    def isChild(x: Any): Boolean
+  @Test def birdsExample(): Unit = {
+    val flyingBirds: Seq[Flying] = Seq(
+      new Pigeon,
+      new Hawk,
+      new Frigatebird)
 
-    def isAdult(x: Any): Boolean = !isChild(x)
+    flyingBirds.foreach(bird => bird.fly())
+
+    val swimmingBirds: Seq[Swimming] = Seq(
+      new Pigeon,
+      new Hawk,
+      new Penguin)
+
+    swimmingBirds.foreach(bird => bird.swim())
   }
 
-  class Teacher extends Person {
-    override def isChild(x: Any): Boolean = false
+  @Test def birdsFlyingPenguinExample(): Unit = {
+    val flyingPenguin = new Penguin with Flying
+
+    Assert.assertEquals(flyingPenguin.fly(), "default fly message")
   }
 
-  @Test
-  def polymorphism(): Unit = {
-    val person: Person = new Teacher
-    Assert.assertFalse(person.isChild())
+  @Test def flying(): Unit = {
+    Assert.assertEquals(new Hawk().fly(), "I'm an excellent flyer")
+    Assert.assertEquals(new Frigatebird().fly(), "I'm an poor flyer")
+  }
+
+  @Test def twoTraitsSameProps() : Unit = {
+    trait Flying1 {
+      def fly(): String = "one"
+    }
+    trait Flying2 {
+      def fly(): String = "two"
+    }
+
+    val x1 = new Object with Flying1
+    val x2 = new Object with Flying2
+    // DOES NOT COMPILE: val x3 = new Object with Flying1 with Flying2
+
+    Assert.assertEquals(x1.fly(), "one")
+    Assert.assertEquals(x2.fly(), "two")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Birds examples
+  // Traits
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  abstract class Bird {
-  }
 
   trait Swimming {
     def swim(): Unit = println("I'm swimming")
   }
 
   trait Flying {
-    def flyMessage: String = ""
+    def flyMessage: String = "default fly message"
 
-    def fly(): Unit = println(flyMessage)
+    def fly(): String = flyMessage
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Birds
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  abstract class Bird {
   }
 
   class Pigeon extends Bird with Swimming with Flying {
@@ -46,30 +77,9 @@ class Traits_UT {
   }
 
   class Frigatebird extends Bird with Flying {
-    override val flyMessage = "I'm an excellent flyer"
+    override val flyMessage = "I'm an poor flyer"
   }
 
   class Penguin extends Bird with Swimming
-
-  @Test def birdsExample(): Unit = {
-    val flyingBirds = List(
-      new Pigeon,
-      new Hawk,
-      new Frigatebird)
-
-    flyingBirds.foreach(bird => bird.fly())
-
-    val swimmingBirds = List(
-      new Pigeon,
-      new Hawk,
-      new Penguin)
-
-    swimmingBirds.foreach(bird => bird.swim())
-  }
-
-  @Test def birdsFlyingPenguinExample(): Unit = {
-    val flyingPenguin = new Penguin with Flying
-    flyingPenguin.fly()
-  }
 
 }
