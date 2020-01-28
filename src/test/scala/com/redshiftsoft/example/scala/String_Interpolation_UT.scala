@@ -11,7 +11,7 @@ class String_Interpolation_UT {
   }
 
   @Test def interpolationWithFormatting(): Unit = {
-    Assert.assertEquals("value is 204,686,706", f"value is ${102343353 * 2}%,d")
+    Assert.assertEquals("value is 204,686,706", f"value is ${102343353 * 2}%,19d")
     Assert.assertEquals("value is 12,792,919.13", f"value is ${102343353.0 / 8}%,.2f")
   }
 

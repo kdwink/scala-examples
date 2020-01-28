@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.collections
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Assert.assertFalse
 import org.junit.Test
 
 class Seq_UT {
@@ -39,6 +41,18 @@ class Seq_UT {
     assertEquals("1,2,3,7,8,9,10", diff.mkString(","))
   }
 
+  //noinspection ComparingUnrelatedTypes,ComparingDiffCollectionKinds,EqualityToSameElements
+  @Test def equals(): Unit = {
+    val seq1 =   Seq(1, 2, 2, 3, 3, 3)
+    val seq2 = Array(1, 2, 2, 3, 3, 3)
+
+    assertFalse("not identity equal", seq1.eq(seq2))
+    assertFalse("sequences are not equal to arrays", seq1.equals(seq2))
+
+    assertTrue(seq1.equals(seq2.toSeq))
+    assertTrue(seq1.sorted.equals(seq1.sorted))
+    assertTrue(seq1.equals(seq1.sorted))
+  }
 
 
 }
