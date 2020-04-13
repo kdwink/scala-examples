@@ -6,7 +6,7 @@ import scala.collection.mutable
 
 class Buffer_UT {
 
-  @Test def go(): Unit = {
+  @Test def construct(): Unit = {
     val nums = collection.mutable.Buffer(1, 2, 3)
     Assert.assertEquals(3, nums.size)
 
@@ -16,33 +16,44 @@ class Buffer_UT {
 
   @Test def slice(): Unit = {
     val nums = collection.mutable.Buffer(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    // when
     val slice1: mutable.Buffer[Int] = nums.slice(4, 7)
+    // then
     Assert.assertEquals("ArrayBuffer(5, 6, 7)", slice1.toString)
   }
 
   @Test def append(): Unit = {
     val nums = collection.mutable.Buffer(1, 2, 3)
+    // when
     nums.append(100)
+    // then
     Assert.assertEquals("ArrayBuffer(1, 2, 3, 100)", nums.toString)
   }
 
   @Test def take(): Unit = {
+    // given
     val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    // when
     val slice1: mutable.Buffer[String] = buffer.take(3)
+    // then
     Assert.assertEquals("ArrayBuffer(aa, bb, cc)", slice1.toString)
     Assert.assertEquals("ArrayBuffer(aa, bb, cc, dd, ee, ff, gg, hh)", buffer.toString)
   }
 
   @Test def drop(): Unit = {
     val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    // when
     val slice1: mutable.Buffer[String] = buffer.drop(3)
+    // then
     Assert.assertEquals("ArrayBuffer(dd, ee, ff, gg, hh)", slice1.toString)
     Assert.assertEquals("ArrayBuffer(aa, bb, cc, dd, ee, ff, gg, hh)", buffer.toString)
   }
 
   @Test def remove(): Unit = {
     val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    // when
     buffer.remove(0, 3)
+    // then
     Assert.assertEquals("ArrayBuffer(dd, ee, ff, gg, hh)", buffer.toString)
   }
 
