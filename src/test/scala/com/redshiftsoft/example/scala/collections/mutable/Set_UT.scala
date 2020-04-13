@@ -8,8 +8,7 @@ class Set_UT {
 
   @Test
   def add(): Unit = {
-
-    // when
+    // given
     val fruit = mutable.Set("apple", "orange", "peach", "banana")
 
     // when
@@ -19,5 +18,19 @@ class Set_UT {
     // then
     Assert.assertEquals("banana,apple,orange,kiwi,peach", fruit.mkString(","))
   }
+
+  @Test
+  def diff(): Unit = {
+
+    // given
+    val fruit = mutable.Set("apple", "orange", "peach", "banana")
+
+    // when
+    val result = fruit.diff(Set("aa", "bb", "peach"))
+
+    // then
+    Assert.assertEquals(Set("apple", "orange", "banana"), result)
+  }
+
 
 }
