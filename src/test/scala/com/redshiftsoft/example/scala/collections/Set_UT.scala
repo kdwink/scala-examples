@@ -28,4 +28,14 @@ class Set_UT {
     Assert.assertEquals(7880, result)
   }
 
+  @Test def diff(): Unit = {
+    val numbers = Set(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    // when
+    val result1 = numbers.diff(Set(6, 7, 9))
+    val result2 = numbers -- Set(6, 7, 9)
+    // then
+    Assert.assertEquals(Set(1, 2, 3, 4, 5, 8), result1)
+    Assert.assertEquals(Set(1, 2, 3, 4, 5, 8), result2)
+  }
+
 }
