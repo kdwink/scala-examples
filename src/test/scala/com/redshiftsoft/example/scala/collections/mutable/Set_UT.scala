@@ -30,6 +30,7 @@ class Set_UT {
 
     // then
     Assert.assertEquals(Set("apple", "orange", "banana"), result)
+    Assert.assertEquals(Set("apple", "orange", "peach", "banana"), fruit)
   }
 
 
