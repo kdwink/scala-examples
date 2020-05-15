@@ -1,5 +1,7 @@
 package com.redshiftsoft.example.scala.collections.monadic
 
+import java.util.concurrent.atomic.LongAdder
+
 import org.junit.{Assert, Test}
 
 class Option_UT {
@@ -26,7 +28,7 @@ class Option_UT {
     Assert.assertFalse(option.isEmpty)
   }
 
-  @Test def none() = {
+  @Test def none() : Unit = {
     val none: Option[String] = None
     Assert.assertTrue(none.isEmpty)
     Assert.assertFalse(none.isDefined)
@@ -35,6 +37,20 @@ class Option_UT {
   @Test def getOrElse(): Unit = {
     val none: Option[String] = None
     Assert.assertEquals(100, none.getOrElse(100))
+  }
+
+  /* passing lazy value to getOrElse does NOT cause lazy to be evaluated */
+  @Test def getOrElseWithLazyArg(): Unit = {
+    val longAdder = new LongAdder
+    def expensiveFunction(x : Int) : Int  = {
+      println("EXPENSIVE")
+      longAdder.add(100)
+      42 * x
+    }
+    lazy val alternate = expensiveFunction(10)
+    val option: Option[Int] = Some(50)
+    Assert.assertEquals(50, option.getOrElse(alternate))
+    Assert.assertEquals(0, longAdder.longValue())
   }
 
   @Test(expected = classOf[IllegalStateException])
