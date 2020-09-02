@@ -57,4 +57,11 @@ class Tuple_UT {
     Assert.assertEquals("optionalString", y._2.get)
   }
 
+  @Test def mapping(): Unit = {
+    val seq: Seq[(Int, String)] = Seq((1, "one"), (2, "two"), (3, "three"))
+
+    Assert.assertEquals("1:one|2:two|3:three", seq.map(x => s"${x._1}:${x._2}").mkString("|"))
+    Assert.assertEquals("1:one|2:two|3:three", seq.map { case (x, y) => s"$x:$y" }.mkString("|"))
+  }
+
 }
