@@ -58,15 +58,22 @@ class Enumeration_UT {
 
       def isBlue: Boolean = BLUE == this
 
+      def isRed: Boolean = RED == this
+
     }
 
   }
 
   @Test
-  def testMethod(): Unit = {
+  def testCustomMethod(): Unit = {
     Assert.assertTrue(Color.BLUE.isBlue)
     Assert.assertFalse(Color.GREEN.isBlue)
     Assert.assertFalse(Color.RED.isBlue)
+  }
+
+  def testCustomMethodAgain(): Unit = {
+    val x: Color.Color = Color.RED
+    Assert.assertTrue(x.isRed)
   }
 
   @Test
