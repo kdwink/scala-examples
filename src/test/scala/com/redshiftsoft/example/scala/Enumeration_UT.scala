@@ -5,6 +5,11 @@ import org.junit.{Assert, Test}
 
 class Enumeration_UT {
 
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // simple example
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
   object Breed extends Enumeration {
     type Breed = Value
     val doberman: Breed = Value("Doberman Pinscher")
@@ -36,5 +41,40 @@ class Enumeration_UT {
     Assert.assertTrue(Breed.isTerrier(Breed.yorkie))
     Assert.assertFalse(Breed.isTerrier(Breed.portie))
   }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // more involved example
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  object Color extends Enumeration {
+
+    type Color = ColorVal
+
+    val RED: ColorVal = ColorVal("Blue", 1000)
+    val BLUE: ColorVal = ColorVal("Blue", 2000)
+    val GREEN: ColorVal = ColorVal("Blue", 3000)
+
+    case class ColorVal(name: String, colorId: Int) extends super.Val {
+
+      def isBlue: Boolean = BLUE == this
+
+    }
+
+  }
+
+  @Test
+  def testMethod(): Unit = {
+    Assert.assertTrue(Color.BLUE.isBlue)
+    Assert.assertFalse(Color.GREEN.isBlue)
+    Assert.assertFalse(Color.RED.isBlue)
+  }
+
+  @Test
+  def testColorToString(): Unit = {
+
+    Assert.assertEquals("BLUE,GREEN,RED", Color.values.map(_.toString).mkString(","))
+
+  }
+
 
 }
