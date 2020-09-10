@@ -7,13 +7,13 @@ class Enumeration_UT {
 
   object Breed extends Enumeration {
     type Breed = Value
-    val doberman = Value("Doberman Pinscher")
-    val yorkie = Value("Yorkshire Terrier")
-    val scottie = Value("Scottish Terrier")
-    val dane = Value("Great Dane")
-    val portie = Value("Portuguese Water Dog")
+    val doberman: Breed = Value("Doberman Pinscher")
+    val yorkie: Breed = Value("Yorkshire Terrier")
+    val scottie: Breed = Value("Scottish Terrier")
+    val dane: Breed = Value("Great Dane")
+    val portie: Breed = Value("Portuguese Water Dog")
 
-    def isTerrier(b: Breed) = b.toString.endsWith("Terrier")
+    def isTerrier(b: Breed): Boolean = b.toString.endsWith("Terrier")
 
   }
 
@@ -32,7 +32,7 @@ class Enumeration_UT {
   }
 
   @Test
-  def testIsTerrier: Unit = {
+  def testIsTerrier(): Unit = {
     Assert.assertTrue(Breed.isTerrier(Breed.yorkie))
     Assert.assertFalse(Breed.isTerrier(Breed.portie))
   }
