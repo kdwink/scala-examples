@@ -35,5 +35,27 @@ class HashSet_UT {
 
   }
 
+  @Test def assignableToIterable(): Unit = {
+    val set: Iterable[Int] = HashSet(3, 10, 100, 1000, 10000)
+
+    Assert.assertTrue(set.forall(e => e > 2))
+  }
+
+  @Test def hashCodeInteraction(): Unit = {
+    class X(name: String, value: Int)
+    class Y(name: String, var value: Int) {
+      override def hashCode(): Int = Integer.hashCode(value)
+
+      override def equals(y1: Any): Boolean = y1.asInstanceOf[Y].value == this.value
+    }
+
+    // when
+    val set1 = HashSet(new X("n1", 1), new X("n1", 1), new X("n1", 1))
+    val set2 = HashSet(new Y("n1", 1), new Y("n1", 1), new Y("n1", 1))
+
+    // then
+    Assert.assertEquals(3, set1.size)
+    Assert.assertEquals(1, set2.size)
+  }
 
 }
