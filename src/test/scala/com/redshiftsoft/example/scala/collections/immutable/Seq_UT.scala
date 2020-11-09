@@ -1,8 +1,6 @@
-package com.redshiftsoft.example.scala.collections
+package com.redshiftsoft.example.scala.collections.immutable
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Assert.assertFalse
+import org.junit.Assert.{assertEquals, assertFalse, assertTrue}
 import org.junit.Test
 
 class Seq_UT {

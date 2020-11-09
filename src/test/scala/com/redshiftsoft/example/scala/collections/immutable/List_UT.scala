@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala.collections
+package com.redshiftsoft.example.scala.collections.immutable
 
 import java.util.NoSuchElementException
 
