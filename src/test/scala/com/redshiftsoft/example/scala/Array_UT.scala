@@ -74,6 +74,7 @@ class Array_UT {
     val seq1: immutable.Seq[String] = ArraySeq.unsafeWrapArray(array)
     Assert.assertEquals("scala.collection.immutable.ArraySeq$ofRef", seq1.getClass.getName)
 
+    // This is still possible and efficient.
     val seq2: scala.collection.Seq[String] = array
     Assert.assertEquals("scala.collection.mutable.ArraySeq$ofRef", seq2.getClass.getName)
 
