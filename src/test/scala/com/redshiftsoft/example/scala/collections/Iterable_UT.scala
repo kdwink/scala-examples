@@ -10,11 +10,13 @@ class Iterable_UT {
   @Test def construct(): Unit = {
     val i1 = Iterable("aa", "bb", "cc", "dd", "ee")
     val i2 = immutable.Iterable("aa", "bb", "cc", "dd", "ee")
-    val i3 = mutable.Iterable("aa", "bb", "cc", "dd", "ee")
+    val i3 = scala.collection.Iterable("aa", "bb", "cc", "dd", "ee")
+    val i4 = mutable.Iterable("aa", "bb", "cc", "dd", "ee")
 
     Assert.assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
     Assert.assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
-    Assert.assertEquals("scala.collection.mutable.ArrayBuffer", i3.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
+    Assert.assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
   }
 
   @Test def assignment(): Unit = {
