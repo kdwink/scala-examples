@@ -7,10 +7,10 @@ import org.junit.{Assert, Test}
 import scala.collection.mutable
 
 /**
-  * Array is not a member of the Scala collections.  It is provided for JVM compatibility.
-  *
-  * Array is mutable.
-  */
+ * Array is not a member of the Scala collections.  It is provided for JVM compatibility.
+ *
+ * Array is mutable.
+ */
 class Array_UT {
 
   val colors: Array[String] = Array("red", "green", "blue", "white")
@@ -59,6 +59,21 @@ class Array_UT {
     val float2: Float = buffer.getFloat(4)
     Assert.assertEquals(9.844391080093828E-9f, float1, 1e-9)
     Assert.assertEquals(3.177147150039673f, float2, 1e-9)
+  }
+
+  @Test def className(): Unit = {
+    val array = Array[String]("aa", "bb", "cc")
+    Assert.assertEquals("[Ljava.lang.String;", array.getClass.getName)
+  }
+
+  @Test def assigningToSeq(): Unit = {
+    val array = Array[String]("aa", "bb", "cc")
+    Assert.assertEquals("[Ljava.lang.String;", array.getClass.getName)
+
+    // In scala 2.12 is this is possible because of an expensive implicit conversion.
+    val seq: Seq[String] = array
+
+    Assert.assertEquals("scala.collection.mutable.WrappedArray$ofRef", seq.getClass.getName)
   }
 
 }
