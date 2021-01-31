@@ -7,11 +7,16 @@ import scala.collection.mutable
 class Buffer_UT {
 
   @Test def construct(): Unit = {
-    val nums = collection.mutable.Buffer(1, 2, 3)
-    Assert.assertEquals(3, nums.size)
+    val nums1 = collection.mutable.Buffer(1, 2, 3)
+    val nums2 = collection.mutable.ArrayBuffer(1, 2, 3)
 
-    for (i <- 1 to 100) nums += i
-    Assert.assertEquals(103, nums.size)
+    Assert.assertEquals(3, nums1.size)
+    Assert.assertEquals(3, nums1.size)
+
+    for (i <- 1 to 100) nums1 += i
+    for (i <- 1 to 100) nums2 += i
+    Assert.assertEquals(103, nums1.size)
+    Assert.assertEquals(103, nums2.size)
   }
 
   @Test def slice(): Unit = {
