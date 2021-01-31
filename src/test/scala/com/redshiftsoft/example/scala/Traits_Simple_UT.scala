@@ -25,8 +25,8 @@ class Traits_Simple_UT {
   @Test
   def polymorphism(): Unit = {
     val person: Person = new Teacher
-    Assert.assertFalse(person.isChild())
-    Assert.assertTrue(person.isAdult())
+    Assert.assertFalse(person.isChild("x"))
+    Assert.assertTrue(person.isAdult("x"))
   }
 
 }

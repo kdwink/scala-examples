@@ -54,7 +54,7 @@ class Expressions_Match_UT {
     assertEquals(204, code)
   }
 
-  @Test def matchingOption_withShadowingInPatternMatching() = {
+  @Test def matchingOption_withShadowingInPatternMatching(): Unit = {
     // cautionary tale
     val someValue = 100
     val code = Some(3) match {
@@ -66,7 +66,7 @@ class Expressions_Match_UT {
     assertEquals("but get this because of shadowing: 3", code)
   }
 
-  @Test def matchingOption_wtfScalaVariableCaseAffectsLogic() = {
+  @Test def matchingOption_wtfScalaVariableCaseAffectsLogic(): Unit = {
     val SomeValue = 100
     val code = Some(3) match {
       case Some(SomeValue) =>
