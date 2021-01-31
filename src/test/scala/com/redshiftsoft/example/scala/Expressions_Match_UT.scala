@@ -54,6 +54,7 @@ class Expressions_Match_UT {
     assertEquals(204, code)
   }
 
+  @annotation.nowarn
   @Test def matchingOption_withShadowingInPatternMatching(): Unit = {
     // cautionary tale
     val someValue = 100
