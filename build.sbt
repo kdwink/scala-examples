@@ -10,8 +10,8 @@ lazy val hello = (project in file("."))
       "-feature" // Emit warning and location for usages of features that should be imported explicitly.
     ),
 
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.1" % Test,
-    libraryDependencies += "junit" % "junit" % "4.13" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.3" % Test,
+    libraryDependencies += "junit" % "junit" % "4.13.1" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % "test"
   )
 
