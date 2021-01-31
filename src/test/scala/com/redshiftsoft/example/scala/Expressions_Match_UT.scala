@@ -62,6 +62,7 @@ class Expressions_Match_UT {
         "but get this because of shadowing: " + someValue
       case Some(3) =>
         "expect this"
+      case _ => "other"
     }
     assertEquals("but get this because of shadowing: 3", code)
   }
@@ -73,6 +74,7 @@ class Expressions_Match_UT {
         "but get this because of shadowing: " + SomeValue
       case Some(3) =>
         "expect this"
+      case _ => "other"
     }
     assertEquals("expect this", code)
   }
