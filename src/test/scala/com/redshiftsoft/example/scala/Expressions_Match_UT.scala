@@ -56,6 +56,7 @@ class Expressions_Match_UT {
 
   @Test def matchingOption_withShadowingInPatternMatching(): Unit = {
     // cautionary tale
+    val someValue = 100
     val code = Some(3) match {
       case Some(someValue) =>
         "but get this because of shadowing: " + someValue
