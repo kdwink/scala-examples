@@ -7,12 +7,15 @@ class Seq_UT {
 
   @Test def constructor(): Unit = {
     // given
-    val x = Seq("one", "two", "three")
+    val x1 = Seq("one", "two", "three")
+    val x2 = scala.collection.Seq("one", "two", "three")
+    val x3 = scala.collection.immutable.Seq("one", "two", "three")
 
     // then
-    assertEquals(3, x.size)
-    assertEquals("scala.collection.immutable.$colon$colon", x.getClass.getName)
-
+    assertEquals(3, x1.size)
+    assertEquals("scala.collection.immutable.$colon$colon", x1.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", x2.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", x3.getClass.getName)
   }
 
   @Test def flatten(): Unit = {
