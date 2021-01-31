@@ -4,7 +4,7 @@ import org.junit.{Assert, Test}
 
 import java.nio.ByteBuffer
 import scala.collection.immutable.ArraySeq
-import scala.collection.mutable
+import scala.collection.{immutable, mutable}
 
 /**
  * Array is not a member of the Scala collections.  It is provided for JVM compatibility.
@@ -71,9 +71,12 @@ class Array_UT {
     Assert.assertEquals("[Ljava.lang.String;", array.getClass.getName)
 
     // In scala 2.12 is this is possible because of an expensive implicit conversion.
-    val seq: Seq[String] = ArraySeq.unsafeWrapArray(array)
+    val seq1: immutable.Seq[String] = ArraySeq.unsafeWrapArray(array)
+    Assert.assertEquals("scala.collection.immutable.ArraySeq$ofRef", seq1.getClass.getName)
 
-    Assert.assertEquals("scala.collection.immutable.ArraySeq$ofRef", seq.getClass.getName)
+    val seq2: scala.collection.Seq[String] = array
+    Assert.assertEquals("scala.collection.mutable.ArraySeq$ofRef", seq2.getClass.getName)
+
   }
 
 }
