@@ -19,6 +19,13 @@ class Buffer_UT {
     Assert.assertEquals(103, nums2.size)
   }
 
+  @Test def assign(): Unit = {
+    val seq1: Seq[Int] = mutable.ArrayBuffer(1, 2, 3, 4)
+    val seq2: mutable.Seq[Int] = mutable.ArrayBuffer(1, 2, 3, 4)
+    Assert.assertEquals(4, seq1.size)
+    Assert.assertEquals(4, seq2.size)
+  }
+
   @Test def slice(): Unit = {
     val nums = collection.mutable.Buffer(1, 2, 3, 4, 5, 6, 7, 8, 9)
     // when
@@ -37,7 +44,7 @@ class Buffer_UT {
 
   @Test def take(): Unit = {
     // given
-    val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    val buffer = collection.mutable.Buffer[String]("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh")
     // when
     val slice1: mutable.Buffer[String] = buffer.take(3)
     // then
@@ -46,7 +53,7 @@ class Buffer_UT {
   }
 
   @Test def drop(): Unit = {
-    val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    val buffer = collection.mutable.Buffer[String]("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh")
     // when
     val slice1: mutable.Buffer[String] = buffer.drop(3)
     // then
@@ -55,13 +62,12 @@ class Buffer_UT {
   }
 
   @Test def remove(): Unit = {
-    val buffer = collection.mutable.Buffer[String]("aa","bb","cc","dd","ee","ff","gg","hh")
+    val buffer = collection.mutable.Buffer[String]("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh")
     // when
     buffer.remove(0, 3)
     // then
     Assert.assertEquals("ArrayBuffer(dd, ee, ff, gg, hh)", buffer.toString)
   }
-
 
 
 }
