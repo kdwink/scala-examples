@@ -22,7 +22,8 @@ class Seq_UT {
      * Both of the following conversions iterate over the elements and
      * create new data structures.
      */
-    val i5: immutable.Seq[String] = ArrayBuffer("a", "b", "c").toIndexedSeq
-    val i6: immutable.Seq[String] = ArrayBuffer("a", "b", "c").toSeq
+    val mutableBuffer = ArrayBuffer("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m")
+    val i5: immutable.Seq[String] = mutableBuffer.toIndexedSeq
+    val i6: immutable.Seq[String] = mutableBuffer.toSeq
   }
 }
