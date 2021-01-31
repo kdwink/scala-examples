@@ -27,8 +27,8 @@ class Any_UT {
     Assert.assertFalse(person1 == person3)
   }
 
-  /* In scala "==" is equals  */
-  @Test def referenceEqulity(): Unit = {
+  /* In scala eq is identity equals  */
+  @Test def referenceEquality(): Unit = {
     Assert.assertTrue(person1.eq(person1))
     Assert.assertFalse(person1.eq(person2))
   }
