@@ -1,14 +1,14 @@
 package com.redshiftsoft.example.scala
 
-import java.lang.reflect.Constructor
-
 import org.junit.{Assert, Test}
+
+import java.lang.reflect.Constructor
 
 class Case_Class_To_Map_UT {
 
   /**
-    * Demonstrates different ways a case class can be converted to a map of key/values.
-    */
+   * Demonstrates different ways a case class can be converted to a map of key/values.
+   */
   @Test
   def caseClassToMap(): Unit = {
 
@@ -44,7 +44,7 @@ class Case_Class_To_Map_UT {
 
       def firstConstructor: Constructor[_] = this.getClass.getConstructors.head
 
-      def names: Seq[String] = firstConstructor.getParameters.map(_.getName).filter(!_.startsWith("$"))
+      def names: Array[String] = firstConstructor.getParameters.map(_.getName).filter(!_.startsWith("$"))
 
       def values: Seq[String] = TheCharacter2.unapply(this).get.productIterator.toSeq.map(_.toString)
     }

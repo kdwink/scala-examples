@@ -1,13 +1,13 @@
 package com.redshiftsoft.example.scala.collections.immutable
 
-import java.util.NoSuchElementException
-
 import org.junit.Assert._
 import org.junit.Test
 
+import java.util.NoSuchElementException
+
 /**
-  * Immutable linked list. Better to use Vector.
-  */
+ * Immutable linked list. Better to use Vector.
+ */
 class List_UT {
 
   @Test def declaring(): Unit = {
@@ -48,7 +48,7 @@ class List_UT {
     }
 
     val inputList = List(1, 2, 3, 4, 5)
-    val output = StringBuilder.newBuilder
+    val output = new StringBuilder()
     visit(inputList, output)
     assertEquals("1,2,3,4,5,", output.toString())
   }

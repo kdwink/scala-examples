@@ -20,7 +20,7 @@ class HashSet_UT {
 
     // when
     val set1 = HashSet() ++ seq
-    val set2 = HashSet(seq.toArray: _*)
+    val set2 = HashSet(seq: _*)
 
     // then
     Assert.assertTrue(set1.contains(1000))
@@ -30,8 +30,8 @@ class HashSet_UT {
 
     Assert.assertTrue(set1.isInstanceOf[HashSet[Int]])
     Assert.assertTrue(set2.isInstanceOf[HashSet[Int]])
-    Assert.assertEquals("HashTrieSet", set1.getClass.getSimpleName)
-    Assert.assertEquals("HashTrieSet", set2.getClass.getSimpleName)
+    Assert.assertEquals("HashSet", set1.getClass.getSimpleName)
+    Assert.assertEquals("HashSet", set2.getClass.getSimpleName)
 
   }
 

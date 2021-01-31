@@ -31,7 +31,7 @@ class Traits_Stack_UT {
   }
 
   trait LoggableStuff extends Stuff {
-    abstract override def doStuff() {
+    abstract override def doStuff(): Unit = {
       println("logging enter")
       super.doStuff()
       println("logging exit")
@@ -39,7 +39,7 @@ class Traits_Stack_UT {
   }
 
   trait TransactionalStuff extends Stuff {
-    abstract override def doStuff() {
+    abstract override def doStuff(): Unit = {
       println("start TX")
       try {
         super.doStuff()

@@ -17,14 +17,13 @@ class Functions_Declaring_UT {
     def f3: Int = 41 + 1
 
     def f4: Function0[Int] = new Function0[Int] {
-      def apply: Int = 41 + 1
+      def apply(): Int = 41 + 1
     }
 
     def f5: () => Int = new Function0[Int] {
-      def apply: Int = 41 + 1
+      def apply(): Int = 41 + 1
     }
 
-    Assert.assertEquals(42, f0)
     Assert.assertEquals(42, f0())
     Assert.assertEquals(42, f1)
     Assert.assertEquals(42, f2)
@@ -106,8 +105,8 @@ class Functions_Declaring_UT {
 
     Assert.assertEquals(10, add(1, 2, 3, 4))
     // invoke with array
-    val array = Array[Int](1, 2, 3, 4)
-    Assert.assertEquals(10, add(array: _*))
+    val seq = Seq[Int](1, 2, 3, 4)
+    Assert.assertEquals(10, add(seq: _*))
   }
 
   @Test def declaringWithNamedParameters(): Unit = {

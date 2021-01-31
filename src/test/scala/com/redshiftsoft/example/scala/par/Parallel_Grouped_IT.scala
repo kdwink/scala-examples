@@ -2,6 +2,8 @@ package com.redshiftsoft.example.scala.par
 
 import org.junit.{Assert, Test}
 
+import scala.collection.parallel.CollectionConverters._
+
 class Parallel_Grouped_IT {
 
   @Test def test(): Unit = {

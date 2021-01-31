@@ -14,7 +14,7 @@ class Vector_UT {
 
     val v3 = v1 ++ v2
 
-    Assert.assertEquals("scala.collection.immutable.Vector", v3.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.Vector1", v3.getClass.getName)
     Assert.assertEquals("Vector(1, 2, 3, 10, 20, 30)", v3.toString())
   }
 

@@ -12,7 +12,7 @@ class String_UT {
     new String(null, "UTF-8")
   }
 
-  @Test def multiLineStrings() {
+  @Test def multiLineStrings(): Unit = {
     val multiLineString =
       """
         stuff
@@ -38,7 +38,7 @@ class String_UT {
 
   @Test def split(): Unit = {
     val string = "one,two,  three  ,four,  five, six"
-    val split: Array[String] = string.split(",").toStream.map(_.trim).toArray
+    val split: Array[String] = string.split(",").map(_.trim)
     Assert.assertEquals(6, split.length)
     Assert.assertEquals("one", split(0))
     Assert.assertEquals("two", split(1))

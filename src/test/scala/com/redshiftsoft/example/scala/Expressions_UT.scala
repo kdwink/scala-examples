@@ -37,7 +37,7 @@ class Expressions_UT {
     Assert.assertTrue(flag)
   }
 
-  @Test def ifExpression() {
+  @Test def ifExpression(): Unit = {
     val string1: String = null
     val string2: String = "hello"
 

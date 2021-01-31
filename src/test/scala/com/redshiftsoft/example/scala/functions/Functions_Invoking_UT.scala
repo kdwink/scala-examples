@@ -9,6 +9,7 @@ class Functions_Invoking_UT {
     Assert.assertEquals("ei", "Keith" substring(1, 3))
   }
 
+  @annotation.nowarn
   @Test def withAndWithoutParenthesis(): Unit = {
     def accessDBFunc(): Int = 20
 

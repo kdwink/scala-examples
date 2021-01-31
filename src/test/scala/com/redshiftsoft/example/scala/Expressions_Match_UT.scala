@@ -5,7 +5,7 @@ import org.junit.Test
 
 class Expressions_Match_UT {
 
-  @Test def matchExpression() {
+  @Test def matchExpression(): Unit = {
     val x = 100
     val message = x match {
       case 2 | 3 | 7 =>

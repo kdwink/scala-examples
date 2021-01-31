@@ -20,10 +20,8 @@ class Buffer_UT {
   }
 
   @Test def assign(): Unit = {
-    val seq1: Seq[Int] = mutable.ArrayBuffer(1, 2, 3, 4)
-    val seq2: mutable.Seq[Int] = mutable.ArrayBuffer(1, 2, 3, 4)
+    val seq1: mutable.Seq[Int] = mutable.ArrayBuffer(1, 2, 3, 4)
     Assert.assertEquals(4, seq1.size)
-    Assert.assertEquals(4, seq2.size)
   }
 
   @Test def slice(): Unit = {

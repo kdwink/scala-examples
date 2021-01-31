@@ -16,7 +16,7 @@ class Set_UT {
     Assert.assertTrue(fruit.add("kiwi"))
 
     // then
-    Assert.assertEquals("banana,apple,orange,kiwi,peach", fruit.mkString(","))
+    Assert.assertEquals("banana,orange,peach,apple,kiwi", fruit.mkString(","))
   }
 
   @Test

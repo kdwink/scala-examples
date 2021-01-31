@@ -1,18 +1,19 @@
 package com.redshiftsoft.example.scala.par
 
-import java.util.concurrent.Executors
 import org.junit.Test
 
+import java.util.concurrent.Executors
+import scala.collection.parallel.CollectionConverters._
 import scala.collection.parallel.ForkJoinTaskSupport
 import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
 
 class Parallel_Seq_Iteration_UT {
 
   /**
-    * When using this .par property of the collections there seems to be no way to change the number of threads
-    * without affecting some global state:
-    *
-    * https://stackoverflow.com/questions/9154691/how-to-set-the-number-of-threads-to-use-for-par
+   * When using this .par property of the collections there seems to be no way to change the number of threads
+   * without affecting some global state:
+   *
+   * https://stackoverflow.com/questions/9154691/how-to-set-the-number-of-threads-to-use-for-par
     */
   @Test def thisDoesNotWork(): Unit = {
     val array = Array(1, 2, 3, 4, 5, 6, 7, 8, 10)

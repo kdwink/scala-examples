@@ -1,9 +1,9 @@
 package com.redshiftsoft.example.scala
 
-import java.nio.ByteBuffer
-
 import org.junit.{Assert, Test}
 
+import java.nio.ByteBuffer
+import scala.collection.immutable.ArraySeq
 import scala.collection.mutable
 
 /**
@@ -47,7 +47,7 @@ class Array_UT {
   }
 
   @Test def slice_IsAlwaysCopy(): Unit = {
-    val allSlice: mutable.WrappedArray[String] = colors.slice(0, 4)
+    val allSlice: mutable.ArraySeq[String] = colors.slice(0, 4)
     Assert.assertTrue(colors sameElements allSlice)
     Assert.assertFalse(colors.equals(allSlice))
   }
@@ -71,9 +71,9 @@ class Array_UT {
     Assert.assertEquals("[Ljava.lang.String;", array.getClass.getName)
 
     // In scala 2.12 is this is possible because of an expensive implicit conversion.
-    val seq: Seq[String] = array
+    val seq: Seq[String] = ArraySeq.unsafeWrapArray(array)
 
-    Assert.assertEquals("scala.collection.mutable.WrappedArray$ofRef", seq.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.ArraySeq$ofRef", seq.getClass.getName)
   }
 
 }
