@@ -22,5 +22,11 @@ class Iterable_UT {
     val i1: mutable.Iterable[String] = ArrayBuffer("a", "b", "c")
     val i2: immutable.Iterable[String] = Vector("a", "b", "c")
 
+    /**
+     * Both of the following conversions iterate over the elements and
+     * create new data structures.
+     */
+    val i4: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toIndexedSeq
+    val i5: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toSeq
   }
 }
