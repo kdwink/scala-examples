@@ -31,6 +31,7 @@ class Functions_VarArg_UT {
 
     val array: Array[Int] = Array(1, 2, 3, 4, 5, 6)
     func(array: _*)
+    func(array.toIndexedSeq: _*)
 
     val immutableSeq: scala.collection.immutable.Seq[Int] =
       scala.collection.immutable.Seq[Int](1, 2, 3, 4, 5, 6)
