@@ -27,7 +27,7 @@ class Buffer_UT {
     Assert.assertEquals(4, seq2.size)
   }
 
-  @Test def toSeq(): Unit = {
+  @Test def returnTypeOfToSeq(): Unit = {
     val buf1 = mutable.ArrayBuffer(1, 2, 3, 4)
 
     // This is expensive, iterates over all elements.
