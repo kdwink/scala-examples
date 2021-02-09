@@ -21,6 +21,14 @@ class HashMap_UT {
     iTakeImmutableMap2(map.toMap)
   }
 
+  @Test def from(): Unit = {
+    val immutable = Map(1 -> 'a', 2 -> 'b', 3 -> 'c', 4 -> 'd', 5 -> 'e', 6 -> 'f');
+    val hashMap = scala.collection.mutable.Map.from(immutable)
+
+    Assert.assertEquals("scala.collection.mutable.HashMap", hashMap.getClass.getName)
+    Assert.assertEquals(6, hashMap.size)
+  }
+
 
   private def iTakeMutableMap(m: mutable.Map[String, Double]): Unit = {
 
