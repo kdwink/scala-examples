@@ -27,6 +27,15 @@ class Buffer_UT {
     Assert.assertEquals(4, seq2.size)
   }
 
+  @Test def toSeq(): Unit = {
+    val buf1 = mutable.ArrayBuffer(1, 2, 3, 4)
+
+    // This is expensive, iterates over all elements.
+    val seq1: Seq[Int] = buf1.toSeq
+
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", buf1.toSeq.getClass.getName)
+  }
+
   @Test def slice(): Unit = {
     val nums = collection.mutable.Buffer(1, 2, 3, 4, 5, 6, 7, 8, 9)
     // when
