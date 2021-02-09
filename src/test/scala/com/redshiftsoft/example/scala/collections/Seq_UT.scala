@@ -7,6 +7,23 @@ import scala.collection.{immutable, mutable}
 
 class Seq_UT {
 
+  @Test def differentSeqs(): Unit = {
+
+    // Just an alias for the immutable seq
+    val s1: scala.Seq[Int] = scala.Seq(1, 2, 4, 5, 6, 7)
+
+    // super class of immutable and mutable
+    val s2: scala.collection.Seq[Int] = scala.collection.Seq[Int](1, 2, 4, 5, 6, 7)
+
+    // mutable
+    val s3: scala.collection.mutable.Seq[Int] = scala.collection.mutable.Seq[Int](1, 2, 4, 5, 6, 7)
+    // immutable
+    val s4: scala.collection.immutable.Seq[Int] = scala.collection.immutable.Seq[Int](1, 2, 4, 5, 6, 7)
+
+    Assert.assertEquals("scala.collection.immutable.Seq", s1.getClass.getName)
+
+  }
+
   @Test def assignment(): Unit = {
 
     // Seq in mutable can only be assigned mutable
@@ -19,9 +36,9 @@ class Seq_UT {
     val i4: scala.collection.Seq[String] = Vector("a", "b", "c")
 
     /**
-     * Both of the following conversions iterate over the elements and
-     * create new data structures.
-     */
+      * Both of the following conversions iterate over the elements and
+      * create new data structures.
+      */
     val mutableBuffer = ArrayBuffer("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m")
     val i5: immutable.Seq[String] = mutableBuffer.toIndexedSeq
     val i6: immutable.Seq[String] = mutableBuffer.toSeq
