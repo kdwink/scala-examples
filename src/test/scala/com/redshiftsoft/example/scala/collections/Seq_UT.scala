@@ -20,7 +20,7 @@ class Seq_UT {
     // immutable
     val s4: scala.collection.immutable.Seq[Int] = scala.collection.immutable.Seq[Int](1, 2, 4, 5, 6, 7)
 
-    Assert.assertEquals("scala.collection.immutable.Seq", s1.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", s1.getClass.getName)
 
   }
 
@@ -32,8 +32,8 @@ class Seq_UT {
     val i2: immutable.Seq[String] = Vector("a", "b", "c")
 
     // Seq in collection can be assigned either
-    val i3: scala.collection.Seq[String] = ArrayBuffer("a", "b", "c")
-    val i4: scala.collection.Seq[String] = Vector("a", "b", "c")
+    val i3: collection.Seq[String] = ArrayBuffer("a", "b", "c")
+    val i4: collection.Seq[String] = Vector("a", "b", "c")
 
     /**
       * Both of the following conversions iterate over the elements and
@@ -42,5 +42,17 @@ class Seq_UT {
     val mutableBuffer = ArrayBuffer("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m")
     val i5: immutable.Seq[String] = mutableBuffer.toIndexedSeq
     val i6: immutable.Seq[String] = mutableBuffer.toSeq
+  }
+
+  @Test def returnTypeOfMap(): Unit = {
+    val i1 = Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+    val i2 = immutable.Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+    val i3 = collection.Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+    val i4 = mutable.Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
+    Assert.assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
   }
 }
