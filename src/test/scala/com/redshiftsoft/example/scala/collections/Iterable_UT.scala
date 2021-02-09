@@ -31,10 +31,22 @@ class Iterable_UT {
     val i4: scala.collection.Iterable[String] = Vector("a", "b", "c")
 
     /**
-     * Both of the following conversions iterate over the elements and
-     * create new data structures.
-     */
+      * Both of the following conversions iterate over the elements and
+      * create new data structures.
+      */
     val i5: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toIndexedSeq
     val i6: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toSeq
+  }
+
+  @Test def returnTypeOfMap(): Unit = {
+    val i1 = Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+    val i2 = immutable.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+    val i3 = scala.collection.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+    val i4 = mutable.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
+
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
+    Assert.assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
+    Assert.assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
   }
 }
