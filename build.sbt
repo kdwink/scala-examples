@@ -8,7 +8,6 @@ lazy val hello = (project in file("."))
     scalacOptions ++= Seq(
       "-deprecation", // Emit warning and location for usages of deprecated APIs.
       "-feature", // Emit warning and location for usages of features that should be imported explicitly.
-      "-Xmigration"
     ),
 
     // https://github.com/scala/scala-parallel-collections
