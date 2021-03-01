@@ -36,17 +36,17 @@ class Seq_UT {
   }
 
   @Test def diff(): Unit = {
-    val seq1 = Seq(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    val seq2 = Seq(4, 5, 6)
+    val seq1 = Seq(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10)
+    val seq2 = Seq(4, 5, 6, 10, 10)
 
     val diff = seq1.diff(seq2)
 
-    assertEquals("1,2,3,7,8,9,10", diff.mkString(","))
+    assertEquals("1,2,3,7,8,9,10,10,10", diff.mkString(","))
   }
 
   //noinspection ComparingUnrelatedTypes,ComparingDiffCollectionKinds,EqualityToSameElements
   @Test def equals(): Unit = {
-    val seq1 =   Seq(1, 2, 2, 3, 3, 3)
+    val seq1 = Seq(1, 2, 2, 3, 3, 3)
     val seq2 = Array(1, 2, 2, 3, 3, 3)
 
     assertFalse("not identity equal", seq1.eq(seq2))
