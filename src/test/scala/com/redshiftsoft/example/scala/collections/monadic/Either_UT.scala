@@ -1,5 +1,6 @@
 package com.redshiftsoft.example.scala.collections.monadic
 
+import org.junit.Assert.{assertEquals, assertTrue}
 import org.junit.{Assert, Test}
 
 class Either_UT {
@@ -7,15 +8,17 @@ class Either_UT {
   @Test def right(): Unit = {
     val valueR: Either[String, Thing] = getValue(23)
     // then
-    Assert.assertTrue(valueR.isRight)
-    Assert.assertEquals(T, valueR.getOrElse(1))
-    Assert.assertTrue(valueR.contains(T))
+    assertTrue(valueR.isRight)
+    assertEquals(T, valueR.getOrElse(1))
+    assertTrue(valueR.contains(T))
+    assertTrue(valueR.toOption.isDefined)
   }
 
   @Test def left(): Unit = {
     val valueL: Either[String, Thing] = getValue(123)
     // then
-    Assert.assertTrue(valueL.isLeft)
+    assertTrue(valueL.isLeft)
+    assertTrue(valueL.toOption.isEmpty)
   }
 
   // - - - - - - - - - - - - - - - - - - - - -
