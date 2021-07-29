@@ -41,6 +41,19 @@ class Expressions_Match_UT {
     assertEquals("case 1", message)
   }
 
+  @Test def match_class(): Unit = {
+    val x: Any = ""
+    val message = x match {
+      case x: Option[String] =>
+        "case 1"
+      case x: String =>
+        "case 2"
+      case others =>
+        "case 3"
+    }
+    assertEquals("case 2", message)
+  }
+
   @Test def match_other(): Unit = {
     val x = 100
     val message = x match {
