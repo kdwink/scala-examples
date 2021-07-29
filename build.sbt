@@ -11,10 +11,10 @@ lazy val hello = (project in file("."))
     ),
 
     // https://github.com/scala/scala-parallel-collections
-    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.0",
+    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.3",
     // test
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.3" % Test,
-    libraryDependencies += "junit" % "junit" % "4.13.1" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+    libraryDependencies += "junit" % "junit" % "4.13.2" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
 
