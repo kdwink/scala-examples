@@ -3,6 +3,11 @@ package com.redshiftsoft.example.scala
 import org.junit.Assert._
 import org.junit.Test
 
+/**
+  * Pattern Matching: https://docs.scala-lang.org/tour/pattern-matching.html
+  *
+  * There is no "fall through" in the matching cases, one and only one case statement is executed.
+  */
 class Expressions_Match_UT {
 
   @Test def matchExpression(): Unit = {
