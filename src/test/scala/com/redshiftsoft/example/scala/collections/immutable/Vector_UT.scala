@@ -19,7 +19,8 @@ class Vector_UT {
     Assert.assertEquals("Vector(1, 2, 3, 10, 20, 30)", v3.toString())
   }
 
-  @Test def toMap2(): Unit = {
+  //noinspection AccessorLikeMethodIsUnit
+  @Test def toMap(): Unit = {
 
     val v: Vector[(String, Seq[Long])] = Vector(
       ("aaa", Seq(1, 2, 3)),
@@ -35,8 +36,26 @@ class Vector_UT {
     assertEquals(2, m.size)
     assertEquals(Seq(4, 5, 6), m("aaa"))
     assertEquals(Seq(13, 14, 15), m("bbb"))
+  }
 
+  @Test def groupMap(): Unit = {
 
+    val v: Vector[(String, Long)] = Vector(
+      ("aaa", 1),
+      ("bbb", 10),
+      ("aaa", 2),
+      ("bbb", 20),
+      ("aaa", 3),
+      ("bbb", 30),
+    )
+
+    // when
+    val m: Map[String, Seq[Long]] = v.groupMap(_._1)(_._2)
+
+    // then
+    assertEquals(2, m.size)
+    assertEquals(Seq(1, 2, 3), m("aaa"))
+    assertEquals(Seq(10, 20, 30), m("bbb"))
   }
 
 }
