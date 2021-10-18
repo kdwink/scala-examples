@@ -1,5 +1,6 @@
 package com.redshiftsoft.example.scala.collections.immutable
 
+import org.junit.Assert.assertEquals
 import org.junit.{Assert, Test}
 
 /**
@@ -18,14 +19,24 @@ class Vector_UT {
     Assert.assertEquals("Vector(1, 2, 3, 10, 20, 30)", v3.toString())
   }
 
-  @Test
-  def toMap(): Unit = {
-    val v = Vector(1, 2, 3, 4, 5)
+  @Test def toMap2(): Unit = {
 
-    val map = v.map(x => (x, 20 + x)).toMap
+    val v: Vector[(String, Seq[Long])] = Vector(
+      ("aaa", Seq(1, 2, 3)),
+      ("bbb", Seq(10, 11, 12)),
+      ("aaa", Seq(4, 5, 6)),
+      ("bbb", Seq(13, 14, 15))
+    )
 
-    Assert.assertEquals(24, map(4))
-    Assert.assertEquals(25, map(5))
+    // when
+    val m: Map[String, Seq[Long]] = v.toMap
+
+    // then
+    assertEquals(2, m.size)
+    assertEquals(Seq(4, 5, 6), m("aaa"))
+    assertEquals(Seq(13, 14, 15), m("bbb"))
+
+
   }
 
 }
