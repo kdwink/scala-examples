@@ -80,4 +80,25 @@ class Vector_UT {
     assertEquals(Seq(10, 20, 30), m("bbb"))
   }
 
+  @Test def groupMap_combineValues(): Unit = {
+
+    val v: Vector[(String, Seq[Long])] = Vector(
+      ("aaa", Seq(1, 2, 3)),
+      ("bbb", Seq(10, 20, 30)),
+      ("aaa", Seq(100, 200, 300)),
+      ("bbb", Seq(1000, 2000, 3000)),
+      ("aaa", Seq(-10, -20, -30)),
+      ("bbb", Seq(-100, -200, -300)),
+    )
+
+    // when
+    val m1: Map[String, Seq[Seq[Long]]] = v.groupMap(_._1)(_._2)
+    val m2: Map[String, Seq[Long]] = m1.view.mapValues(v => v.flatten.distinct).toMap
+
+    // then
+    assertEquals(2, m2.size)
+    assertEquals(Seq(1, 2, 3, 100, 200, 300, -10, -20, -30), m2("aaa"))
+    assertEquals(Seq(10, 20, 30, 1000, 2000, 3000, -100, -200, -300), m2("bbb"))
+  }
+
 }
