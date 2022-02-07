@@ -23,12 +23,21 @@ class For_UT {
   }
 
   @Test def sequence(): Unit = {
-    var seq = Seq("a", "bb", "ccc", "dddd", "eeeee")
+    val seq = Seq("a", "bb", "ccc", "dddd", "eeeee")
     val buffer = ListBuffer.empty[String]
     for (x <- seq.reverse) {
       buffer.append(x)
     }
     Assert.assertEquals(Seq("eeeee", "dddd", "ccc", "bb", "a"), buffer.toSeq)
+  }
+
+  @Test def sequenceIndex(): Unit = {
+    val seq = Seq("a", "bb", "ccc", "dddd", "eeeee")
+    val buffer = ListBuffer.empty[String]
+    for (i <- seq.indices) {
+      buffer.append(seq(i))
+    }
+    Assert.assertEquals(Seq("a", "bb", "ccc", "dddd", "eeeee"), buffer.toSeq)
   }
 
 
