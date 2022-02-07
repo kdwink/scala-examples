@@ -4,12 +4,21 @@ import org.junit.{Assert, Test}
 
 class For_UT {
 
-  @Test def forOneToOne(): Unit = {
+  @Test def simple(): Unit = {
     var count = 0
     for (x <- 1 to 10) {
       count = count + x
     }
     Assert.assertEquals(55, count)
+  }
+
+
+  @Test def forOneToOne(): Unit = {
+    var count = 0
+    for (x <- 1 to 1) {
+      count = count + x
+    }
+    Assert.assertEquals(1, count)
   }
 
 }
