@@ -14,6 +14,14 @@ class For_UT {
     Assert.assertEquals(55, count)
   }
 
+  @Test def guard(): Unit = {
+    val result = ListBuffer.empty[Int]
+    for (x <- 1 to 10 if x % 3 == 0)
+      result.append(x)
+    Assert.assertEquals(Seq(3, 6, 9), result.toSeq)
+  }
+
+
   @Test def forOneToOne(): Unit = {
     var count = 0
     for (x <- 1 to 1) {
