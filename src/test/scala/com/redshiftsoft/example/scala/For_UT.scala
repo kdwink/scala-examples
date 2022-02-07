@@ -6,10 +6,10 @@ class For_UT {
 
   @Test def forOneToOne(): Unit = {
     var count = 0
-    for(_ <- 1 to 1) {
-      count = count + 1
+    for (x <- 1 to 10) {
+      count = count + x
     }
-    Assert.assertEquals(1, count)
+    Assert.assertEquals(55, count)
   }
 
 }
