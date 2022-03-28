@@ -2,11 +2,10 @@ package com.redshiftsoft.example.scala.collections.monadic
 
 
 import java.util.concurrent.Executors
-
 import org.junit.{Assert, Test}
 
-import scala.concurrent.duration._
-import scala.concurrent.{Await, ExecutionContext, Future, Promise}
+import scala.concurrent.duration.*
+import scala.concurrent.{Await, ExecutionContext, ExecutionContextExecutor, Future, Promise}
 import scala.util.{Random, Try}
 
 class Future_UT {
@@ -15,7 +14,7 @@ class Future_UT {
 
   /* The default seems to be # of cores, or close to.  Some of the tests in this class assume 10+ executors
      will run concurrently so the following is necessary for them to pass on a low core machine.*/
-  implicit val ec = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(ThreadPoolSize))
+  implicit val ec: ExecutionContextExecutor = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(ThreadPoolSize))
 
   @Test def simple(): Unit = {
     val someFuture = Future {

@@ -35,28 +35,6 @@ class Case_Class_To_Map_UT {
     Assert.assertEquals("22", map1("age"))
 
     // - - - - - - - - -
-    // reflection for key, unapply for values
-    // - - - - - - - - -
-
-    case class TheCharacter2(name: String, isThief: Boolean, age: Int) {
-
-      def toStringMap: Map[String, String] = (names zip values).toMap
-
-      def firstConstructor: Constructor[_] = this.getClass.getConstructors.head
-
-      def names: Array[String] = firstConstructor.getParameters.map(_.getName).filter(!_.startsWith("$"))
-
-      def values: Seq[String] = TheCharacter2.unapply(this).get.productIterator.toSeq.map(_.toString)
-    }
-
-
-    val c2 = TheCharacter2("testName", isThief = true, 22)
-    val map2 = c2.toStringMap
-    Assert.assertEquals("testName", map2("name"))
-    Assert.assertEquals("true", map2("isThief"))
-    Assert.assertEquals("22", map2("age"))
-
-    // - - - - - - - - -
     // hard coded key names
     // - - - - - - - - -
 

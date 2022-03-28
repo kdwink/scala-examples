@@ -13,7 +13,7 @@ class Functions_Invoking_UT {
   @Test def withAndWithoutParenthesis(): Unit = {
     def accessDBFunc(): Int = 20
 
-    Assert.assertEquals(20, accessDBFunc)
+    // Assert.assertEquals(20, accessDBFunc) <--- cannot do in scala 3
     Assert.assertEquals(20, accessDBFunc())
   }
 
