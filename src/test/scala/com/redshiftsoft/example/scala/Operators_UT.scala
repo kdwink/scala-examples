@@ -36,11 +36,23 @@ class Operators_UT {
 
   }
 
-  @Test def plusEqual() : Unit = {
+  @Test def plusEqual(): Unit = {
     var x = 1
     x += 2
 
     Assert.assertEquals(3, x)
   }
 
+  @Test def bitWiseExclusiveOr(): Unit =
+    Assert.assertEquals(1, 1 ^ 0)
+    Assert.assertEquals(1, 0 ^ 1)
+    Assert.assertEquals(0, 1 ^ 1)
+    Assert.assertEquals(0, 0 ^ 0)
+
+    // happens to work with boolean values
+    Assert.assertEquals(false, true ^ true)
+    Assert.assertEquals(false, false ^ false)
+
+    Assert.assertEquals(true, true ^ false)
+    Assert.assertEquals(true, false ^ true)
 }
