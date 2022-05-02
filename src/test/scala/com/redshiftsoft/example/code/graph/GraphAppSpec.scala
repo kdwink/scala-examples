@@ -34,7 +34,7 @@ class GraphAppSpec extends BaseSpec {
     1 + n.s.map(count1).sum
 
   /**
-   * QUEUE:  enqueue -> [a, b, c] -> dequeue
+   * ArrayDeque:  removeHead <--- [a, b, c] <--- appendAll
    */
   def count2(n: N): Int = {
     var count = 0
