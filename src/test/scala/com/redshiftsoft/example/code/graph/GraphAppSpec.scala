@@ -26,18 +26,30 @@ class GraphAppSpec extends BaseSpec {
       N("B", Seq(N("B_1", Seq(N("B_1_1"), N("B_1_2"))), N("B_2", Seq(N("B_2_1"))))))
     )
 
-    count(root) should be(13)
+    count1(root) should be(13)
+    count2(root) should be(13)
   }
 
-  def count(n: N): Int = 
-    1 + n.s.map(count).sum
+  def count1(n: N): Int =
+    1 + n.s.map(count1).sum
 
+  /**
+   * QUEUE:  enqueue -> [a, b, c] -> dequeue
+   */
   def count2(n: N): Int = {
-    val x = mutable.Queue()
-    val children: Seq[N] = n.s
+    var count = 1
+    val b = mutable.ArrayDeque[N]()
+    b.append(n)
 
-
-    1
+    var s: N = n
+    while b.nonEmpty do {
+      s = b.removeHead()
+      if (s.s.nonEmpty)
+        b.appendAll(s.s)
+      else
+        count = count + 1
+    }
+    count
   }
 
 
