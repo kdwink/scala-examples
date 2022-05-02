@@ -27,11 +27,14 @@ class GraphAppSpec extends BaseSpec {
     count(root) should be(13)
   }
 
-  def count(n: N): Int = {
-    if (n.s.isEmpty) {
-      return 1
-    }
+  def count(n: N): Int = 
     1 + n.s.map(count).sum
+
+  def count2(n: N): Int = {
+    val children: Seq[N] = n.s
+
+
+    1
   }
 
 
