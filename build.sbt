@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.1.1"
+ThisBuild / scalaVersion := "3.1.2"
 ThisBuild / organization := "com.redshiftsoft"
 
 lazy val hello = (project in file("."))
@@ -13,7 +13,7 @@ lazy val hello = (project in file("."))
     // https://github.com/scala/scala-parallel-collections
     libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
     // test
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.11" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.12" % Test,
     libraryDependencies += "junit" % "junit" % "4.13.2" % Test,
     libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
   )
