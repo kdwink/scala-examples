@@ -37,17 +37,16 @@ class GraphAppSpec extends BaseSpec {
    * QUEUE:  enqueue -> [a, b, c] -> dequeue
    */
   def count2(n: N): Int = {
-    var count = 1
+    var count = 0
     val b = mutable.ArrayDeque[N]()
     b.append(n)
 
     var s: N = n
     while b.nonEmpty do {
+      count = count + 1
       s = b.removeHead()
       if (s.s.nonEmpty)
         b.appendAll(s.s)
-      else
-        count = count + 1
     }
     count
   }
