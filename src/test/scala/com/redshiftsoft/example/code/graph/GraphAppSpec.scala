@@ -2,6 +2,8 @@ package com.redshiftsoft.example.code.graph
 
 import com.redshiftsoft.example.scalatest.BaseSpec
 
+import scala.collection.mutable
+
 class GraphAppSpec extends BaseSpec {
 
   /*
@@ -31,6 +33,7 @@ class GraphAppSpec extends BaseSpec {
     1 + n.s.map(count).sum
 
   def count2(n: N): Int = {
+    val x = mutable.Queue()
     val children: Seq[N] = n.s
 
 
