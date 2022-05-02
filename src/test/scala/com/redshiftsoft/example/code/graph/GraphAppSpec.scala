@@ -6,17 +6,17 @@ class GraphAppSpec extends BaseSpec {
 
   /*
    * root --> A
-   *            --> A_1
-   *            --> A_2
-   *              --> A_2_1
-   *              --> A_2_2
-   *              --> A_2_3
+   *        --> A_1
+   *        --> A_2
+   *          --> A_2_1
+   *          --> A_2_2
+   *          --> A_2_3
    *      --> B
-   *            --> B_1
-   *               --> B_1_1
-   *               --> B_1_2
-   *            --> B_2
-   *               --> B_2_1
+   *        --> B_1
+   *          --> B_1_1
+   *          --> B_1_2
+   *      --> B_2
+   *        --> B_2_1
    */
   "count" should "count correctly" in {
     val root: N = N("root", Seq(
