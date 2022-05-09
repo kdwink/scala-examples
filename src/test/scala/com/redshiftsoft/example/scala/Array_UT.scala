@@ -52,6 +52,11 @@ class Array_UT {
     Assert.assertFalse(colors.equals(allSlice))
   }
 
+  @Test def lastOption(): Unit = {
+    val array = Array[Long](1, 2, 3, 4, 5, 4, 3, 2, 1)
+    Assert.assertEquals(5L, array.sorted.lastOption.getOrElse(0))
+  }
+
   @Test def readingByteArrayWithBuffer(): Unit = {
     val byteArray = Array[Byte](50, 41, 32, 23, 64, 75, 86, 97, 108)
     val buffer = ByteBuffer.wrap(byteArray)
