@@ -44,7 +44,7 @@ class Expressions_Match_UT {
   @Test def match_class(): Unit = {
     val x: Any = ""
     val message = x match {
-      case _: Option[String] =>
+      case _: Int =>
         "case 1"
       case _: String =>
         "case 2"
