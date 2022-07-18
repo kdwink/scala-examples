@@ -34,6 +34,7 @@ class Enumeration_UT {
   @Test
   def testToString(): Unit = {
     Assert.assertEquals("Great Dane", Breed.dane.toString)
+    Assert.assertEquals(Breed.dane, Breed.withName("Great Dane"))
   }
 
   @Test
