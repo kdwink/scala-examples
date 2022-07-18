@@ -65,6 +65,11 @@ class Enumeration_UT {
   }
 
   @Test
+  def withName() : Unit = {
+    val color = Color.withName("GREEN")
+    Assert.assertEquals(Color.GREEN, color)
+  }
+  @Test
   def testCustomMethod(): Unit = {
     Assert.assertTrue(Color.BLUE.isBlue)
     Assert.assertFalse(Color.GREEN.isBlue)
