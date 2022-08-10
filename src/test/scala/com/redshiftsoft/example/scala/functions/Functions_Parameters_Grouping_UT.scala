@@ -3,9 +3,9 @@ package com.redshiftsoft.example.scala.functions
 import org.junit.{Assert, Test}
 
 /**
-  * Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then
-  * this will yield a function taking the missing parameter lists as its arguments. This is formally known as currying.
-  */
+ * Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then
+ * this will yield a function taking the missing parameter lists as its arguments. This is formally known as currying.
+ */
 class Functions_Parameters_Grouping_UT {
 
 
@@ -25,6 +25,27 @@ class Functions_Parameters_Grouping_UT {
   }
 
   @Test def parameterGrouping_WithFunctionParam_2(): Unit = {
+    def f(x: Int)(y: () => Int) = y() * x
+
+    Assert.assertEquals(30, f(3)(() => {
+      5 + 5
+    }))
+  }
+
+  @Test def parameterGrouping_WithFunctionParam_3(): Unit = {
+    def f(x: Int)(y: => Int) = y * x
+
+    Assert.assertEquals(24, f(2)(6 + 6))
+    Assert.assertEquals(24, f(2)({
+      6 + 6
+    }))
+    Assert.assertEquals(24, f(2) {
+      6 + 6
+    })
+  }
+
+
+  @Test def parameterGrouping_WithFunctionParam_4(): Unit = {
     def f(x: Int)(y: Int => Int, z: Int => Int) = y(x) * z(x)
 
     Assert.assertEquals(9, f(2)({ s => s + 1 }, { s => s + 1 }))
