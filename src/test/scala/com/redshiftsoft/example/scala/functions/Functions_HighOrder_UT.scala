@@ -1,11 +1,11 @@
 package com.redshiftsoft.example.scala.functions
 
+import com.redshiftsoft.example.scalatest.BaseSpec
 import org.junit.{Assert, Test}
 
-class Functions_HighOrder_UT {
+class Functions_HighOrder_UT extends BaseSpec {
 
-  @Test
-  def test(): Unit = {
+  "function" should "invoke passed function" in {
 
     def stringFunc(s: String): Char = s.charAt(2)
 
@@ -18,8 +18,7 @@ class Functions_HighOrder_UT {
 
   }
 
-  @Test
-  def test2(): Unit = {
+  "function" should "invoke passed generic function" in {
 
     def withLock[T](projectId: Int)(f: () => T): T = {
       println("got lock for projectId: " + projectId)
