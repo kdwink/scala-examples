@@ -40,4 +40,21 @@ class Functions_HighOrder_UT extends BaseSpec {
 
   }
 
+  "function" should "invoke passed generic no-arg function" in {
+
+    def withLock[T](projectId: Int)(f: => T): T = {
+      println("got lock for projectId: " + projectId)
+      val result = f
+      println("release lock for projectId: " + projectId)
+      result
+    }
+
+    val xValue = withLock[Int](10) { 100 }
+    def xFunction(projectId: Int, a: Int, b: Int): Int = withLock[Int](projectId) {200 * a - b}
+
+    Assert.assertEquals(100, xValue)
+    Assert.assertEquals(4980, xFunction(50, 25, 20))
+
+  }
+
 }
