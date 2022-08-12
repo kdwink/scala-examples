@@ -12,7 +12,7 @@ class Seq_UT {
     // Just an alias for the immutable seq
     val s1: scala.Seq[Int] = scala.Seq(1, 2, 4, 5, 6, 7)
 
-    // super class of immutable and mutable
+    // super Trait of immutable and mutable
     val s2: scala.collection.Seq[Int] = scala.collection.Seq[Int](1, 2, 4, 5, 6, 7)
 
     // mutable
