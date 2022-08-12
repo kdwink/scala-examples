@@ -9,15 +9,16 @@ class Seq_UT {
 
   @Test def differentSeqs(): Unit = {
 
-    // Just an alias for the immutable seq
+    // Just a type alias for scala.collection.immutable.Seq[A]
+    // Available without import, this the default if you don't qualify.
     val s1: scala.Seq[Int] = scala.Seq(1, 2, 4, 5, 6, 7)
 
     // super Trait of immutable and mutable
     val s2: scala.collection.Seq[Int] = scala.collection.Seq[Int](1, 2, 4, 5, 6, 7)
 
-    // mutable
+    // mutable Trait: ArrayBuffer is default implementation
     val s3: scala.collection.mutable.Seq[Int] = scala.collection.mutable.Seq[Int](1, 2, 4, 5, 6, 7)
-    // immutable
+    // immutable Trait: List is default implementation
     val s4: scala.collection.immutable.Seq[Int] = scala.collection.immutable.Seq[Int](1, 2, 4, 5, 6, 7)
 
     Assert.assertEquals("scala.collection.immutable.$colon$colon", s1.getClass.getName)
