@@ -1,7 +1,7 @@
 ThisBuild / scalaVersion := "3.2.1"
 ThisBuild / organization := "com.redshiftsoft"
 
-lazy val hello = (project in file("."))
+lazy val scalaProject = (project in file("."))
   .settings(
     name := "scala",
 
