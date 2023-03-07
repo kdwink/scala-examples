@@ -51,5 +51,19 @@ class ForYield_UT {
     assertEquals("Vector(1-2, 2-4, 3-6, 4-8, 5-10, 6-12)", result.toString)
   }
 
+  @Test def for_yield_option(): Unit = {
+    val option = Some(25)
+    val result: Option[Int] = for {x <- option} yield x * 3
+    assertEquals("Some(75)", result.toString)
+  }
+
+  @Test def for_yield_option_2(): Unit = {
+    val option1 = Some(5)
+    val option2 = Some(19)
+    val result: Option[(Int, Int)] = for {x <- option1
+                                   y <- option2 } yield (x * 3, y * 2)
+    assertEquals("Some((15,38))", result.toString)
+  }
+
 
 }
