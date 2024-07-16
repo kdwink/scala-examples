@@ -11,7 +11,7 @@ class Enumerations_Scala3_UT extends BaseSpec {
 
   }
 
-  "enumerations" should "be parameratized" in {
+  "enumerations" should "be parameterized" in {
     enum Color(val rgb: Int):
       case Red extends Color(0xFF0000)
       case Green extends Color(0x00FF00)
@@ -28,7 +28,7 @@ class Enumerations_Scala3_UT extends BaseSpec {
 
     // case sensitive
     val t = intercept[IllegalArgumentException](Color.valueOf("RED"))
-    t.getMessage should be("enum case not found: RED")
+    t.getMessage.contains("has no case with name: RED") should be(true)
 
   }
 
