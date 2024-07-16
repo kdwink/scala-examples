@@ -17,7 +17,7 @@ class Array_UT {
 
   @Test def declaring(): Unit = {
     var arrayChar: Array[Char] = new Array[Char](300)
-    var arrayString: Array[String] = new Array[String](300)
+    val arrayString: Array[String] = new Array[String](300)
 
     // The above arrays are declared with the specified SIZE (not just capacity)
     Assert.assertNull(arrayString(150))

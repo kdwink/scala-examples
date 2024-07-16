@@ -55,4 +55,4 @@ class GraphAppSpec extends BaseSpec {
 }
 
 case class N(name: String,
-             s: Seq[N] = Seq());
+             s: Seq[N] = Seq())
