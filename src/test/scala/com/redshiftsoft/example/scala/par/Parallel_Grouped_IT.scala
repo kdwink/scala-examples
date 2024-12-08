@@ -9,10 +9,10 @@ class Parallel_Grouped_IT {
 
   @Test def test(): Unit = {
 
-    val list = 1 to 9999
+    val list = 1 to 9_999
 
     val Size = list.length
-    val GroupSize = if (Size > 1000) Size / 3 + 1 else Size
+    val GroupSize = if (Size > 1_000) Size / 3 + 1 else Size
 
     println(s"Size     : $Size")
     println(s"GroupSize: $GroupSize")
