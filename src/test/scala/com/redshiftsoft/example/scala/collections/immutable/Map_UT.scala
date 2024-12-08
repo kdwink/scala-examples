@@ -6,7 +6,7 @@ import org.junit.jupiter.api.function.Executable
 
 class Map_UT {
 
-  val colorMap = Map("red" -> 0xFF0000, "green" -> 0xF00, "blue" -> 0xFF)
+  private val colorMap = Map("red" -> 0xFF0000, "green" -> 0xF00, "blue" -> 0xFF)
 
   @Test def declaring(): Unit = {
     assertEquals(3, colorMap.size)
