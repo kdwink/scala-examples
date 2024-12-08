@@ -88,7 +88,7 @@ class Case_Class_UT {
     class Bar(val c: String)
     case class Foo(a: String, b: String) extends Bar("bla")
 
-    val foo = new Foo("ccc", "ddd")
+    val foo = Foo("ccc", "ddd")
 
     assertEquals("ccc", foo.a)
     assertEquals("ddd", foo.b)
