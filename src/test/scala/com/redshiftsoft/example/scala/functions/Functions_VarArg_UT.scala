@@ -32,20 +32,20 @@ class Functions_VarArg_UT {
     }
 
     val array: Array[Int] = Array(1, 2, 3, 4, 5, 6)
-    func(array: _*)
-    func(array.toIndexedSeq: _*)
+    func(array *)
+    func(array.toIndexedSeq *)
 
     val immutableSeq: scala.collection.immutable.Seq[Int] =
       scala.collection.immutable.Seq[Int](1, 2, 3, 4, 5, 6)
-    func(immutableSeq: _*)
+    func(immutableSeq *)
 
     val mutableSeq: scala.collection.mutable.Seq[Int] =
       scala.collection.mutable.Seq[Int](1, 2, 3, 4, 5, 6)
-    func(mutableSeq.toSeq: _*)
+    func(mutableSeq.toSeq *)
 
     val seq: scala.collection.Seq[Int] =
       scala.collection.Seq[Int](1, 2, 3, 4, 5, 6)
-    func(seq.toSeq: _*)
+    func(seq.toSeq *)
 
 
   }
