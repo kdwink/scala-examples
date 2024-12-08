@@ -71,6 +71,7 @@ class List_UT {
     assertEquals(Nil, list1)
   }
 
+  //noinspection ScalaUnusedExpression
   @Test def empty_head(): Unit = {
     val list = List()
     try {
@@ -81,6 +82,7 @@ class List_UT {
     }
   }
 
+  //noinspection ScalaUnusedExpression
   @Test def empty_tail(): Unit = {
     val list = List()
     try {
