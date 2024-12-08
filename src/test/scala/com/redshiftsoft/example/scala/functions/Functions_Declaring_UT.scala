@@ -111,7 +111,7 @@ class Functions_Declaring_UT {
     assertEquals(10, add(1, 2, 3, 4))
     // invoke with array
     val seq = Seq[Int](1, 2, 3, 4)
-    assertEquals(10, add(seq: _*))
+    assertEquals(10, add(seq*))
   }
 
   @Test def declaringWithNamedParameters(): Unit = {
