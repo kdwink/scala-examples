@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.LongAdder
 
 class Option_UT {
 
+  //noinspection ScalaUnusedExpression
   @Test def get(): Unit = {
     val none: Option[String] = None
     try {
