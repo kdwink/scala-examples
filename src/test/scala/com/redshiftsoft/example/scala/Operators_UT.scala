@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 import scala.annotation.targetName
 
 
+//noinspection SimplifyBoolean
 class Operators_UT {
 
   @Test def operatorsAreMethods(): Unit = {
