@@ -1,14 +1,15 @@
 package com.redshiftsoft.example.scala.functions
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
 class Functions_Invoking_UT {
 
   @Test def invokeWithOperatorNotation(): Unit = {
-    assertEquals("eith", "Keith" substring 1)
-    assertEquals("ei", "Keith" substring(1, 3))
+    // In earlier versions of scala the period proceeding the substring function could be omitted.
+    assertEquals("eith", "Keith".substring(1))
+    assertEquals("ei", "Keith".substring(1, 3))
   }
 
   @annotation.nowarn
