@@ -21,7 +21,7 @@ class HashSet_UT {
 
     // when
     val set1 = HashSet() ++ seq
-    val set2 = HashSet(seq: _*)
+    val set2 = HashSet(seq*)
 
     // then
     assertTrue(set1.contains(1000))
