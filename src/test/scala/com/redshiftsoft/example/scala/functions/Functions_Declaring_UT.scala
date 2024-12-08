@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
 
+//noinspection ConvertExpressionToSAM
 class Functions_Declaring_UT {
 
   @Test def declaringNoParams(): Unit = {
