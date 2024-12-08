@@ -3,6 +3,8 @@ package com.redshiftsoft.example.scala.functions
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
+import scala.annotation.tailrec
+
 
 //noinspection ConvertExpressionToSAM
 class Functions_Declaring_UT {
@@ -113,6 +115,7 @@ class Functions_Declaring_UT {
   }
 
   @Test def declaringWithNamedParameters(): Unit = {
+    @tailrec
     def add(n: Int, sum: Int): Int = {
       if (n < 1) {
         return sum

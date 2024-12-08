@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue, 
 import org.junit.jupiter.api.Test
 
 import java.util.NoSuchElementException
+import scala.annotation.tailrec
 
 /**
  * Immutable linked list. Better to use Vector.
@@ -41,6 +42,7 @@ class List_UT {
 
   @Test def iterating_manually(): Unit = {
 
+    @tailrec
     def visit(inList: List[Int], output: StringBuilder): Unit = {
       if (inList.nonEmpty) {
         output.append(inList.head)
