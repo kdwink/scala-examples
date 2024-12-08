@@ -2,7 +2,6 @@ package com.redshiftsoft.example.scalatest
 
 import org.scalatest.*
 import org.scalatest.flatspec.*
-import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.*
 
 import scala.collection.mutable
