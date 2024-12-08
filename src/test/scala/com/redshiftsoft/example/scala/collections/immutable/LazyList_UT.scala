@@ -43,7 +43,6 @@ class LazyList_UT {
 
   }
 
-
   @Test def find(): Unit = {
     val streamResult = fibFrom(1, 1)
     assertEquals(List(1, 1, 2, 3, 5, 8, 13), streamResult.take(7).toList)
