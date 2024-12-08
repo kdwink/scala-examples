@@ -69,7 +69,7 @@ class Case_Class_UT {
     assertEquals(5, f3.baz)
   }
 
-  /* A case class can NOT extends another case class. */
+  /* A case class can NOT extend another case class. */
   @Test
   def inheritance_case_class_extended(): Unit = {
     case class Foo(a: String, b: String)
@@ -82,7 +82,7 @@ class Case_Class_UT {
     assertEquals("ccc", bar.c)
   }
 
-  /* A case class can NOT extends another case class. */
+  /* A case class can NOT extend another case class. */
   @Test
   def inheritance_case_class_extends(): Unit = {
     class Bar(val c: String)

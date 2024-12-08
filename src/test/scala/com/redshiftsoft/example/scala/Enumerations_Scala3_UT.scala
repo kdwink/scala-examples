@@ -26,7 +26,7 @@ class Enumerations_Scala3_UT extends BaseSpec {
     val x1 = Color.valueOf("Red")
     x1 should be(Color.Red)
 
-    // case sensitive
+    // case-sensitive
     val t = intercept[IllegalArgumentException](Color.valueOf("RED"))
     t.getMessage.contains("has no case with name: RED") should be(true)
 
