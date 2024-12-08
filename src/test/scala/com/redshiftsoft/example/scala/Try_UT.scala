@@ -1,17 +1,19 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue, fail}
+import org.junit.jupiter.api.Test
 
 import scala.util.{Failure, Success, Try}
 
 /**
-  * There two try constructs:
-  * <pre>
-  * (1) abstract class scala.util.Try
-  *
-  * (2) object scala.Try
-  * </pre>
-  */
+ * There two try constructs:
+ * <pre>
+ * (1) abstract class scala.util.Try
+ *
+ * (2) object scala.Try
+ * </pre>
+ */
 class Try_UT {
 
   @Test
@@ -19,8 +21,8 @@ class Try_UT {
     val s: Try[Int] = Success(100)
     val f: Try[Int] = Failure(new AssertionError())
 
-    Assert.assertTrue(s.isSuccess)
-    Assert.assertFalse(s.isFailure)
+    assertTrue(s.isSuccess)
+    assertFalse(s.isFailure)
   }
 
   @Test
@@ -28,16 +30,16 @@ class Try_UT {
     val count: String = null
     val s: Try[String] = Try(count)
 
-    Assert.assertFalse(s.isFailure)
+    assertFalse(s.isFailure)
   }
 
   @Test
   def tryWithExpression(): Unit = {
     val theTry: Try[Int] = Try(1 / 0)
 
-    Assert.assertTrue(theTry.isFailure)
-    Assert.assertFalse(theTry.isSuccess)
-    Assert.assertEquals(classOf[ArithmeticException], theTry.failed.get.getClass)
+    assertTrue(theTry.isFailure)
+    assertFalse(theTry.isSuccess)
+    assertEquals(classOf[ArithmeticException], theTry.failed.get.getClass)
   }
 
   @Test def tryWithFunction(): Unit = {
@@ -52,22 +54,22 @@ class Try_UT {
     val trySuccess = util.Try(loopAndFail(5, 9))
     val tryFail = util.Try(loopAndFail(5, 2))
 
-    Assert.assertTrue(trySuccess.isSuccess)
-    Assert.assertEquals(5, trySuccess.get)
-    Assert.assertTrue(tryFail.isFailure)
+    assertTrue(trySuccess.isSuccess)
+    assertEquals(5, trySuccess.get)
+    assertTrue(tryFail.isFailure)
 
   }
 
   @Test def orElse(): Unit = {
     val inputString = " 123 "
     val inputInt = Try(inputString.toInt).orElse(Try(inputString.trim.toInt))
-    Assert.assertEquals(123, inputInt.get)
+    assertEquals(123, inputInt.get)
   }
 
   @Test def getOrElse(): Unit = {
     try {
       Try(1 / 0).getOrElse(throw new IllegalStateException())
-      Assert.fail()
+      fail()
     } catch {
       case e: IllegalStateException =>
     }
@@ -83,34 +85,34 @@ class Try_UT {
         "bad:" + x.toString
     }
 
-    Assert.assertEquals("bad:java.lang.AssertionError", r)
+    assertEquals("bad:java.lang.AssertionError", r)
   }
 
   @Test def map(): Unit = {
     // map failure
     val r1 = Try(throw new IllegalStateException()).map(x => 42)
-    Assert.assertTrue(r1.isFailure)
-    Assert.assertTrue(r1.failed.get.isInstanceOf[IllegalStateException])
+    assertTrue(r1.isFailure)
+    assertTrue(r1.failed.get.isInstanceOf[IllegalStateException])
 
     // map success
     val r2 = Try(1 + 1).map(x => 2000)
-    Assert.assertEquals(2000, r2.get)
+    assertEquals(2000, r2.get)
 
     // map with partial matching case statements
     val r3 = Try(1 + 1).map {
       case 20 => 4000
       case 30 => 3000
     }
-    Assert.assertTrue(r3.isFailure)
-    Assert.assertTrue(r3.failed.get.isInstanceOf[MatchError])
+    assertTrue(r3.isFailure)
+    assertTrue(r3.failed.get.isInstanceOf[MatchError])
 
     // map with partial matching case statements
     val r4 = Try(1 + 1).map {
       case 2 => throw new IllegalStateException("x y z")
       case 3 => 3000
     }
-    Assert.assertTrue(r4.isFailure)
-    Assert.assertEquals(r4.failed.get.getMessage, "x y z")
+    assertTrue(r4.isFailure)
+    assertEquals(r4.failed.get.getMessage, "x y z")
 
   }
 

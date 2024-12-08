@@ -1,37 +1,45 @@
 package com.redshiftsoft.example.scala.collections.immutable
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertThrows, assertTrue}
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
 
 class Map_UT {
 
   val colorMap = Map("red" -> 0xFF0000, "green" -> 0xF00, "blue" -> 0xFF)
 
   @Test def declaring(): Unit = {
-    Assert.assertEquals(3, colorMap.size)
+    assertEquals(3, colorMap.size)
   }
 
   @Test def accessing(): Unit = {
-    Assert.assertEquals(0xFF0000, colorMap("red"))
+    assertEquals(0xFF0000, colorMap("red"))
   }
 
-  @Test(expected = classOf[java.util.NoSuchElementException])
+  @Test
   def accessing_NonExistingKey(): Unit = {
-    Assert.assertEquals(0xFF0000, colorMap("frank"))
+    assertThrows(classOf[java.util.NoSuchElementException], new Executable {
+      override def execute(): Unit = colorMap("frank")
+    })
   }
 
   @Test def accessing_WithGet(): Unit = {
-    Assert.assertEquals(0xFF0000, colorMap.get("red").get)
+    assertEquals(0xFF0000, colorMap.get("red").get)
   }
 
-  @Test(expected = classOf[java.util.NoSuchElementException])
+  @Test
   def accessing_WithGet_NonExistingKey(): Unit = {
-    val maybeInt: Option[Int] = colorMap.get("frank")
-    Assert.assertEquals(0xFF0000, maybeInt.get)
+    assertThrows(classOf[java.util.NoSuchElementException], new Executable {
+      override def execute(): Unit = {
+        val maybeInt: Option[Int] = colorMap.get("frank")
+        assertEquals(0xFF0000, maybeInt.get)
+      }
+    })
   }
 
   @Test def contains(): Unit = {
-    Assert.assertTrue(colorMap.contains("red"))
-    Assert.assertFalse(colorMap.contains("yellow"))
+    assertTrue(colorMap.contains("red"))
+    assertFalse(colorMap.contains("yellow"))
   }
 
   @Test def iterating(): Unit = {
@@ -40,13 +48,13 @@ class Map_UT {
       sum = sum + pair._2
     }
 
-    Assert.assertEquals(16715775, sum)
+    assertEquals(16715775, sum)
   }
 
   @Test def testToSeq(): Unit = {
     val resultList: Seq[(String, Int)] = colorMap.toSeq
-    Assert.assertEquals(3, resultList.size)
-    Assert.assertTrue(resultList(1).isInstanceOf[Tuple2[String, Int]])
+    assertEquals(3, resultList.size)
+    assertTrue(resultList(1).isInstanceOf[Tuple2[String, Int]])
   }
 
   @Test def mapToTuples(): Unit = {
@@ -55,12 +63,12 @@ class Map_UT {
     for (x <- tuplesIterator) {
       count = count + 1
     }
-    Assert.assertEquals(3, count)
+    assertEquals(3, count)
   }
 
   @Test def values(): Unit = {
     val values = colorMap.values.toSeq
-    Assert.assertEquals(Seq(0xFF0000, 0xF00, 0xFF), values)
+    assertEquals(Seq(0xFF0000, 0xF00, 0xFF), values)
   }
 
 

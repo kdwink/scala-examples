@@ -14,7 +14,6 @@ lazy val scalaProject = (project in file("."))
     libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4",
     // test
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
-    libraryDependencies += "junit" % "junit" % "4.13.2" % Test,
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test
+    libraryDependencies += "com.github.sbt.junit" % "jupiter-interface" % JupiterKeys.jupiterVersion.value % Test
   )
 

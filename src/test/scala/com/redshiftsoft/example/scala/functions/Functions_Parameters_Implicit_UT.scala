@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.functions
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Functions_Parameters_Implicit_UT {
 
@@ -11,9 +13,9 @@ class Functions_Parameters_Implicit_UT {
 
     implicit val someVal1: Int = 100
 
-    Assert.assertEquals(7, f(1, 2)(3))
-    Assert.assertEquals(7, f(1, 2)(3))
-    Assert.assertEquals(201, f(1, 2))
+    assertEquals(7, f(1, 2)(3))
+    assertEquals(7, f(1, 2)(3))
+    assertEquals(201, f(1, 2))
   }
 
 }

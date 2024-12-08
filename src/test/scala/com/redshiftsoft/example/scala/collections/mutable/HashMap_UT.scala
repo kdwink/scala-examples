@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.collections.mutable
 
-import org.junit.{Assert, Test}
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 import scala.collection.mutable
 
@@ -9,7 +11,7 @@ class HashMap_UT {
   @Test def put(): Unit = {
     val map: mutable.Map[String, String] = mutable.HashMap.empty
     map.put("key1", "value1")
-    Assert.assertEquals(1, map.size)
+    assertEquals(1, map.size)
   }
 
   @Test def passMutableMap(): Unit = {
@@ -25,8 +27,8 @@ class HashMap_UT {
     val immutable = Map(1 -> 'a', 2 -> 'b', 3 -> 'c', 4 -> 'd', 5 -> 'e', 6 -> 'f')
     val hashMap = scala.collection.mutable.Map.from(immutable)
 
-    Assert.assertEquals("scala.collection.mutable.HashMap", hashMap.getClass.getName)
-    Assert.assertEquals(6, hashMap.size)
+    assertEquals("scala.collection.mutable.HashMap", hashMap.getClass.getName)
+    assertEquals(6, hashMap.size)
   }
 
 

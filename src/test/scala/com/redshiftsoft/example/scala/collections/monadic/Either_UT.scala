@@ -1,7 +1,8 @@
 package com.redshiftsoft.example.scala.collections.monadic
 
-import org.junit.Assert.{assertEquals, assertFalse, assertTrue}
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Either_UT {
 

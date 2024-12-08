@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.collections.mutable
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+
 
 class ListBuffer_UT {
 
@@ -9,7 +11,7 @@ class ListBuffer_UT {
     // when
     list.insert(0, "00")
     // then
-    Assert.assertEquals("ListBuffer(00, aa, bb, cc)", list.toString())
+    assertEquals("ListBuffer(00, aa, bb, cc)", list.toString())
   }
 
   @Test def append(): Unit = {
@@ -17,7 +19,7 @@ class ListBuffer_UT {
     // when
     list.append("dd")
     // then
-    Assert.assertEquals("ListBuffer(aa, bb, cc, dd)", list.toString())
+    assertEquals("ListBuffer(aa, bb, cc, dd)", list.toString())
   }
 
 }

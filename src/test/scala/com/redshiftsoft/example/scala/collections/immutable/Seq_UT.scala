@@ -1,7 +1,7 @@
 package com.redshiftsoft.example.scala.collections.immutable
 
-import org.junit.Assert.{assertEquals, assertFalse, assertTrue}
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 class Seq_UT {
 
@@ -49,8 +49,8 @@ class Seq_UT {
     val seq1 = Seq(1, 2, 2, 3, 3, 3)
     val seq2 = Array(1, 2, 2, 3, 3, 3)
 
-    assertFalse("not identity equal", seq1.eq(seq2))
-    assertFalse("sequences are not equal to arrays", seq1.equals(seq2))
+    assertFalse(seq1.eq(seq2), "not identity equal")
+    assertFalse(seq1.equals(seq2), "sequences are not equal to arrays")
 
     assertTrue(seq1.equals(seq2.toSeq))
     assertTrue(seq1.sorted.equals(seq1.sorted))

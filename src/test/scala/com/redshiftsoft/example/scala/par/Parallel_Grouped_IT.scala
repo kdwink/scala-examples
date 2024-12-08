@@ -1,8 +1,9 @@
 package com.redshiftsoft.example.scala.par
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
-import scala.collection.parallel.CollectionConverters._
+import scala.collection.parallel.CollectionConverters.*
 
 class Parallel_Grouped_IT {
 
@@ -22,7 +23,7 @@ class Parallel_Grouped_IT {
       subList.slice(0, 10)
     })
 
-    Assert.assertFalse(false)
+    assertFalse(false)
   }
 
 }

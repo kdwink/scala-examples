@@ -1,9 +1,12 @@
 package com.redshiftsoft.example.scala.collections
 
-import org.junit.{Assert, Test}
+
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{immutable, mutable}
+
 
 class Iterable_UT {
 
@@ -13,10 +16,10 @@ class Iterable_UT {
     val i3 = scala.collection.Iterable("aa", "bb", "cc", "dd", "ee")
     val i4 = mutable.Iterable("aa", "bb", "cc", "dd", "ee")
 
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
-    Assert.assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
+    assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
   }
 
   @Test def assignment(): Unit = {
@@ -31,9 +34,9 @@ class Iterable_UT {
     val i4: scala.collection.Iterable[String] = Vector("a", "b", "c")
 
     /**
-      * Both of the following conversions iterate over the elements and
-      * create new data structures.
-      */
+     * Both of the following conversions iterate over the elements and
+     * create new data structures.
+     */
     val i5: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toIndexedSeq
     val i6: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toSeq
   }
@@ -44,9 +47,9 @@ class Iterable_UT {
     val i3 = scala.collection.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i4 = mutable.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
 
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
-    Assert.assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
+    assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
   }
 }

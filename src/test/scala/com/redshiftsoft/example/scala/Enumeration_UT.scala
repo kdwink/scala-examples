@@ -1,6 +1,7 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 
 class Enumeration_UT {
@@ -28,19 +29,19 @@ class Enumeration_UT {
     for (breed <- Breed.values) {
       count = count + 1
     }
-    Assert.assertEquals(5, count)
+    assertEquals(5, count)
   }
 
   @Test
   def testToString(): Unit = {
-    Assert.assertEquals("Great Dane", Breed.dane.toString)
-    Assert.assertEquals(Breed.dane, Breed.withName("Great Dane"))
+    assertEquals("Great Dane", Breed.dane.toString)
+    assertEquals(Breed.dane, Breed.withName("Great Dane"))
   }
 
   @Test
   def testIsTerrier(): Unit = {
-    Assert.assertTrue(Breed.isTerrier(Breed.yorkie))
-    Assert.assertFalse(Breed.isTerrier(Breed.portie))
+    assertTrue(Breed.isTerrier(Breed.yorkie))
+    assertFalse(Breed.isTerrier(Breed.portie))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,27 +67,28 @@ class Enumeration_UT {
   }
 
   @Test
-  def withName() : Unit = {
+  def withName(): Unit = {
     val color = Color.withName("GREEN")
-    Assert.assertEquals(Color.GREEN, color)
+    assertEquals(Color.GREEN, color)
   }
+
   @Test
   def testCustomMethod(): Unit = {
-    Assert.assertTrue(Color.BLUE.isBlue)
-    Assert.assertFalse(Color.GREEN.isBlue)
-    Assert.assertFalse(Color.RED.isBlue)
+    assertTrue(Color.BLUE.isBlue)
+    assertFalse(Color.GREEN.isBlue)
+    assertFalse(Color.RED.isBlue)
   }
 
   @Test
   def testCustomMethodAgain(): Unit = {
     val x: Color.Color = Color.RED
-    Assert.assertTrue(x.isRed)
+    assertTrue(x.isRed)
   }
 
   @Test
   def testColorToString(): Unit = {
 
-    Assert.assertEquals("BLUE,GREEN,RED", Color.values.map(_.toString).mkString(","))
+    assertEquals("BLUE,GREEN,RED", Color.values.map(_.toString).mkString(","))
 
   }
 

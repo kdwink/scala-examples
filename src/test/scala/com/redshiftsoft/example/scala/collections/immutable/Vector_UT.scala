@@ -1,11 +1,12 @@
 package com.redshiftsoft.example.scala.collections.immutable
 
-import org.junit.Assert.assertEquals
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 /**
-  * Vector, an immutable Seq, which, unlike List, provides constant time implementations of all methods.
-  */
+ * Vector, an immutable Seq, which, unlike List, provides constant time implementations of all methods.
+ */
 class Vector_UT {
 
   @Test def construction(): Unit = {
@@ -15,8 +16,8 @@ class Vector_UT {
 
     val v3 = v1 ++ v2
 
-    Assert.assertEquals("scala.collection.immutable.Vector1", v3.getClass.getName)
-    Assert.assertEquals("Vector(1, 2, 3, 10, 20, 30)", v3.toString())
+    assertEquals("scala.collection.immutable.Vector1", v3.getClass.getName)
+    assertEquals("Vector(1, 2, 3, 10, 20, 30)", v3.toString())
   }
 
   //noinspection AccessorLikeMethodIsUnit

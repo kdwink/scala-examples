@@ -1,6 +1,9 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertThrows, assertTrue}
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
+
 
 class String_UT {
 
@@ -8,8 +11,10 @@ class String_UT {
     val string1 = new String("this is a string")
   }
 
-  @Test(expected = classOf[NullPointerException]) def constructorNull(): Unit = {
-    new String(null, "UTF-8")
+  @Test def constructorNull(): Unit = {
+    assertThrows(classOf[NullPointerException], () => {
+      new String(null, "UTF-8")
+    })
   }
 
   @Test def multiLineStrings(): Unit = {
@@ -19,12 +24,12 @@ class String_UT {
         and more stuff
       """.stripMargin
 
-    Assert.assertEquals("        stuff        and more stuff      ", multiLineString.replace("\n", ""))
+    assertEquals("        stuff        and more stuff      ", multiLineString.replace("\n", ""))
   }
 
   /**
-    * stripMargin removes the pipe and whitespace before the pipe.
-    */
+   * stripMargin removes the pipe and whitespace before the pipe.
+   */
   @Test def multiLineStrings_stripMargin(): Unit = {
     val x =
       """
@@ -33,16 +38,16 @@ class String_UT {
         |  line two
         |   line three""".stripMargin
 
-    Assert.assertEquals("\nline zero\n line one\n  line two\n   line three", x)
+    assertEquals("\nline zero\n line one\n  line two\n   line three", x)
   }
 
   @Test def split(): Unit = {
     val string = "one,two,  three  ,four,  five, six"
     val split: Array[String] = string.split(",").map(_.trim)
-    Assert.assertEquals(6, split.length)
-    Assert.assertEquals("one", split(0))
-    Assert.assertEquals("two", split(1))
-    Assert.assertEquals("three", split(2))
+    assertEquals(6, split.length)
+    assertEquals("one", split(0))
+    assertEquals("two", split(1))
+    assertEquals("three", split(2))
   }
 
 }

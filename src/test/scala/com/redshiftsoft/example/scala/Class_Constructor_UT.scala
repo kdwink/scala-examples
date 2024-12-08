@@ -1,7 +1,8 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.Assert._
-import org.junit.Test
+import org.junit.*
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 class Class_Constructor_UT {
 
@@ -25,6 +26,7 @@ class Class_Constructor_UT {
   @Test def constructor_withVal(): Unit = {
     class User(val name: String) {
       def greet: String = s"hello from $name"
+
       override def toString = s"User($name)"
     }
 

@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Any_UT {
 
@@ -23,14 +25,14 @@ class Any_UT {
 
   /* In scala "==" is equals  */
   @Test def equals(): Unit = {
-    Assert.assertTrue(person1 == person2)
-    Assert.assertFalse(person1 == person3)
+    assertTrue(person1 == person2)
+    assertFalse(person1 == person3)
   }
 
   /* In scala eq is identity equals  */
   @Test def referenceEquality(): Unit = {
-    Assert.assertTrue(person1.eq(person1))
-    Assert.assertFalse(person1.eq(person2))
+    assertTrue(person1.eq(person1))
+    assertFalse(person1.eq(person2))
   }
 
 

@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 import java.lang.reflect.Constructor
 
@@ -30,9 +32,9 @@ class Case_Class_To_Map_UT {
 
     val c1 = Character1("testName", isThief = true, 22)
     val map1 = c1.toStringMap
-    Assert.assertEquals("testName", map1("name"))
-    Assert.assertEquals("true", map1("isThief"))
-    Assert.assertEquals("22", map1("age"))
+    assertEquals("testName", map1("name"))
+    assertEquals("true", map1("isThief"))
+    assertEquals("22", map1("age"))
 
     // - - - - - - - - -
     // hard coded key names
@@ -48,9 +50,9 @@ class Case_Class_To_Map_UT {
 
     val c3 = TheCharacter3("testName", isThief = true, 22)
     val map3 = c3.toStringMap
-    Assert.assertEquals("testName", map3("name"))
-    Assert.assertEquals("true", map3("isThief"))
-    Assert.assertEquals("22", map3("age"))
+    assertEquals("testName", map3("name"))
+    assertEquals("true", map3("isThief"))
+    assertEquals("22", map3("age"))
 
   }
 

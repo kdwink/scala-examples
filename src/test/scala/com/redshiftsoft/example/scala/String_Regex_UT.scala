@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class String_Regex_UT {
 
@@ -9,7 +11,7 @@ class String_Regex_UT {
 
     val matchOption = startsWithARegEx.findFirstIn("bla bla A123456789")
 
-    Assert.assertEquals("A123", matchOption.get)
+    assertEquals("A123", matchOption.get)
   }
 
 

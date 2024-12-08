@@ -1,6 +1,7 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 import scala.math.BigDecimal
 
@@ -20,20 +21,20 @@ class Range_UT {
       count = count + 1
     })
 
-    Assert.assertEquals(10, count)
+    assertEquals(10, count)
 
   }
 
   @Test
   def map(): Unit = {
     val seq1 = (1 to 5).map(x => 2 * x)
-    Assert.assertEquals(5, seq1.size)
+    assertEquals(5, seq1.size)
 
     val seq2 = (1 to 1).map(x => 2 * x)
-    Assert.assertEquals(1, seq2.size)
+    assertEquals(1, seq2.size)
 
     val seq3 = (1 to 0).map(x => 2 * x)
-    Assert.assertEquals(0, seq3.size)
+    assertEquals(0, seq3.size)
   }
 
 }

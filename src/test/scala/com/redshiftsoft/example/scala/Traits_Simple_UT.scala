@@ -1,18 +1,20 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ArrayBuffer
 
 
 /**
-  * A trait encapsulates method and field definitions, which can then be reused by mixing them into classes. Unlike
-  * class inheritance, in which each class must inherit from just one superclass, a class can mix in any number of
-  * traits.
-  *
-  * Traits are used to define object types by specifying the signature of the supported methods. Scala also allows
-  * traits to be partially implemented but traits may not have constructor parameters.
-  */
+ * A trait encapsulates method and field definitions, which can then be reused by mixing them into classes. Unlike
+ * class inheritance, in which each class must inherit from just one superclass, a class can mix in any number of
+ * traits.
+ *
+ * Traits are used to define object types by specifying the signature of the supported methods. Scala also allows
+ * traits to be partially implemented but traits may not have constructor parameters.
+ */
 class Traits_Simple_UT {
 
   @Test
@@ -29,8 +31,8 @@ class Traits_Simple_UT {
     }
 
     val person: Person = new Teacher
-    Assert.assertFalse(person.isChild("x"))
-    Assert.assertTrue(person.isAdult("x"))
+    assertFalse(person.isChild("x"))
+    assertTrue(person.isAdult("x"))
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

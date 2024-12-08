@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.functions
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Functions_Reference_UT {
 
@@ -20,28 +22,28 @@ class Functions_Reference_UT {
     val sumPointer1: (Int, Int) => Int = doSum
     val sumPointer2 = doSum _
 
-    Assert.assertEquals("whatever", literalPointer())
+    assertEquals("whatever", literalPointer())
 
-    Assert.assertEquals(10, doublePointer1(5))
-    Assert.assertEquals(10, doublePointer2(5))
-    Assert.assertEquals(10, doublePointer3(5))
+    assertEquals(10, doublePointer1(5))
+    assertEquals(10, doublePointer2(5))
+    assertEquals(10, doublePointer3(5))
 
-    Assert.assertEquals(11, sumPointer1(5, 6))
-    Assert.assertEquals(11, sumPointer2(5, 6))
+    assertEquals(11, sumPointer1(5, 6))
+    assertEquals(11, sumPointer2(5, 6))
   }
 
   @Test def refToAnonymousFunctionLiteral(): Unit = {
     val doubler1 = (x: Int) => x * 2
-    Assert.assertEquals(100, doubler1(50))
+    assertEquals(100, doubler1(50))
   }
 
   @Test def placeholder(): Unit = {
     val doubler: Int => Int = _ * 2
-    Assert.assertEquals(100, doubler(50))
+    assertEquals(100, doubler(50))
 
     val subtractFunc: (Int, Int) => Int = _ - _
-    Assert.assertEquals(49, subtractFunc(50, 1))
-    Assert.assertEquals(-49, subtractFunc(1, 50))
+    assertEquals(49, subtractFunc(50, 1))
+    assertEquals(-49, subtractFunc(1, 50))
   }
 
 

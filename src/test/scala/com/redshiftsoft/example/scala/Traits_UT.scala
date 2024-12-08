@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Traits_UT {
 
@@ -23,15 +25,15 @@ class Traits_UT {
   @Test def birdsFlyingPenguinExample(): Unit = {
     val flyingPenguin = new Penguin with Flying
 
-    Assert.assertEquals(flyingPenguin.fly(), "default fly message")
+    assertEquals(flyingPenguin.fly(), "default fly message")
   }
 
   @Test def flying(): Unit = {
-    Assert.assertEquals(new Hawk().fly(), "I'm an excellent flyer")
-    Assert.assertEquals(new Frigatebird().fly(), "I'm an poor flyer")
+    assertEquals(new Hawk().fly(), "I'm an excellent flyer")
+    assertEquals(new Frigatebird().fly(), "I'm an poor flyer")
   }
 
-  @Test def twoTraitsSameProps() : Unit = {
+  @Test def twoTraitsSameProps(): Unit = {
     trait Flying1 {
       def fly(): String = "one"
     }
@@ -43,8 +45,8 @@ class Traits_UT {
     val x2 = new Object with Flying2
     // DOES NOT COMPILE: val x3 = new Object with Flying1 with Flying2
 
-    Assert.assertEquals(x1.fly(), "one")
-    Assert.assertEquals(x2.fly(), "two")
+    assertEquals(x1.fly(), "one")
+    assertEquals(x2.fly(), "two")
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

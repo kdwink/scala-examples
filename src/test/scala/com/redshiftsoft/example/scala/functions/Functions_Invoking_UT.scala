@@ -1,20 +1,22 @@
 package com.redshiftsoft.example.scala.functions
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Functions_Invoking_UT {
 
   @Test def invokeWithOperatorNotation(): Unit = {
-    Assert.assertEquals("eith", "Keith" substring 1)
-    Assert.assertEquals("ei", "Keith" substring(1, 3))
+    assertEquals("eith", "Keith" substring 1)
+    assertEquals("ei", "Keith" substring(1, 3))
   }
 
   @annotation.nowarn
   @Test def withAndWithoutParenthesis(): Unit = {
     def accessDBFunc(): Int = 20
 
-    // Assert.assertEquals(20, accessDBFunc) <--- cannot do in scala 3
-    Assert.assertEquals(20, accessDBFunc())
+    // assertEquals(20, accessDBFunc) <--- cannot do in scala 3
+    assertEquals(20, accessDBFunc())
   }
 
   @Test def withApply(): Unit = {
@@ -25,14 +27,14 @@ class Functions_Invoking_UT {
 
     def invokeIt[T](f: Int => T): T = f(8)
 
-    Assert.assertEquals(14, doubler1(7))
-    Assert.assertEquals(14, doubler2(7))
+    assertEquals(14, doubler1(7))
+    assertEquals(14, doubler2(7))
 
-    Assert.assertEquals(16, invokeIt(doubler1))
-    Assert.assertEquals(16, invokeIt(doubler2))
+    assertEquals(16, invokeIt(doubler1))
+    assertEquals(16, invokeIt(doubler2))
 
-    Assert.assertEquals(14, doubler1.apply(7))
-    //Assert.assertEquals(14, doubler2.apply(7))
+    assertEquals(14, doubler1.apply(7))
+    //assertEquals(14, doubler2.apply(7))
 
   }
 

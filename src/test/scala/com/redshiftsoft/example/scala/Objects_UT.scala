@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Objects_UT {
 
@@ -43,7 +45,7 @@ class Objects_UT {
 
     val s = MyObject("Keith")
 
-    Assert.assertEquals("Keith", s.getName)
+    assertEquals("Keith", s.getName)
   }
 
 }

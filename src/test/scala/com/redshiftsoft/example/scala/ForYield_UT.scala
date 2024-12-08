@@ -1,9 +1,9 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 import scala.collection.immutable.Seq
-import org.junit.Assert.assertEquals
 
 class ForYield_UT {
 
@@ -61,7 +61,7 @@ class ForYield_UT {
     val option1 = Some(5)
     val option2 = Some(19)
     val result: Option[(Int, Int)] = for {x <- option1
-                                   y <- option2 } yield (x * 3, y * 2)
+                                          y <- option2} yield (x * 3, y * 2)
     assertEquals("Some((15,38))", result.toString)
   }
 

@@ -1,12 +1,14 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 /**
-  * Case classes get automatically generated companion object with apply method and:
-  *
-  * copy, equals, hashCode, toString, unapply
-  */
+ * Case classes get automatically generated companion object with apply method and:
+ *
+ * copy, equals, hashCode, toString, unapply
+ */
 class Case_Class_UT {
 
   case class Character(name: String, isThief: Boolean, age: Int = 18)
@@ -14,8 +16,8 @@ class Case_Class_UT {
   @Test
   def fields(): Unit = {
     val c = Character("Bill", isThief = false)
-    Assert.assertEquals("Bill", c.name)
-    Assert.assertEquals(false, c.isThief)
+    assertEquals("Bill", c.name)
+    assertEquals(false, c.isThief)
   }
 
   @Test
@@ -23,30 +25,30 @@ class Case_Class_UT {
     val c1 = Character("George", isThief = true)
     val c2 = Character("George", isThief = true)
     // this works since we get an auto generated equals method that compares fields
-    Assert.assertEquals(c1, c2)
+    assertEquals(c1, c2)
   }
 
   @Test
   def copy(): Unit = {
     val c1 = Character("George", isThief = true)
     val c2 = c1.copy()
-    Assert.assertEquals(c1, c2)
+    assertEquals(c1, c2)
   }
 
   @Test
   def copyWithArg(): Unit = {
     val c1 = Character("George", isThief = true)
     val c2 = c1.copy(name = "Keith")
-    Assert.assertEquals(Character("Keith", isThief = true), c2)
+    assertEquals(Character("Keith", isThief = true), c2)
   }
 
   @Test
   def unapply(): Unit = {
     val c1 = Character("George", isThief = true, age = 25)
     val tuple = Character.unapply(c1)
-    Assert.assertEquals("George", tuple._1)
-    Assert.assertEquals(true, tuple._2)
-    Assert.assertEquals(25, tuple._3)
+    assertEquals("George", tuple._1)
+    assertEquals(true, tuple._2)
+    assertEquals(25, tuple._3)
   }
 
   @Test
@@ -62,9 +64,9 @@ class Case_Class_UT {
     val f3 = new Foo(1, 2, 3)
 
 
-    Assert.assertEquals(2, f1.baz)
-    Assert.assertEquals(100, f2.baz)
-    Assert.assertEquals(5, f3.baz)
+    assertEquals(2, f1.baz)
+    assertEquals(100, f2.baz)
+    assertEquals(5, f3.baz)
   }
 
   /* A case class can NOT extends another case class. */
@@ -75,9 +77,9 @@ class Case_Class_UT {
 
     val bar = new Bar("ccc")
 
-    Assert.assertEquals("aaa", bar.a)
-    Assert.assertEquals("bbb", bar.b)
-    Assert.assertEquals("ccc", bar.c)
+    assertEquals("aaa", bar.a)
+    assertEquals("bbb", bar.b)
+    assertEquals("ccc", bar.c)
   }
 
   /* A case class can NOT extends another case class. */
@@ -88,9 +90,9 @@ class Case_Class_UT {
 
     val foo = new Foo("ccc", "ddd")
 
-    Assert.assertEquals("ccc", foo.a)
-    Assert.assertEquals("ddd", foo.b)
-    Assert.assertEquals("bla", foo.c)
+    assertEquals("ccc", foo.a)
+    assertEquals("ddd", foo.b)
+    assertEquals("bla", foo.c)
   }
 
 }

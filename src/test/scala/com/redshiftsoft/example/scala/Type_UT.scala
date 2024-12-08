@@ -1,6 +1,6 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class Type_UT {
 

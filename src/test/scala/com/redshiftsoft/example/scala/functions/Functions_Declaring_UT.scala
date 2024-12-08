@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.functions
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Functions_Declaring_UT {
 
@@ -24,12 +26,12 @@ class Functions_Declaring_UT {
       def apply(): Int = 41 + 1
     }
 
-    Assert.assertEquals(42, f0())
-    Assert.assertEquals(42, f1)
-    Assert.assertEquals(42, f2)
-    Assert.assertEquals(42, f3)
-    Assert.assertEquals(42, f4())
-    Assert.assertEquals(42, f5())
+    assertEquals(42, f0())
+    assertEquals(42, f1)
+    assertEquals(42, f2)
+    assertEquals(42, f3)
+    assertEquals(42, f4())
+    assertEquals(42, f5())
   }
 
   @Test def declaringWithParams(): Unit = {
@@ -50,13 +52,13 @@ class Functions_Declaring_UT {
       x + y
     }
 
-    Assert.assertEquals(5, f3(0))
+    assertEquals(5, f3(0))
 
-    Assert.assertEquals(12, f4(10))
-    Assert.assertEquals(21, f5(10, 11))
-    Assert.assertEquals(21, f6(10, 11))
-    Assert.assertEquals(21, f7(10, 11))
-    Assert.assertEquals(21, f8(10, 11))
+    assertEquals(12, f4(10))
+    assertEquals(21, f5(10, 11))
+    assertEquals(21, f6(10, 11))
+    assertEquals(21, f7(10, 11))
+    assertEquals(21, f8(10, 11))
 
   }
 
@@ -79,8 +81,8 @@ class Functions_Declaring_UT {
       fun(x)
     }
 
-    Assert.assertEquals("somethingFoo20", takesFunction(fooFunction, 20))
-    Assert.assertEquals("somethingBar40", takesFunction(barFunction, 40))
+    assertEquals("somethingFoo20", takesFunction(fooFunction, 20))
+    assertEquals("somethingBar40", takesFunction(barFunction, 40))
   }
 
 
@@ -93,7 +95,7 @@ class Functions_Declaring_UT {
       add(n - 1, sum + n)
     }
 
-    Assert.assertEquals(800020000, add(n = 40000))
+    assertEquals(800020000, add(n = 40000))
   }
 
   @Test def declaringWithVarArg(): Unit = {
@@ -103,10 +105,10 @@ class Functions_Declaring_UT {
       sum
     }
 
-    Assert.assertEquals(10, add(1, 2, 3, 4))
+    assertEquals(10, add(1, 2, 3, 4))
     // invoke with array
     val seq = Seq[Int](1, 2, 3, 4)
-    Assert.assertEquals(10, add(seq: _*))
+    assertEquals(10, add(seq: _*))
   }
 
   @Test def declaringWithNamedParameters(): Unit = {
@@ -117,8 +119,8 @@ class Functions_Declaring_UT {
       add(n - 1, sum + n)
     }
 
-    Assert.assertEquals(800020000, add(sum = 0, n = 40000))
-    Assert.assertEquals(800020000, add(n = 40000, sum = 0))
+    assertEquals(800020000, add(sum = 0, n = 40000))
+    assertEquals(800020000, add(n = 40000, sum = 0))
   }
 
 }

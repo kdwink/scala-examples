@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.collections.immutable
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class LazyList_UT {
 
@@ -13,8 +15,8 @@ class LazyList_UT {
       case false => head #:: to((head + 1).toChar, end)
     }
 
-    Assert.assertEquals(List('a', 'b', 'c', 'd', 'e', 'f'), to('a', 'f'))
-    Assert.assertEquals(List(), to('f', 'a'))
+    assertEquals(List('a', 'b', 'c', 'd', 'e', 'f'), to('a', 'f'))
+    assertEquals(List(), to('f', 'a'))
   }
 
   @Test def take(): Unit = {
@@ -26,16 +28,16 @@ class LazyList_UT {
     val streamResult1 = inc1(1)
     val streamResult2 = inc1(1)
 
-    Assert.assertEquals(List(1, 2, 3, 4, 5), streamResult1.take(5).toList)
-    Assert.assertEquals(List(1, 2, 3, 4, 5), streamResult2.take(5).toList)
+    assertEquals(List(1, 2, 3, 4, 5), streamResult1.take(5).toList)
+    assertEquals(List(1, 2, 3, 4, 5), streamResult2.take(5).toList)
   }
 
   @Test def takeWhile(): Unit = {
     val streamResult = fibFrom(1, 1)
-    Assert.assertEquals(List(1, 1, 2, 3, 5, 8, 13, 21), streamResult.takeWhile(_ < 30).toList)
+    assertEquals(List(1, 1, 2, 3, 5, 8, 13, 21), streamResult.takeWhile(_ < 30).toList)
 
     val streamResult2 = List(1, 2, 3, 232, 32, 4, 4000, 5000).to(LazyList)
-    Assert.assertEquals(List(1, 2, 3, 232, 32, 4), streamResult2.takeWhile(x => {
+    assertEquals(List(1, 2, 3, 232, 32, 4), streamResult2.takeWhile(x => {
       x < 1000
     }).toList)
 
@@ -44,10 +46,10 @@ class LazyList_UT {
 
   @Test def find(): Unit = {
     val streamResult = fibFrom(1, 1)
-    Assert.assertEquals(List(1, 1, 2, 3, 5, 8, 13), streamResult.take(7).toList)
+    assertEquals(List(1, 1, 2, 3, 5, 8, 13), streamResult.take(7).toList)
 
     val found: Option[Int] = streamResult.find(_ > 10)
-    Assert.assertEquals(13, found.get)
+    assertEquals(13, found.get)
   }
 
 }

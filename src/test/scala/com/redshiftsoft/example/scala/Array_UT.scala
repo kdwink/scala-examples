@@ -1,6 +1,7 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertNull, assertTrue}
+import org.junit.jupiter.api.Test
 
 import java.nio.ByteBuffer
 import scala.collection.immutable.ArraySeq
@@ -20,41 +21,41 @@ class Array_UT {
     val arrayString: Array[String] = new Array[String](300)
 
     // The above arrays are declared with the specified SIZE (not just capacity)
-    Assert.assertNull(arrayString(150))
+    assertNull(arrayString(150))
   }
 
   @Test def accessing(): Unit = {
     colors(0) = "purple"
     colors(1) = "orange"
 
-    Assert.assertEquals("purple", colors(0))
-    Assert.assertEquals("orange", colors(1))
+    assertEquals("purple", colors(0))
+    assertEquals("orange", colors(1))
   }
 
   @Test def update(): Unit = {
     colors.update(0, "black")
-    Assert.assertTrue(Array("black", "green", "blue", "white") sameElements colors)
-    Assert.assertFalse(Array("black", "green", "blue", "white").equals(colors))
+    assertTrue(Array("black", "green", "blue", "white") sameElements colors)
+    assertFalse(Array("black", "green", "blue", "white").equals(colors))
   }
 
   @Test def equality(): Unit = {
-    Assert.assertTrue(Array("red", "green", "blue", "white") sameElements colors)
-    Assert.assertFalse(Array("red", "green", "blue", "white").equals(colors))
+    assertTrue(Array("red", "green", "blue", "white") sameElements colors)
+    assertFalse(Array("red", "green", "blue", "white").equals(colors))
   }
 
   @Test def slice(): Unit = {
-    Assert.assertTrue(Array("green", "blue") sameElements colors.slice(1, 3))
+    assertTrue(Array("green", "blue") sameElements colors.slice(1, 3))
   }
 
   @Test def slice_IsAlwaysCopy(): Unit = {
     val allSlice: mutable.ArraySeq[String] = colors.slice(0, 4)
-    Assert.assertTrue(colors sameElements allSlice)
-    Assert.assertFalse(colors.equals(allSlice))
+    assertTrue(colors sameElements allSlice)
+    assertFalse(colors.equals(allSlice))
   }
 
   @Test def lastOption(): Unit = {
     val array = Array[Long](1, 2, 3, 4, 5, 4, 3, 2, 1)
-    Assert.assertEquals(5L, array.sorted.lastOption.getOrElse(0))
+    assertEquals(5L, array.sorted.lastOption.getOrElse(0))
   }
 
   @Test def readingByteArrayWithBuffer(): Unit = {
@@ -62,26 +63,26 @@ class Array_UT {
     val buffer = ByteBuffer.wrap(byteArray)
     val float1: Float = buffer.getFloat(0)
     val float2: Float = buffer.getFloat(4)
-    Assert.assertEquals(9.844391080093828E-9f, float1, 1e-9)
-    Assert.assertEquals(3.177147150039673f, float2, 1e-9)
+    assertEquals(9.844391080093828E-9f, float1, 1e-9)
+    assertEquals(3.177147150039673f, float2, 1e-9)
   }
 
   @Test def className(): Unit = {
     val array = Array[String]("aa", "bb", "cc")
-    Assert.assertEquals("[Ljava.lang.String;", array.getClass.getName)
+    assertEquals("[Ljava.lang.String;", array.getClass.getName)
   }
 
   @Test def assigningToSeq(): Unit = {
     val array = Array[String]("aa", "bb", "cc")
-    Assert.assertEquals("[Ljava.lang.String;", array.getClass.getName)
+    assertEquals("[Ljava.lang.String;", array.getClass.getName)
 
     // In scala 2.12 is this is possible because of an expensive implicit conversion.
     val seq1: immutable.Seq[String] = ArraySeq.unsafeWrapArray(array)
-    Assert.assertEquals("scala.collection.immutable.ArraySeq$ofRef", seq1.getClass.getName)
+    assertEquals("scala.collection.immutable.ArraySeq$ofRef", seq1.getClass.getName)
 
     // This is still possible and efficient.
     val seq2: scala.collection.Seq[String] = array
-    Assert.assertEquals("scala.collection.mutable.ArraySeq$ofRef", seq2.getClass.getName)
+    assertEquals("scala.collection.mutable.ArraySeq$ofRef", seq2.getClass.getName)
 
   }
 

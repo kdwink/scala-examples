@@ -1,9 +1,9 @@
 package com.redshiftsoft.example.scala.collections.mutable
 
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
-import collection.mutable.{HashMap, MultiMap, Set}
 import scala.collection.mutable
+import scala.collection.mutable.{HashMap, MultiMap, Set}
 
 class MultiMap_UT {
 
@@ -14,7 +14,7 @@ class MultiMap_UT {
 
     // to create a `MultiMap` the easiest way is to mixin it into a normal `Map` instance
     val mm: mutable.HashMap[Int, mutable.Set[String]] with mutable.MultiMap[Int, String]
-      = new mutable.HashMap[Int, mutable.Set[String]] with mutable.MultiMap[Int, String]
+    = new mutable.HashMap[Int, mutable.Set[String]] with mutable.MultiMap[Int, String]
 
     // to add key-value pairs to a multimap it is important to use
     // the method `addBinding` because standard methods like `+` will

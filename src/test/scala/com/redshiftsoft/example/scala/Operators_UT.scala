@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Operators_UT {
 
@@ -8,13 +10,13 @@ class Operators_UT {
     val answer1 = 100 + 42
     val answer2 = 100.+(42)
 
-    Assert.assertEquals(142, answer1)
-    Assert.assertEquals(142, answer2)
+    assertEquals(142, answer1)
+    assertEquals(142, answer2)
   }
 
   @Test def mod(): Unit = {
     val x = 20 % 7
-    Assert.assertEquals(6, x)
+    assertEquals(6, x)
   }
 
   @Test def overloading(): Unit = {
@@ -32,7 +34,7 @@ class Operators_UT {
 
     b1 + b2
 
-    Assert.assertEquals(30, b1.sum)
+    assertEquals(30, b1.sum)
 
   }
 
@@ -40,19 +42,19 @@ class Operators_UT {
     var x = 1
     x += 2
 
-    Assert.assertEquals(3, x)
+    assertEquals(3, x)
   }
 
   @Test def bitWiseExclusiveOr(): Unit =
-    Assert.assertEquals(1, 1 ^ 0)
-    Assert.assertEquals(1, 0 ^ 1)
-    Assert.assertEquals(0, 1 ^ 1)
-    Assert.assertEquals(0, 0 ^ 0)
+    assertEquals(1, 1 ^ 0)
+    assertEquals(1, 0 ^ 1)
+    assertEquals(0, 1 ^ 1)
+    assertEquals(0, 0 ^ 0)
 
     // happens to work with boolean values
-    Assert.assertEquals(false, true ^ true)
-    Assert.assertEquals(false, false ^ false)
+    assertEquals(false, true ^ true)
+    assertEquals(false, false ^ false)
 
-    Assert.assertEquals(true, true ^ false)
-    Assert.assertEquals(true, false ^ true)
+    assertEquals(true, true ^ false)
+    assertEquals(true, false ^ true)
 }

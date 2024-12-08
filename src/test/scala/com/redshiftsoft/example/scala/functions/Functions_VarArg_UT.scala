@@ -1,6 +1,8 @@
 package com.redshiftsoft.example.scala.functions
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Functions_VarArg_UT {
 
@@ -9,15 +11,15 @@ class Functions_VarArg_UT {
       ints.mkString(",")
     }
 
-    Assert.assertEquals("1,2,3", accessDBFunc(1, 2, 3))
-    Assert.assertEquals("1,2", accessDBFunc(1, 2))
-    Assert.assertEquals("1", accessDBFunc(1))
-    Assert.assertEquals("", accessDBFunc())
+    assertEquals("1,2,3", accessDBFunc(1, 2, 3))
+    assertEquals("1,2", accessDBFunc(1, 2))
+    assertEquals("1", accessDBFunc(1))
+    assertEquals("", accessDBFunc())
   }
 
   @Test def varArgIsImmutableSeq(): Unit = {
     def func(ints: Int*): Unit = {
-      Assert.assertTrue(ints.isInstanceOf[scala.collection.immutable.Seq[Int]])
+      assertTrue(ints.isInstanceOf[scala.collection.immutable.Seq[Int]])
     }
 
     func(1, 2, 3)
@@ -25,8 +27,8 @@ class Functions_VarArg_UT {
 
   @Test def passingArraysAndSeqs(): Unit = {
     def func(ints: Int*): Unit = {
-      Assert.assertTrue(ints.isInstanceOf[scala.collection.immutable.Seq[Int]])
-      Assert.assertEquals(ints.length, 6)
+      assertTrue(ints.isInstanceOf[scala.collection.immutable.Seq[Int]])
+      assertEquals(ints.length, 6)
     }
 
     val array: Array[Int] = Array(1, 2, 3, 4, 5, 6)

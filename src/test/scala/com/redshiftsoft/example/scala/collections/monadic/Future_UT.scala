@@ -1,16 +1,17 @@
 package com.redshiftsoft.example.scala.collections.monadic
 
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 import java.util.concurrent.Executors
-import scala.concurrent.duration.*
 import scala.concurrent.*
+import scala.concurrent.duration.*
 import scala.util.{Random, Try}
 
 /**
-  * https://docs.scala-lang.org/overviews/core/futures.html
-  */
+ * https://docs.scala-lang.org/overviews/core/futures.html
+ */
 class Future_UT {
 
   val ThreadPoolSize = 16
@@ -25,7 +26,7 @@ class Future_UT {
       123
     }
     val maxTime = Duration(10, SECONDS)
-    Assert.assertEquals(123, Await.result(someFuture, maxTime))
+    assertEquals(123, Await.result(someFuture, maxTime))
   }
 
   @Test def waitingForCollectionOfFutures(): Unit = {
@@ -45,12 +46,12 @@ class Future_UT {
 
     /* These all run in parallel so they should take approx 50 ms */
     val result = Await.result(topFuture, Duration(400, MILLISECONDS))
-    Assert.assertEquals(List("s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"), result.toList)
+    assertEquals(List("s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16"), result.toList)
   }
 
   /**
-    * Calling map on a function lets you map the result of the future and returns another future.
-    */
+   * Calling map on a function lets you map the result of the future and returns another future.
+   */
   @Test def map(): Unit = {
     val lngFuture: Future[Long] = Future(sleepFunction(100))
     val strFuture: Future[String] = lngFuture.map(intResult => "" + intResult)
@@ -58,7 +59,7 @@ class Future_UT {
 
     while (!tupleFuture.isCompleted) {
     }
-    Assert.assertEquals("Success((1-100,2-100))", tupleFuture.value.get.toString)
+    assertEquals("Success((1-100,2-100))", tupleFuture.value.get.toString)
   }
 
 
@@ -81,7 +82,7 @@ class Future_UT {
 
     // This will throw if it takes longer than 250ms, so we know we are returning sooner.
     val result: Long = Await.result(race, Duration(250, MILLISECONDS))
-    Assert.assertEquals(3, result)
+    assertEquals(3, result)
   }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -97,8 +98,8 @@ class Future_UT {
   }
 
   /**
-    * Takes a list of futures and returns the result from the first Successful one.
-    */
+   * Takes a list of futures and returns the result from the first Successful one.
+   */
   def successRace[T](futureList: List[Future[T]]): Future[T] = {
     val promise = Promise[T]()
 
@@ -106,6 +107,7 @@ class Future_UT {
       if (theTry.isSuccess)
         promise.tryComplete(theTry)
     }
+
     futureList.foreach(f => f.onComplete(individualCompletionHandler))
 
     promise.future

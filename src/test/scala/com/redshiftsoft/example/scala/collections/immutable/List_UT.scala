@@ -1,7 +1,8 @@
 package com.redshiftsoft.example.scala.collections.immutable
 
-import org.junit.Assert._
-import org.junit.Test
+import org.junit.*
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue, fail}
+import org.junit.jupiter.api.Test
 
 import java.util.NoSuchElementException
 

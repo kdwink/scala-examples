@@ -1,7 +1,9 @@
 package com.redshiftsoft.example.scala.functions
 
 import com.redshiftsoft.example.scalatest.BaseSpec
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 class Functions_HighOrder_UT extends BaseSpec {
 
@@ -13,8 +15,8 @@ class Functions_HighOrder_UT extends BaseSpec {
       if (s == null) 'z' else f(s)
     }
 
-    Assert.assertEquals('c', safeString("abc", stringFunc))
-    Assert.assertEquals('z', safeString(null, stringFunc))
+    assertEquals('c', safeString("abc", stringFunc))
+    assertEquals('z', safeString(null, stringFunc))
 
   }
 
@@ -35,8 +37,8 @@ class Functions_HighOrder_UT extends BaseSpec {
       200 * a - b
     }
 
-    Assert.assertEquals(100, xValue)
-    Assert.assertEquals(4980, xFunction(50, 25, 20))
+    assertEquals(100, xValue)
+    assertEquals(4980, xFunction(50, 25, 20))
 
   }
 
@@ -49,11 +51,16 @@ class Functions_HighOrder_UT extends BaseSpec {
       result
     }
 
-    val xValue = withLock[Int](10) { 100 }
-    def xFunction(projectId: Int, a: Int, b: Int): Int = withLock[Int](projectId) {200 * a - b}
+    val xValue = withLock[Int](10) {
+      100
+    }
 
-    Assert.assertEquals(100, xValue)
-    Assert.assertEquals(4980, xFunction(50, 25, 20))
+    def xFunction(projectId: Int, a: Int, b: Int): Int = withLock[Int](projectId) {
+      200 * a - b
+    }
+
+    assertEquals(100, xValue)
+    assertEquals(4980, xFunction(50, 25, 20))
 
   }
 

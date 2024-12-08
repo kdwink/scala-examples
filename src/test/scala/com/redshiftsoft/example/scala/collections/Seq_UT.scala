@@ -1,9 +1,12 @@
 package com.redshiftsoft.example.scala.collections
 
-import org.junit.{Assert, Test}
+
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{immutable, mutable}
+
 
 class Seq_UT {
 
@@ -21,7 +24,7 @@ class Seq_UT {
     // immutable Trait: List is default implementation
     val s4: scala.collection.immutable.Seq[Int] = scala.collection.immutable.Seq[Int](1, 2, 4, 5, 6, 7)
 
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", s1.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", s1.getClass.getName)
 
   }
 
@@ -37,9 +40,9 @@ class Seq_UT {
     val i4: collection.Seq[String] = Vector("a", "b", "c")
 
     /**
-      * Both of the following conversions iterate over the elements and
-      * create new data structures.
-      */
+     * Both of the following conversions iterate over the elements and
+     * create new data structures.
+     */
     val mutableBuffer = ArrayBuffer("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m")
     val i5: immutable.Seq[String] = mutableBuffer.toIndexedSeq
     val i6: immutable.Seq[String] = mutableBuffer.toSeq
@@ -51,9 +54,9 @@ class Seq_UT {
     val i3 = collection.Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i4 = mutable.Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
 
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
-    Assert.assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
-    Assert.assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i1.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
+    assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
+    assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
   }
 }

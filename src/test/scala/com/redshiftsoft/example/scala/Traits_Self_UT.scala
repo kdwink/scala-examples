@@ -1,11 +1,13 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.{Assert, Test}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Test
+
 
 /**
-  * Trait self types are Traits that require that they can only ever be mixed into a class which is a subtype of
-  * a specified class.
-  */
+ * Trait self types are Traits that require that they can only ever be mixed into a class which is a subtype of
+ * a specified class.
+ */
 class Traits_Self_UT {
 
   @Test def test(): Unit = {
@@ -24,7 +26,7 @@ class Traits_Self_UT {
 
     val c: C = new C("Smith")
 
-    Assert.assertEquals("B: hi Smith,Bob", c.toString)
+    assertEquals("B: hi Smith,Bob", c.toString)
   }
 
 }
