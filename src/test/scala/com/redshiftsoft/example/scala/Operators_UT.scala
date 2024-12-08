@@ -3,6 +3,8 @@ package com.redshiftsoft.example.scala
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
+import scala.annotation.targetName
+
 
 class Operators_UT {
 
@@ -22,6 +24,7 @@ class Operators_UT {
   @Test def overloading(): Unit = {
 
     class Ball(initialSum: Int) {
+      @targetName("add")
       def +(ball: Ball): Unit = {
         this.sum = this.sum + ball.sum
       }
