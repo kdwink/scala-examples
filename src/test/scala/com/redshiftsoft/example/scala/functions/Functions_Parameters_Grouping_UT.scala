@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test
  */
 class Functions_Parameters_Grouping_UT {
 
-
   @Test def parameterGrouping(): Unit = {
 
     def f(x: Int)(y: Int, z: Int) = x + y * z
@@ -69,7 +68,7 @@ class Functions_Parameters_Grouping_UT {
   @Test def curryingWithParameterGrouping(): Unit = {
     def factorOf(x: Int)(y: Int) = y % x == 0
 
-    val isEven1 = factorOf(2) _
+    val isEven1 = factorOf(2)
     val isEven2 = factorOf(2)(_)
 
     assertTrue(isEven1(32))
@@ -85,7 +84,7 @@ class Functions_Parameters_Grouping_UT {
 
   @Test def practicalExample(): Unit = {
     val numbers = Seq(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    val numberFunc = numbers.foldLeft(Seq[Int]()) _
+    val numberFunc = numbers.foldLeft(Seq[Int]())
 
     val squares = numberFunc((xs, x) => xs :+ x * x)
     assertEquals(Seq(1, 4, 9, 16, 25, 36, 49, 64, 81, 100), squares)
