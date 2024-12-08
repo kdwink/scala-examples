@@ -5,4 +5,4 @@ addSbtPlugin("com.github.sbt" % "sbt-release" % "1.4.0")
 //
 // sbt dependencyUpdates
 //
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.1")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.3")
