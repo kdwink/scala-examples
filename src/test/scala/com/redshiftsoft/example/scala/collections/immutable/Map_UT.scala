@@ -18,9 +18,7 @@ class Map_UT {
 
   @Test
   def accessing_NonExistingKey(): Unit = {
-    assertThrows(classOf[java.util.NoSuchElementException], new Executable {
-      override def execute(): Unit = colorMap("frank")
-    })
+    assertThrows(classOf[java.util.NoSuchElementException], () => colorMap("frank"))
   }
 
   //noinspection MapGetGet
@@ -30,11 +28,9 @@ class Map_UT {
 
   @Test
   def accessing_WithGet_NonExistingKey(): Unit = {
-    assertThrows(classOf[java.util.NoSuchElementException], new Executable {
-      override def execute(): Unit = {
-        val maybeInt: Option[Int] = colorMap.get("frank")
-        assertEquals(0xFF0000, maybeInt.get)
-      }
+    assertThrows(classOf[java.util.NoSuchElementException], () => {
+      val maybeInt: Option[Int] = colorMap.get("frank")
+      assertEquals(0xFF0000, maybeInt.get)
     })
   }
 
