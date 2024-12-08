@@ -12,6 +12,7 @@ import scala.collection.{immutable, mutable}
  *
  * Array is mutable.
  */
+//noinspection EqualityToSameElements,ComparingDiffCollectionKinds
 class Array_UT {
 
   val colors: Array[String] = Array("red", "green", "blue", "white")

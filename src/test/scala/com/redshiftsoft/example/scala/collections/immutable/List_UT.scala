@@ -9,6 +9,7 @@ import java.util.NoSuchElementException
 /**
  * Immutable linked list. Better to use Vector.
  */
+//noinspection ZeroIndexToHead
 class List_UT {
 
   @Test def declaring(): Unit = {

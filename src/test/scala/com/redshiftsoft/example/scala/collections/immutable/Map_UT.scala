@@ -23,6 +23,7 @@ class Map_UT {
     })
   }
 
+  //noinspection MapGetGet
   @Test def accessing_WithGet(): Unit = {
     assertEquals(0xFF0000, colorMap.get("red").get)
   }
