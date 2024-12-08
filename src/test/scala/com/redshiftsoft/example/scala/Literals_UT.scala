@@ -30,6 +30,7 @@ class Literals_UT {
     assertEquals(4095, x)
   }
 
+  //noinspection TypeAnnotation
   @Test def unit(): Unit = {
     val x = ()
     val y: Unit = ()
