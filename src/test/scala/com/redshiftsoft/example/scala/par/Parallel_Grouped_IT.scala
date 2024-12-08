@@ -1,6 +1,6 @@
 package com.redshiftsoft.example.scala.par
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 
 import scala.collection.parallel.CollectionConverters.*
@@ -18,7 +18,7 @@ class Parallel_Grouped_IT {
     println(s"GroupSize: $GroupSize")
 
     list.grouped(GroupSize).toSeq.par.flatMap(subList => {
-      printf(s"[${Thread.currentThread().getId}] sublist: ${subList.length} \n")
+      printf(s"[${Thread.currentThread().threadId()}] sublist: ${subList.length} \n")
       //Thread.sleep(10*1000)
       subList.slice(0, 10)
     })
