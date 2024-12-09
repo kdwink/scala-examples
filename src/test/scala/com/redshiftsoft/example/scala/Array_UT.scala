@@ -15,8 +15,6 @@ import scala.collection.{immutable, mutable}
 //noinspection EqualityToSameElements,ComparingDiffCollectionKinds
 class Array_UT {
 
-  private val colors: Array[String] = Array("red", "green", "blue", "white")
-
   @Test def declaring(): Unit = {
     var arrayChar: Array[Char] = new Array[Char](300)
     val arrayString: Array[String] = new Array[String](300)
@@ -26,6 +24,7 @@ class Array_UT {
   }
 
   @Test def accessing(): Unit = {
+    val colors: Array[String] = Array("red", "green", "blue", "white")
     colors(0) = "purple"
     colors(1) = "orange"
 
@@ -34,22 +33,36 @@ class Array_UT {
   }
 
   @Test def update(): Unit = {
+    val colors: Array[String] = Array("red", "green", "blue", "white")
     colors.update(0, "black")
     assertTrue(Array("black", "green", "blue", "white") sameElements colors)
     assertFalse(Array("black", "green", "blue", "white").equals(colors))
   }
 
   @Test def equality(): Unit = {
-    assertTrue(Array("red", "green", "blue", "white") sameElements colors)
-    assertFalse(Array("red", "green", "blue", "white").equals(colors))
+    val a1 = Array("red", "green", "blue", "white")
+    val a2 = Array("red", "green", "blue", "white")
+
+    assertTrue(a1 sameElements a2)
+
+    assertFalse(a1 == a2)
+    assertFalse(a1.eq(a2))
+    assertFalse(a1.equals(a2))
   }
 
   @Test def slice(): Unit = {
+    val colors: Array[String] = Array("red", "green", "blue", "white")
     assertTrue(Array("green", "blue") sameElements colors.slice(1, 3))
   }
 
   @Test def slice_IsAlwaysCopy(): Unit = {
+    // given
+    val colors: Array[String] = Array("red", "green", "blue", "white")
+
+    // when
     val allSlice: mutable.ArraySeq[String] = colors.slice(0, 4)
+
+    // then
     assertTrue(colors sameElements allSlice)
     assertFalse(colors.equals(allSlice))
   }
