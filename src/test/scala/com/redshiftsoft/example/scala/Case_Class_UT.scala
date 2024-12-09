@@ -1,6 +1,6 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
 import org.junit.jupiter.api.Test
 
 
@@ -24,8 +24,10 @@ class Case_Class_UT {
   def testEquals(): Unit = {
     val c1 = Character("George", isThief = true)
     val c2 = Character("George", isThief = true)
+
     // this works since we get an auto generated equals method that compares fields
     assertEquals(c1, c2)
+    assertTrue(c1 == c2)
   }
 
   @Test
