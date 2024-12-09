@@ -8,6 +8,16 @@ import scala.math.BigDecimal
 class Range_UT {
 
   @Test
+  def declaring(): Unit = {
+    // given
+    val r1 = (1 to 100)
+    val r2 = 1 to 100
+    // then
+    assertEquals("scala.collection.immutable.Range$Inclusive", r1.getClass.getName)
+    assertEquals("scala.collection.immutable.Range$Inclusive", r2.getClass.getName)
+  }
+
+  @Test
   def literals(): Unit = {
     val range = 1 to 10
     val range2 = BigDecimal("1.0") to 15.5d by .5
