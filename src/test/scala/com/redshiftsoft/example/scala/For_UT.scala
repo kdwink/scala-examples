@@ -1,7 +1,7 @@
 package com.redshiftsoft.example.scala
 
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ListBuffer
@@ -22,7 +22,6 @@ class For_UT {
       result.append(x)
     assertEquals(Seq(3, 6, 9), result.toSeq)
   }
-
 
   @Test def forOneToOne(): Unit = {
     var count = 0
