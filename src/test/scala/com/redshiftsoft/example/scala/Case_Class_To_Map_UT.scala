@@ -1,10 +1,8 @@
 package com.redshiftsoft.example.scala
 
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-
-import java.lang.reflect.Constructor
 
 class Case_Class_To_Map_UT {
 
