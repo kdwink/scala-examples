@@ -3,8 +3,8 @@ package com.redshiftsoft.example.scala
 import org.junit.jupiter.api.Test
 
 /**
- * While there is an Enumeration class, the scala docs here suggest the method
- * shown below.
+ * While there is an Enumeration class, the scala docs here suggest the method shown below.
+ *
  * https://docs.scala-lang.org/overviews/scala-book/enumerations-pizza-class.html
  */
 class Enumeration_Sealed_Trait_UT {
