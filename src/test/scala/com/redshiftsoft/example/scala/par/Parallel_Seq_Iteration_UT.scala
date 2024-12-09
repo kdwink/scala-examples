@@ -23,7 +23,7 @@ class Parallel_Seq_Iteration_UT {
 
     array.par.foreach(i => {
       println(s"[${Thread.currentThread().getName}] got number: " + i)
-      Thread.sleep(100)
+      Thread.sleep(10)
     })
   }
 
@@ -35,7 +35,7 @@ class Parallel_Seq_Iteration_UT {
 
     array.foreach(i => {
       println(s"[${Thread.currentThread().getName}] got number: " + i)
-      Thread.sleep(100)
+      Thread.sleep(10)
     })
 
   }
