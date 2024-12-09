@@ -1,12 +1,13 @@
 package com.redshiftsoft.example.scala
 
 import org.junit.*
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
 import org.junit.jupiter.api.Test
 
 class Class_Constructor_UT {
 
   @Test def constructor(): Unit = {
+    // given
     class User(n: String) {
       val name: String = n
 
@@ -15,9 +16,12 @@ class Class_Constructor_UT {
       override def toString = s"User($name)"
     }
 
-    val u = new User("keith")
+    // when -- invoked WITHOUT 'new' keyword.
+    val u = User("keith")
 
+    // then
     assertTrue(u.isInstanceOf[User])
+    // then -- name field is public
     assertEquals("keith", u.name)
     assertEquals("hello from keith", u.greet)
     assertEquals("User(keith)", u.toString)
