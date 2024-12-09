@@ -47,7 +47,11 @@ class Case_Class_UT {
   @Test
   def unapply(): Unit = {
     val c1 = Character("George", isThief = true, age = 25)
+
+    // when
     val tuple = Character.unapply(c1)
+
+    // then
     assertEquals("George", tuple._1)
     assertEquals(true, tuple._2)
     assertEquals(25, tuple._3)
@@ -64,7 +68,6 @@ class Case_Class_UT {
     val f1 = Foo(1, 2)
     val f2 = new Foo(1)
     val f3 = new Foo(1, 2, 3)
-
 
     assertEquals(2, f1.baz)
     assertEquals(100, f2.baz)
