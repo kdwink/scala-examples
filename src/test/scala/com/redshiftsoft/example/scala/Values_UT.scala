@@ -1,7 +1,7 @@
 package com.redshiftsoft.example.scala
 
 import org.junit.*
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
@@ -25,7 +25,10 @@ class Values_UT {
 
   @Test
   def tupleUnpacking(): Unit = {
+    // when
     val (x, y, z) = (1, 2, 3)
+
+    // then
     assertEquals(x, 1)
     assertEquals(y, 2)
     assertEquals(z, 3)
