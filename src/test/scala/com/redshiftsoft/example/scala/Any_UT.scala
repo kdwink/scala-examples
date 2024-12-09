@@ -23,10 +23,13 @@ class Any_UT {
   val person2 = new Person("keith", 205)
   val person3 = new Person("keith", 300)
 
-  /* In scala "==" is equals  */
+  /* In scala "==" is same as calling equals(). Use .eq() for identity/reference check.  */
   @Test def equals(): Unit = {
     assertTrue(person1 == person2)
+    assertTrue(person1.equals(person2))
+
     assertFalse(person1 == person3)
+    assertFalse(person1.equals(person3))
   }
 
   /* In scala eq is identity equals  */
