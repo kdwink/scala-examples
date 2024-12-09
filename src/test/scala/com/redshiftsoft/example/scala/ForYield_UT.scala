@@ -20,18 +20,20 @@ class ForYield_UT {
   }
 
   @Test def for_yield_with_guard(): Unit = {
-    val threes = for (x <- 1 to 20 if x % 3 == 0) yield {
-      x
-    }
+    val threes = for (x <- 1 to 20 if x % 3 == 0) yield x
     assertEquals("Vector(3, 6, 9, 12, 15, 18)", threes.toString)
   }
 
   @Test def for_yield_two_variables(): Unit = {
-    val result: Seq[String] = for {x <- 1 to 3
-                                   y <- 4 to 5} yield {
-      s"$x-$y"
-    }
-    assertEquals("Vector(1-4, 1-5, 2-4, 2-5, 3-4, 3-5)", result.toString)
+    // when
+    val result1: Seq[String] = for x <- 1 to 3; y <- 4 to 5 yield s"$x-$y"
+    val result2: Seq[String] = for (x <- 1 to 3; y <- 4 to 5) yield s"$x-$y"
+    val result3: Seq[String] = for {x <- 1 to 3; y <- 4 to 5} yield s"$x-$y"
+
+    // then
+    assertEquals("Vector(1-4, 1-5, 2-4, 2-5, 3-4, 3-5)", result1.toString)
+    assertEquals("Vector(1-4, 1-5, 2-4, 2-5, 3-4, 3-5)", result2.toString)
+    assertEquals("Vector(1-4, 1-5, 2-4, 2-5, 3-4, 3-5)", result3.toString)
   }
 
   @Test def for_yield_two_variables_two_guards(): Unit = {
