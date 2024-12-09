@@ -15,7 +15,7 @@ import scala.collection.{immutable, mutable}
 //noinspection EqualityToSameElements,ComparingDiffCollectionKinds
 class Array_UT {
 
-  val colors: Array[String] = Array("red", "green", "blue", "white")
+  private val colors: Array[String] = Array("red", "green", "blue", "white")
 
   @Test def declaring(): Unit = {
     var arrayChar: Array[Char] = new Array[Char](300)
