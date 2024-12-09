@@ -30,6 +30,11 @@ class Literals_UT {
     assertEquals(4095, x)
   }
 
+  @Test def integers_binary(): Unit = {
+    val x = 0b0100101010101
+    assertEquals(2389, x)
+  }
+
   //noinspection TypeAnnotation
   @Test def unit(): Unit = {
     val x = ()
