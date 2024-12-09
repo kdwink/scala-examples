@@ -3,7 +3,9 @@ package com.redshiftsoft.example.scala
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
-
+/**
+ * https://docs.scala-lang.org/scala3/book/taste-objects.html
+ */
 class Objects_UT {
 
   @Test
