@@ -1,22 +1,40 @@
 package com.redshiftsoft.example.scala
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class Traits_Stack_UT {
 
   @Test def test1(): Unit = {
+    // given
     val stuff = new RealStuff
-    stuff.doStuff()
+
+    // then
+    assertEquals("real stuff", stuff.doStuff())
   }
 
   @Test def test2(): Unit = {
+    // given
     val stuff = new RealStuff with LoggableStuff
-    stuff.doStuff()
+
+    // then
+    assertEquals("loggable real stuff", stuff.doStuff())
   }
 
   @Test def test3(): Unit = {
+    // given
+    val stuff = new RealStuff with TransactionalStuff
+
+    // then
+    assertEquals("transaction real stuff", stuff.doStuff())
+  }
+
+  @Test def test4(): Unit = {
+    // given
     val stuff = new RealStuff with LoggableStuff with TransactionalStuff
-    stuff.doStuff()
+
+    // then
+    assertEquals("transaction loggable real stuff", stuff.doStuff())
   }
 
 
@@ -25,34 +43,28 @@ class Traits_Stack_UT {
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   trait Stuff {
-    def doStuff(): Unit = {
-      println("default stuff")
-    }
+    def doStuff(): String = "default stuff"
   }
 
   trait LoggableStuff extends Stuff {
-    abstract override def doStuff(): Unit = {
-      println("logging enter")
-      super.doStuff()
-      println("logging exit")
+    abstract override def doStuff(): String = {
+      "loggable " + super.doStuff()
     }
   }
 
   trait TransactionalStuff extends Stuff {
-    abstract override def doStuff(): Unit = {
-      println("start TX")
+    abstract override def doStuff(): String = {
       try {
-        super.doStuff()
-        println("commit TX")
+        "transaction " + super.doStuff()
       } catch {
         case e: Exception =>
-          println("rollback TX")
+          "exception happened"
       }
     }
   }
 
   class RealStuff extends Stuff {
-    override def doStuff(): Unit = println("doing real stuff")
+    override def doStuff(): String = "real stuff"
   }
 
 
