@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class Functions_Parameters_Implicit_UT {
 
 
-  @Test def parameterGrouping(): Unit = {
+  @Test def implicitParameterGroup(): Unit = {
 
     def f(x: Int, y: Int)(implicit z: Int) = x + y * z
 
