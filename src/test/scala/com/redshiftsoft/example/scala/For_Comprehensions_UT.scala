@@ -10,7 +10,7 @@ import scala.collection.immutable.Seq
  *
  * https://docs.scala-lang.org/tour/for-comprehensions.html
  */
-class For_Comprehensions_UT {
+class For_Comprehensions_UT:
 
   @Test def for_yield(): Unit =
     val twos = for (x <- 1 to 7) yield {
@@ -63,6 +63,3 @@ class For_Comprehensions_UT {
     val result: Option[(Int, Int)] = for {x <- option1
                                           y <- option2} yield (x * 3, y * 2)
     assertEquals("Some((15,38))", result.toString)
-
-
-}
