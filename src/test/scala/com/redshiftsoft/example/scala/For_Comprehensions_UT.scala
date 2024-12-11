@@ -5,7 +5,12 @@ import org.junit.jupiter.api.Test
 
 import scala.collection.immutable.Seq
 
-class ForYield_UT {
+/**
+ * For Comprehensions
+ *
+ * https://docs.scala-lang.org/tour/for-comprehensions.html
+ */
+class For_Comprehensions_UT {
 
   @Test def for_yield(): Unit = {
     val twos = for (x <- 1 to 7) yield {
