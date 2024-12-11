@@ -5,8 +5,14 @@ import org.junit.jupiter.api.Test
 
 
 /**
- * Methods may define multiple parameter lists. When a method is called with a fewer number of parameter lists, then
- * this will yield a function taking the missing parameter lists as its arguments. This is formally known as currying.
+ *  Methods may define multiple parameter lists.
+ *
+ *  Applications:
+ *  - Drive type inference: The compiler can infer types with fewer hints.
+ *  - Implicit parameters: An entire group can be implicit.
+ *  - Partial application:  When a method is called with a fewer number of parameter lists, then this will yield a
+ *  function taking the missing parameter lists as its arguments. This is formally known as partial application.
+ *
  */
 class Functions_Parameters_Grouping_UT {
 
