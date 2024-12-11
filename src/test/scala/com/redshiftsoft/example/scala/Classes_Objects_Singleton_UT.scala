@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 /**
  * https://docs.scala-lang.org/scala3/book/taste-objects.html
  */
-class Classes_Singleton_Objects_UT {
+class Classes_Objects_Singleton_UT {
 
   @Test
   def basicUsage(): Unit = {
