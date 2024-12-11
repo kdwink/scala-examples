@@ -4,16 +4,18 @@ import com.redshiftsoft.example.scalatest.BaseSpec
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
-
+/**
+ * Higher order functions take other functions as parameters or return a function as a result.
+ *
+ * https://docs.scala-lang.org/tour/higher-order-functions.html
+ */
 class Functions_HighOrder_UT extends BaseSpec {
 
   "function" should "invoke passed function" in {
 
     def stringFunc(s: String): Char = s.charAt(2)
 
-    def safeString(s: String, f: String => Char): Char = {
-      if (s == null) 'z' else f(s)
-    }
+    def safeString(s: String, f: String => Char): Char = if (s == null) 'z' else f(s)
 
     assertEquals('c', safeString("abc", stringFunc))
     assertEquals('z', safeString(null, stringFunc))
