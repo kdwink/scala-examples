@@ -27,7 +27,7 @@ class Class_Constructor_UT {
     assertEquals("User(keith)", u.toString)
   }
 
-  @Test def constructor_withVal(): Unit = {
+  @Test def constructor_parameters_with_val_are_public_and_immutable(): Unit = {
     class User(val name: String) {
       def greet: String = s"hello from $name"
 
@@ -37,6 +37,19 @@ class Class_Constructor_UT {
     val u = new User("keith")
     // Can't do this unless constructor arg has 'val' modifier.
     assertEquals("keith", u.name)
+  }
+
+  @Test def constructor_parameters_with_var_are_public_and_mutable(): Unit = {
+    class User(var name: String) {
+      def greet: String = s"hello from $name"
+
+      override def toString = s"User($name)"
+    }
+
+    val u = new User("keith")
+    u.name = "George"
+    // Can't do this unless constructor arg has 'val' modifier.
+    assertEquals("George", u.name)
   }
 
   @Test def constructor_alternate(): Unit = {
