@@ -8,13 +8,12 @@ class Class_Constructor_UT {
 
   @Test def constructor(): Unit = {
     // given
-    class User(n: String) {
+    class User(n: String):
       val name: String = n
 
       def greet: String = s"hello from $name"
 
       override def toString = s"User($name)"
-    }
 
     // when -- invoked WITHOUT 'new' keyword.
     val u = User("keith")
@@ -28,11 +27,11 @@ class Class_Constructor_UT {
   }
 
   @Test def constructor_parameters_with_val_are_public_and_immutable(): Unit = {
-    class User(val name: String) {
+    class User(val name: String):
       def greet: String = s"hello from $name"
 
       override def toString = s"User($name)"
-    }
+
 
     val u = new User("keith")
     // Can't do this unless constructor arg has 'val' modifier.
@@ -40,11 +39,10 @@ class Class_Constructor_UT {
   }
 
   @Test def constructor_parameters_with_var_are_public_and_mutable(): Unit = {
-    class User(var name: String) {
+    class User(var name: String):
       def greet: String = s"hello from $name"
 
       override def toString = s"User($name)"
-    }
 
     val u = new User("keith")
     u.name = "George"
@@ -53,13 +51,12 @@ class Class_Constructor_UT {
   }
 
   @Test def constructor_alternate(): Unit = {
-    class User(n: String) {
+    class User(n: String):
       val name: String = n
 
       def this(x: String, y: String) = this(x + "-" + y)
 
       def this() = this("John", "Smith")
-    }
 
     val twoArg = new User("keith", "winkler")
     assertEquals("keith-winkler", twoArg.name)
