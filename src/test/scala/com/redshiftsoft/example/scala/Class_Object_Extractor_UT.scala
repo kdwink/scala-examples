@@ -11,7 +11,7 @@ import scala.util.Random
  * An extractor object is an object with an unapply method. Whereas the apply method is like a constructor which takes
  * arguments and creates an object, the unapply takes an object and tries to give back the arguments.
  */
-class Classes_Object_Extractor_UT:
+class Class_Object_Extractor_UT:
 
 
   object CustomerID:
