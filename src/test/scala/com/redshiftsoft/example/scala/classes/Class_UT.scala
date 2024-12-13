@@ -44,7 +44,7 @@ class Class_UT {
    * Private members are only visible to the class/trait itself and to its companion object. Protected members are 
    * also visible to subclasses of the class.
    */
-  @Test def access_modifiers(): Unit =
+  @Test def field_access_modifiers(): Unit =
 
     class Person:
       
