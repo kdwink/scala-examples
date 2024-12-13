@@ -81,15 +81,15 @@ class Class_UT {
     assertEquals(77, car.thing)
 
   @Test def setter(): Unit =
-    class Person {
+
+    class Person:
       private var privateName = ""
 
       def name: String = privateName
 
-      def name_=(value: String): Unit = {
+      def name_=(value: String): Unit =
         privateName = value
-      }
-    }
+
     val john = new Person
     john.name = "John Doe"
     assertEquals("John Doe", john.name)
