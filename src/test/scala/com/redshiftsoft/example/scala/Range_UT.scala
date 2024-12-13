@@ -8,14 +8,23 @@ import scala.math.BigDecimal
 class Range_UT {
 
   @Test
-  def declaring(): Unit = {
+  def declaring_to(): Unit = {
     // given
-    val r1 = (1 to 100)
-    val r2 = 1 to 100
+    val r = 1 to 100
     // then
-    assertEquals("scala.collection.immutable.Range$Inclusive", r1.getClass.getName)
-    assertEquals("scala.collection.immutable.Range$Inclusive", r2.getClass.getName)
+    assertEquals("scala.collection.immutable.Range$Inclusive", r.getClass.getName)
+    assertEquals(100, r.last)
   }
+
+  @Test
+  def declaring_until(): Unit = {
+    // given
+    val r = 1 until 100
+    // then
+    assertEquals("scala.collection.immutable.Range$Exclusive", r.getClass.getName)
+    assertEquals(99, r.last)
+  }
+
 
   @Test
   def literals(): Unit = {
