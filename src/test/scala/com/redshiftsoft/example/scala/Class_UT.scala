@@ -12,6 +12,11 @@ class Class_UT {
     val u = new User
     assertTrue(u.isInstanceOf[User])
 
+  @Test def with_constructor(): Unit =
+    class User(name: String, age: Int)
+    val u = new User("joe", 99)
+    assertTrue(u.isInstanceOf[User])
+
   @Test def inheritance(): Unit =
     class A:
       def method1 = "hello 1"
