@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
  */
 class Expressions_Match_UT {
 
-  @Test def match_simple(): Unit = {
+  @Test def match_simple(): Unit =
     val x = 100
     val message = x match {
       case 2 | 3 | 7 =>
@@ -28,9 +28,8 @@ class Expressions_Match_UT {
         "other"
     }
     assertEquals("error", message)
-  }
 
-  @Test def match_with_guard(): Unit = {
+  @Test def match_with_guard(): Unit =
     val x = Option(9)
     val message = x match {
       case Some(x) if x < 10 =>
@@ -41,9 +40,8 @@ class Expressions_Match_UT {
         "case 3"
     }
     assertEquals("case 1", message)
-  }
 
-  @Test def match_class(): Unit = {
+  @Test def match_class(): Unit =
     val x: Any = ""
     val message = x match {
       case _: Int =>
@@ -54,9 +52,8 @@ class Expressions_Match_UT {
         "case 3"
     }
     assertEquals("case 2", message)
-  }
 
-  @Test def match_other(): Unit = {
+  @Test def match_other(): Unit =
     val x = 100
     val message = x match {
       case 2 | 3 | 7 =>
@@ -65,9 +62,8 @@ class Expressions_Match_UT {
         "could not find case"
     }
     assertEquals("could not find case", message)
-  }
 
-  @Test def matchE_OtherWithBindVariable(): Unit = {
+  @Test def matchE_OtherWithBindVariable(): Unit =
     val x = 100
     val message = x match {
       case 2 | 3 | 7 =>
@@ -76,9 +72,8 @@ class Expressions_Match_UT {
         s"could not find case for: $somethingOther"
     }
     assertEquals("could not find case for: 100", message)
-  }
 
-  @Test def matchTuples(): Unit = {
+  @Test def matchTuples(): Unit =
     val code = ('h', 204, true) match {
       case (_, _, false) => 501
       case ('c', _, true) => 302
@@ -86,10 +81,9 @@ class Expressions_Match_UT {
       case (c, x, true) => -1
     }
     assertEquals(204, code)
-  }
 
   @annotation.nowarn
-  @Test def matchingOption_withShadowingInPatternMatching(): Unit = {
+  @Test def matchingOption_withShadowingInPatternMatching(): Unit =
     // cautionary tale
     val someValue = 100
     val code = Some(3) match {
@@ -100,9 +94,8 @@ class Expressions_Match_UT {
       case _ => "other"
     }
     assertEquals("but get this because of shadowing: 3", code)
-  }
 
-  @Test def matchingOption_wtfScalaVariableCaseAffectsLogic(): Unit = {
+  @Test def matchingOption_wtfScalaVariableCaseAffectsLogic(): Unit =
     val SomeValue = 100
     val code = Some(3) match {
       case Some(SomeValue) =>
@@ -112,7 +105,6 @@ class Expressions_Match_UT {
       case _ => "other"
     }
     assertEquals("expect this", code)
-  }
 
 
 }
