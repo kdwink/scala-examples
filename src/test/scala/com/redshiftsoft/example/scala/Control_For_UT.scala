@@ -49,4 +49,13 @@ class Control_For_UT:
     var i = 0
     for s <- seq do i = i + 1
     assertEquals(5, i)
-  
+
+  @Test def for_do_two(): Unit =
+    val seq = Seq("a", "bb", "ccc", "dddd", "eeeee")
+    var i = 0
+    var j = 0
+    for s <- seq do 
+      i = i + 1 
+      j = j + 1
+    assertEquals(5, i)
+    assertEquals(5, j)
