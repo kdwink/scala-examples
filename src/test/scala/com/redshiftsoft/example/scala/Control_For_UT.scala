@@ -43,3 +43,10 @@ class Control_For_UT:
       buffer.append(seq(i))
     }
     assertEquals(Seq("a", "bb", "ccc", "dddd", "eeeee"), buffer.toSeq)
+
+  @Test def for_do(): Unit =
+    val seq = Seq("a", "bb", "ccc", "dddd", "eeeee")
+    var i = 0
+    for s <- seq do i = i + 1
+    assertEquals(5, i)
+  
