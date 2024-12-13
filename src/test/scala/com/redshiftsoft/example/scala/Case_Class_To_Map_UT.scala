@@ -10,7 +10,7 @@ class Case_Class_To_Map_UT {
    * Demonstrates different ways a case class can be converted to a map of key/values.
    */
   @Test
-  def caseClassToMap(): Unit = {
+  def caseClassToMap(): Unit =
 
     // - - - - - - - - -
     // reflection for key and value
@@ -51,8 +51,5 @@ class Case_Class_To_Map_UT {
     assertEquals("testName", map3("name"))
     assertEquals("true", map3("isThief"))
     assertEquals("22", map3("age"))
-
-  }
-
 
 }
