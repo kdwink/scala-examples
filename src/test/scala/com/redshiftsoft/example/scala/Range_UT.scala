@@ -14,6 +14,17 @@ class Range_UT {
     // then
     assertEquals("scala.collection.immutable.Range$Inclusive", r.getClass.getName)
     assertEquals(100, r.last)
+    assertEquals(100, r.size)
+  }
+
+  @Test
+  def declaring_to_by(): Unit = {
+    // given
+    val r = 1 to 100 by 17
+    // then
+    assertEquals("scala.collection.immutable.Range$Inclusive", r.getClass.getName)
+    assertEquals(86, r.last)
+    assertEquals(6, r.size)
   }
 
   @Test
@@ -23,6 +34,7 @@ class Range_UT {
     // then
     assertEquals("scala.collection.immutable.Range$Exclusive", r.getClass.getName)
     assertEquals(99, r.last)
+    assertEquals(99, r.size)
   }
 
 
