@@ -17,18 +17,6 @@ class Class_UT {
     val u = new User("joe", 99)
     assertTrue(u.isInstanceOf[User])
 
-  @Test def type_parameters(): Unit =
-
-    class Foo[Type](element: Type) {
-      def get: Type = element
-    }
-
-    val fooString = new Foo("hello")
-    val fooInt = new Foo(42)
-
-    assertEquals(42, fooInt.get)
-    assertEquals("hello", fooString.get)
-
   @Test def abstract_class(): Unit =
     abstract class Car:
       def size: String

@@ -33,4 +33,3 @@ class Class_Generic_UT:
 
     // then
     assertEquals(("ccc", "bbb", "aaa"), answer)
-
