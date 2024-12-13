@@ -85,10 +85,19 @@ class Class_UT {
     car(77)
     assertEquals(77, car.thing)
 
-  @Test def setter(): Unit =
+  /**
+   * Private members are only visible to the class/trait itself and to its companion object. Protected members are 
+   * also visible to subclasses of the class.
+   */
+  @Test def access_modifiers(): Unit =
 
     class Person:
+      
+      // can be accessed internally only
       private var privateName = ""
+      
+      // can be accessed by subclass
+      protected var protectedName = ""
 
       def name: String = privateName
 
