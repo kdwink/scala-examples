@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala
+package com.redshiftsoft.example.scala.classes
 
 import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
 import org.junit.jupiter.api.Test
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
  *
  * copy, equals, hashCode, toString, unapply
  */
-class Case_Class_UT {
+class Class_Case_UT {
 
   case class Character(name: String, isThief: Boolean, age: Int = 18)
 

@@ -1,10 +1,9 @@
-package com.redshiftsoft.example.scala
-
+package com.redshiftsoft.example.scala.classes
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class Case_Class_To_Map_UT {
+class Class_Case_To_Map_UT {
 
   /**
    * Demonstrates different ways a case class can be converted to a map of key/values.

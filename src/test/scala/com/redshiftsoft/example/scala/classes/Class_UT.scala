@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala
+package com.redshiftsoft.example.scala.classes
 
 import org.junit.*
 import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
