@@ -3,12 +3,12 @@ package com.redshiftsoft.example.scala.classes
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
+
+/**
+ * https://docs.scala-lang.org/scala3/book/ca-extension-methods.html
+ */
 class Class_Inheritance_Extension_UT:
 
-
-  /**
-   * https://docs.scala-lang.org/scala3/book/ca-extension-methods.html
-   */
   @Test def inheritance_extension(): Unit =
     class A(var field: Long):
       def method1 = "hello 1"
