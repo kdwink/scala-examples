@@ -10,7 +10,7 @@ import scala.util.Random
  * They are often used to provide an alternative to enums. Since they can be only extended in a single file, the
  * compiler knows every possible subtypes and can reason about it.
  */
-class Traits_Sealed_UT {
+class Traits_Sealed_UT:
 
   // - - - - - - - - - - - - - - - - - - - - -
 
@@ -47,5 +47,3 @@ class Traits_Sealed_UT {
       case No2 => println("No")
       case Yes2 => println("Yes")
     }
-
-}
