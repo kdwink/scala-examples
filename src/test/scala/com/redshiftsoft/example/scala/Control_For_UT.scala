@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ListBuffer
 
-class For_UT {
+class Control_For_UT {
 
   @Test def simple(): Unit = {
     var count = 0
