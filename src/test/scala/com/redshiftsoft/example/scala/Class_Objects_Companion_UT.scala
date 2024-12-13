@@ -1,6 +1,6 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 /**
@@ -12,7 +12,7 @@ class Class_Objects_Companion_UT {
   @Test
   def objectApplyAsFactoryPattern(): Unit = {
 
-    class MyObject {
+    class MyClass {
       val WHATEVER = 100
       private var age: Int = 10
       private var name: String = "george"
@@ -21,17 +21,17 @@ class Class_Objects_Companion_UT {
         name
       }
     }
-    object MyObject {
+    object MyClass {
 
-      def apply(s: String): MyObject = {
-        val m = new MyObject
+      def apply(s: String): MyClass = {
+        val m = new MyClass
         m.name = s
         m.age = 100
         m
       }
     }
 
-    val s = MyObject("Keith")
+    val s = MyClass("Keith")
 
     assertEquals("Keith", s.getName)
   }
