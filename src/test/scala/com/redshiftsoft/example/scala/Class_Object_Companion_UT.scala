@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 /**
  * https://docs.scala-lang.org/scala3/book/taste-objects.html
  */
-class Class_Objects_Companion_UT {
+class Class_Object_Companion_UT {
 
   /* Companion object can access private fields of class. */
   @Test
