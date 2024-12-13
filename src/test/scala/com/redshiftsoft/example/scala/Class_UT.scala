@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test
 
 class Class_UT {
 
-  @Test def simplest(): Unit = {
+  @Test def simplest(): Unit =
     class User
     val u = new User
     assertTrue(u.isInstanceOf[User])
-  }
 
-  @Test def inheritance(): Unit = {
+  @Test def inheritance(): Unit =
     class A {
       def method1 = "hello 1"
 
@@ -27,9 +26,8 @@ class Class_UT {
     val c = new C
     assertEquals("hello 1", c.method1)
     assertEquals("hello B", c.method2)
-  }
 
-  @Test def polymorphism(): Unit = {
+  @Test def polymorphism(): Unit =
     class A {
       def method1 = "hello 1"
 
@@ -46,9 +44,8 @@ class Class_UT {
     assertEquals("hello B", c1.method2)
     assertEquals("hello B", c1.method2)
     assertEquals("hello B", c1.method2)
-  }
 
-  @Test def typeParameters(): Unit = {
+  @Test def typeParameters(): Unit =
 
     class Foo[Type](element: Type) {
       def get: Type = element
@@ -59,9 +56,8 @@ class Class_UT {
 
     assertEquals(42, fooInt.get)
     assertEquals("hello", fooString.get)
-  }
 
-  @Test def abstractClass(): Unit = {
+  @Test def abstractClass(): Unit =
     abstract class Car {
       def size: String
     }
@@ -73,9 +69,8 @@ class Class_UT {
     assertEquals(2010, car.year)
     assertEquals(true, car.automatic)
     assertEquals("small", car.size)
-  }
 
-  @Test def applyMethod(): Unit = {
+  @Test def applyMethod(): Unit =
     class Car {
       var thing: Int = 100
 
@@ -86,9 +81,8 @@ class Class_UT {
     val car = new Car
     car(77)
     assertEquals(77, car.thing)
-  }
 
-  @Test def setter(): Unit = {
+  @Test def setter(): Unit =
     class Person {
       private var privateName = ""
 
@@ -101,7 +95,5 @@ class Class_UT {
     val john = new Person
     john.name = "John Doe"
     assertEquals("John Doe", john.name)
-
-  }
 
 }
