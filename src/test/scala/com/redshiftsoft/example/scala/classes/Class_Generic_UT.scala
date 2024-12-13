@@ -21,7 +21,7 @@ class Class_Generic_UT:
       elements = elements.tail
       currentTop
 
-  @Test def example(): Unit =
+  @Test def example_string(): Unit =
     // given
     val s = Stack[String]()
     s.push("aaa")
@@ -33,3 +33,16 @@ class Class_Generic_UT:
 
     // then
     assertEquals(("ccc", "bbb", "aaa"), answer)
+
+  @Test def example_long(): Unit =
+    // given
+    val s = Stack[Long]()
+    s.push(10L)
+    s.push(20L)
+    s.push(30L)
+
+    // when
+    val answer = (s.pop(), s.pop(), s.pop())
+
+    // then
+    assertEquals((30L, 20L, 10L), answer)
