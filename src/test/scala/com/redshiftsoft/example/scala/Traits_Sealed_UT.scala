@@ -37,7 +37,7 @@ class Traits_Sealed_UT {
 
     x1 match {
       case No1 => println("No")
-      case Yes1 => println("No")
+      case Yes1 => println("Yes")
     }
 
 
@@ -45,7 +45,7 @@ class Traits_Sealed_UT {
 
     x2 match {
       case No2 => println("No")
-      case Yes2 => println("No")
+      case Yes2 => println("Yes")
     }
 
 }
