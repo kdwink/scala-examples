@@ -1,7 +1,7 @@
 package com.redshiftsoft.example.scala
 
 import org.junit.*
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
 import org.junit.jupiter.api.Test
 
 
@@ -45,7 +45,7 @@ class Class_UT {
     assertEquals("hello B", c1.method2)
     assertEquals("hello B", c1.method2)
 
-  @Test def typeParameters(): Unit =
+  @Test def type_parameters(): Unit =
 
     class Foo[Type](element: Type) {
       def get: Type = element
@@ -57,27 +57,25 @@ class Class_UT {
     assertEquals(42, fooInt.get)
     assertEquals("hello", fooString.get)
 
-  @Test def abstractClass(): Unit =
-    abstract class Car {
+  @Test def abstract_class(): Unit =
+    abstract class Car:
       def size: String
-    }
+
     // Wow, implement abstract method with constructor parameter!
-    class HondaFit(val year: Int, val automatic: Boolean, val size: String) extends Car {
-    }
+    class HondaFit(val year: Int, val automatic: Boolean, val size: String) extends Car
 
     val car = new HondaFit(2010, true, "small")
     assertEquals(2010, car.year)
     assertEquals(true, car.automatic)
     assertEquals("small", car.size)
 
-  @Test def applyMethod(): Unit =
-    class Car {
+  @Test def apply_method(): Unit =
+    class Car:
       var thing: Int = 100
 
-      def apply(x: Int): Unit = {
+      def apply(x: Int): Unit =
         thing = x
-      }
-    }
+
     val car = new Car
     car(77)
     assertEquals(77, car.thing)
