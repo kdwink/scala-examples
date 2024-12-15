@@ -29,5 +29,10 @@ class String_Interpolation_UT {
     assertEquals("value: 16.25    ", f"value: ${d * 2}%-9s")
   }
 
+  @Test def raw(): Unit = {
+    val test = raw"a \n b"
+
+    assertEquals("a \\n b", test)
+  }
 
 }
