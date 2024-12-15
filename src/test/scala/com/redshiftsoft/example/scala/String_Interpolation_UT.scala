@@ -57,3 +57,20 @@ class String_Interpolation_UT:
     // then
     assertEquals(Point(1.0, -2.0), pt)
 
+  @Test def custom_handling_variables(): Unit =
+    // given
+    case class Point(x: Double, y: Double)
+
+    extension (sc: StringContext)
+      private def p(args: Any*): Point =
+        // reuse the `s`-interpolator and then split on ','
+        val pts = sc.s(args *).split(",", 2).map(_.toDoubleOption.getOrElse(0.0))
+
+        Point(pts(0), pts(1))
+
+    // when
+    val myX = 12.0
+    val pt = p"${myX/5}, $myX"
+
+    // then
+    assertEquals(Point(2.4, 12.0), pt)
