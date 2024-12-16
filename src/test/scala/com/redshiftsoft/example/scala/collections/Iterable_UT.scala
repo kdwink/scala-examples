@@ -1,16 +1,15 @@
 package com.redshiftsoft.example.scala.collections
 
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{immutable, mutable}
 
+class Iterable_UT:
 
-class Iterable_UT {
-
-  @Test def construct(): Unit = {
+  @Test def construct(): Unit =
     val i1 = Iterable("aa", "bb", "cc", "dd", "ee")
     val i2 = immutable.Iterable("aa", "bb", "cc", "dd", "ee")
     val i3 = scala.collection.Iterable("aa", "bb", "cc", "dd", "ee")
@@ -20,9 +19,8 @@ class Iterable_UT {
     assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
     assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
     assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
-  }
 
-  @Test def assignment(): Unit = {
+  @Test def assignment(): Unit =
 
     // iterable in mutable can only be assigned mutable
     val i1: mutable.Iterable[String] = ArrayBuffer("a", "b", "c")
@@ -39,9 +37,8 @@ class Iterable_UT {
      */
     val i5: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toIndexedSeq
     val i6: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toSeq
-  }
 
-  @Test def returnTypeOfMap(): Unit = {
+  @Test def returnTypeOfMap(): Unit =
     val i1 = Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i2 = immutable.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i3 = scala.collection.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
@@ -51,5 +48,4 @@ class Iterable_UT {
     assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
     assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
     assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
-  }
-}
+
