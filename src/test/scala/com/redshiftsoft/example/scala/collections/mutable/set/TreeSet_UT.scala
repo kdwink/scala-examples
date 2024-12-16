@@ -26,9 +26,7 @@ class TreeSet_UT:
 
     for (i <- 1 to 20_000) {
       val value: String = String.valueOf(Random.nextLong())
-      if (collection.contains(value)) {
-        printf("yes")
-      }
+      if (collection.contains(value)) printf("yes")
     }
 
     printf("elapsed: " + (System.currentTimeMillis() - startTime))
