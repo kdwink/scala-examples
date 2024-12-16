@@ -1,16 +1,16 @@
 package com.redshiftsoft.example.scala.collections
 
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{immutable, mutable}
 
 
-class Seq_UT {
+class Seq_UT:
 
-  @Test def differentSeqs(): Unit = {
+  @Test def differentSeqs(): Unit =
 
     // Just a type alias for scala.collection.immutable.Seq[A]
     // Available without import, this the default if you don't qualify.
@@ -26,9 +26,8 @@ class Seq_UT {
 
     assertEquals("scala.collection.immutable.$colon$colon", s1.getClass.getName)
 
-  }
 
-  @Test def assignment(): Unit = {
+  @Test def assignment(): Unit =
 
     // Seq in mutable can only be assigned mutable
     val i1: mutable.Seq[String] = ArrayBuffer("a", "b", "c")
@@ -39,16 +38,13 @@ class Seq_UT {
     val i3: collection.Seq[String] = ArrayBuffer("a", "b", "c")
     val i4: collection.Seq[String] = Vector("a", "b", "c")
 
-    /**
-     * Both of the following conversions iterate over the elements and
-     * create new data structures.
-     */
+    // Both of the following conversions iterate over the elements and create new data structures.
+    //
     val mutableBuffer = ArrayBuffer("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m")
     val i5: immutable.Seq[String] = mutableBuffer.toIndexedSeq
     val i6: immutable.Seq[String] = mutableBuffer.toSeq
-  }
 
-  @Test def returnTypeOfMap(): Unit = {
+  @Test def returnTypeOfMap(): Unit =
     val i1 = Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i2 = immutable.Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i3 = collection.Seq("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
@@ -58,5 +54,4 @@ class Seq_UT {
     assertEquals("scala.collection.immutable.$colon$colon", i2.getClass.getName)
     assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
     assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
-  }
-}
+
