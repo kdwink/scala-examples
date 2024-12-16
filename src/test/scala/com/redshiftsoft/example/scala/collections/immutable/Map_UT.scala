@@ -42,9 +42,11 @@ class Map_UT:
     assertEquals(16715775, sum)
 
   @Test def testToSeq(): Unit =
+    // when
     val resultList: Seq[(String, Int)] = colorMap.toSeq
+    // then
     assertEquals(3, resultList.size)
-    assertTrue(resultList(1).isInstanceOf[Tuple2[String, Int]])
+    assertTrue(resultList(1).isInstanceOf[(String, Int)])
 
   @Test def mapToTuples(): Unit =
     val tuplesIterator: Iterable[(String, Int)] = colorMap.keys.map(k => (k, colorMap(k)))
