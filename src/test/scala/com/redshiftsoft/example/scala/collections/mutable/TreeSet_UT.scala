@@ -9,29 +9,23 @@ import scala.collection.mutable.TreeSet
 import scala.util.Random
 
 
-class TreeSet_UT {
+class TreeSet_UT:
 
-  @Test def construction(): Unit = {
+  @Test def construction(): Unit =
     val set = mutable.TreeSet(1, 10, 100, 1000, 10000)
 
     assertTrue(set.contains(1000))
     assertFalse(set.contains(2000))
-  }
 
-  @Test def speed(): Unit = {
+  @Test def speed(): Unit =
 
     //val collection = scala.collection.mutable.Set("")
     val collection = mutable.TreeSet.empty[String]
-
-
     val startTime = System.currentTimeMillis()
 
-    for (i <- 1 to 20000) {
-      val value: String = String.valueOf(Random.nextLong())
-      collection.add(value)
-    }
+    for (i <- 1 to 20_000) collection.add(String.valueOf(Random.nextLong()))
 
-    for (i <- 1 to 20000) {
+    for (i <- 1 to 20_000) {
       val value: String = String.valueOf(Random.nextLong())
       if (collection.contains(value)) {
         printf("yes")
@@ -39,6 +33,3 @@ class TreeSet_UT {
     }
 
     printf("elapsed: " + (System.currentTimeMillis() - startTime))
-  }
-
-}
