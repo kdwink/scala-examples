@@ -35,9 +35,7 @@ class Map_UT:
 
   @Test def iterating(): Unit =
     var sum = 0
-    for (pair <- colorMap) {
-      sum = sum + pair._2
-    }
+    for (pair <- colorMap) sum = sum + pair._2
 
     assertEquals(16715775, sum)
 
