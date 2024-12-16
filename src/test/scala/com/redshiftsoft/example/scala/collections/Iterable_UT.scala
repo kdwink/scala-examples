@@ -31,10 +31,7 @@ class Iterable_UT:
     val i3: scala.collection.Iterable[String] = ArrayBuffer("a", "b", "c")
     val i4: scala.collection.Iterable[String] = Vector("a", "b", "c")
 
-    /**
-     * Both of the following conversions iterate over the elements and
-     * create new data structures.
-     */
+    // Both of the following conversions iterate over the elements and create new data structures.
     val i5: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toIndexedSeq
     val i6: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toSeq
 
