@@ -1,5 +1,4 @@
-package com.redshiftsoft.example.scala.collections.mutable
-
+package com.redshiftsoft.example.scala.collections.mutable.map
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

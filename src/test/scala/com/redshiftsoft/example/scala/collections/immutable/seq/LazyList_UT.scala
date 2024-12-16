@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala.collections.immutable
+package com.redshiftsoft.example.scala.collections.immutable.seq
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

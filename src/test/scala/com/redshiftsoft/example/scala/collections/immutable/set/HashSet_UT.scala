@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala.collections.immutable
+package com.redshiftsoft.example.scala.collections.immutable.set
 
 import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test

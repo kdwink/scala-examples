@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala.collections.mutable
+package com.redshiftsoft.example.scala.collections.mutable.seq
 
 import com.redshiftsoft.example.scalatest.BaseSpec
 
