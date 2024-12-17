@@ -78,6 +78,16 @@ class Iterable_UT:
     assertEquals(10, nums.size)
     assertEquals("ArrayBuffer(5, 6, 7)", slice1.toString)
 
+  @Test def take(): Unit =
+    // given
+    val buffer = collection.mutable.Buffer[String]("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh")
+    // when
+    val slice1: mutable.Buffer[String] = buffer.take(3)
+    // then
+    assertEquals("ArrayBuffer(aa, bb, cc)", slice1.toString)
+    assertEquals("ArrayBuffer(aa, bb, cc, dd, ee, ff, gg, hh)", buffer.toString)
+
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // stream
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

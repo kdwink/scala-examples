@@ -45,15 +45,6 @@ class Buffer_UT:
     // then
     assertEquals(103, nums.size)
 
-  @Test def take(): Unit =
-    // given
-    val buffer = collection.mutable.Buffer[String]("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh")
-    // when
-    val slice1: mutable.Buffer[String] = buffer.take(3)
-    // then
-    assertEquals("ArrayBuffer(aa, bb, cc)", slice1.toString)
-    assertEquals("ArrayBuffer(aa, bb, cc, dd, ee, ff, gg, hh)", buffer.toString)
-
   @Test def drop(): Unit =
     val buffer = collection.mutable.Buffer[String]("aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh")
     // when
