@@ -50,6 +50,10 @@ class Iterable_UT:
   // structure
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+  @Test def head(): Unit =
+    val list = Iterable("aaa", "bbb", "ccc")
+    assertEquals("aaa", list.head)
+
   //noinspection ScalaUnusedExpression
   @Test def head_throws_when_empty(): Unit =
     val list = List()
@@ -59,6 +63,10 @@ class Iterable_UT:
     } catch {
       case e: NoSuchElementException =>
     }
+
+  @Test def tail(): Unit =
+    val list = Iterable("aaa", "bbb", "ccc", "ddd", "eee", "fff")
+    assertEquals("List(bbb, ccc, ddd, eee, fff)", list.tail.toString())
 
   //noinspection ScalaUnusedExpression
   @Test def tail_throws_when_empty(): Unit =
