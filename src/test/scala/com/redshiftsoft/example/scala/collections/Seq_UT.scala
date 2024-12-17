@@ -55,3 +55,12 @@ class Seq_UT:
     assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
     assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
 
+  @Test def sortBy(): Unit =
+    // given
+    val list = List("a", "zz", "ccc", "bb", "ddddd", "eee", "fffffff", "gggg")
+
+    // when
+    val sortedList: List[String] = list.sortBy(_.length)
+
+    // then
+    assertEquals(List("a", "zz", "bb", "ccc", "eee", "gggg", "ddddd", "fffffff"), sortedList)

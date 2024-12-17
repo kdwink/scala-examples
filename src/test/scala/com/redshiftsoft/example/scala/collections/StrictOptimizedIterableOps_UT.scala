@@ -33,13 +33,3 @@ class StrictOptimizedIterableOps_UT:
     assertEquals(6, flatList.size)
     assertEquals("aa,bb,11,22,--,++", flatList.mkString(","))
 
-
-  @Test def sortBy(): Unit =
-    // given
-    val list = List("a", "zz", "ccc", "bb", "ddddd", "eee", "fffffff", "gggg")
-
-    // when
-    val sortedList: List[String] = list.sortBy(_.length)
-
-    // then
-    assertEquals(List("a", "zz", "bb", "ccc", "eee", "gggg", "ddddd", "fffffff"), sortedList)
