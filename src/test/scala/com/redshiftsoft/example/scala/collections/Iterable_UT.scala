@@ -70,6 +70,14 @@ class Iterable_UT:
       case e: UnsupportedOperationException =>
     }
 
+  @Test def slice(): Unit =
+    val nums = collection.mutable.Buffer(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    // when
+    val slice1: mutable.Buffer[Int] = nums.slice(4, 7)
+    // then
+    assertEquals(10, nums.size)
+    assertEquals("ArrayBuffer(5, 6, 7)", slice1.toString)
+
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // stream
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
