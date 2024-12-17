@@ -10,7 +10,7 @@ import scala.annotation.tailrec
 /**
  * Immutable linked list. Better to use Vector.
  */
-//noinspection ZeroIndexToHead
+//noinspection ZeroIndexToHead,AccessorLikeMethodIsUnit
 class List_UT:
 
   @Test def declaring(): Unit =
@@ -52,11 +52,6 @@ class List_UT:
     visit(inputList, output)
     assertEquals("1,2,3,4,5,", output.toString())
 
-  @Test def sum(): Unit =
-    val numbers = List(1, 2, 3, 4)
-    val result = numbers.sum
-    assertEquals(10, result)
-
   @Test def empty(): Unit =
     val list1 = List()
     val list2 = List(1, 2, 3)
@@ -64,53 +59,11 @@ class List_UT:
     assertFalse(list2.isEmpty)
     assertEquals(Nil, list1)
 
-  //noinspection ScalaUnusedExpression
-  @Test def empty_head(): Unit =
-    val list = List()
-    try {
-      list.head
-      fail()
-    } catch {
-      case e: NoSuchElementException =>
-    }
-
-  //noinspection ScalaUnusedExpression
-  @Test def empty_tail(): Unit =
-    val list = List()
-    try {
-      list.tail
-      fail()
-    } catch {
-      case e: UnsupportedOperationException =>
-    }
-
   @Test def splitAt(): Unit =
     val list = List("aa", "bb", "cc", "dd", "ee", "ff", "gg")
     val listTuple = list.splitAt(4)
     assertEquals(4, listTuple._1.size)
     assertEquals(3, listTuple._2.size)
-
-  @Test def zip(): Unit =
-    val list1 = List("aa", "bb", "cc", "dd", "ee", "ff", "gg")
-    val list2 = List("11", "22", "33", "44", "44", "66", "77")
-    val tupleList = list1.zip(list2)
-    assertEquals(7, tupleList.size)
-    assertEquals("bb", tupleList(1)._1)
-    assertEquals("22", tupleList(1)._2)
-
-  @Test def flatten(): Unit =
-    // given
-    val list1 = List("aa", "bb")
-    val list2 = List("11", "22")
-    val list3 = List("--", "++")
-    val list4 = List(list1, list2, list3)
-
-    // when
-    val flatList = list4.flatten
-
-    // then
-    assertEquals(6, flatList.size)
-    assertEquals("aa,bb,11,22,--,++", flatList.mkString(","))
 
   @Test def filter(): Unit =
     val list1 = List("aa", "bb", "cc")
@@ -125,18 +78,13 @@ class List_UT:
 
     assertEquals(0, list2.size)
 
-  @Test def sortBy(): Unit =
-    val list = List("a", "ccc", "bb", "ddddd", "eee", "fffffff", "gggg")
-    val sortedList: List[String] = list.sortBy(_.length)
-    assertEquals(List("a", "bb", "ccc", "eee", "gggg", "ddddd", "fffffff"), sortedList)
-
   @Test def mkString(): Unit =
     assertEquals("aa, bb, cc", List("aa", "bb", "cc").mkString(", "))
 
   @Test def testToString(): Unit =
     assertEquals("List(aa, bb, cc)", List("aa", "bb", "cc").toString)
 
-  @Test def testToBuffer(): Unit =
+  @Test def toBuffer(): Unit =
     assertEquals("ArrayBuffer(aa, bb, cc)", List("aa", "bb", "cc").toBuffer.toString())
 
   @Test def find_stops_at_first_found(): Unit =

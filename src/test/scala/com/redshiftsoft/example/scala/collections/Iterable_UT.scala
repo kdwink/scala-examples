@@ -1,7 +1,7 @@
 package com.redshiftsoft.example.scala.collections
 
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.{assertEquals, fail}
 import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ArrayBuffer
@@ -46,3 +46,26 @@ class Iterable_UT:
     assertEquals("scala.collection.immutable.$colon$colon", i3.getClass.getName)
     assertEquals("scala.collection.mutable.ArrayBuffer", i4.getClass.getName)
 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // 
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  //noinspection ScalaUnusedExpression
+  @Test def head_throws_when_empty(): Unit =
+    val list = List()
+    try {
+      list.head
+      fail()
+    } catch {
+      case e: NoSuchElementException =>
+    }
+
+  //noinspection ScalaUnusedExpression
+  @Test def tail_throws_when_empty(): Unit =
+    val list = List()
+    try {
+      list.tail
+      fail()
+    } catch {
+      case e: UnsupportedOperationException =>
+    }
