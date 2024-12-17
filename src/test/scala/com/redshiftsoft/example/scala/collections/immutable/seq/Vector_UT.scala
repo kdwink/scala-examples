@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 /**
  * Vector, an immutable Seq, which, unlike List, provides constant time implementations of all methods.
  */
-class Vector_UT
+class Vector_UT:
 
   @Test def construction(): Unit =
 
