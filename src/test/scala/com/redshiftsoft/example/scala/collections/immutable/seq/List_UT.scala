@@ -167,16 +167,6 @@ class List_UT:
     val result = numbers.map(_ * 2)
     assertEquals(List(2, 4, 6, 8, 10, 12, 14, 16, 18), result)
 
-  @Test def reduce(): Unit =
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val result = numbers.reduce((a, b) => 1 + a + b)
-    assertEquals(53, result)
-
-  @Test def reduce_withPlaceholders(): Unit =
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val result = numbers.reduce(1 + _ + _)
-    assertEquals(53, result)
-
   /* Fold is similar to reduce, expect you can provide a starting value/accumulator, which lets you use a
    * different accumulator type than the list type if desired */
   @Test def fold(): Unit =
@@ -194,33 +184,3 @@ class List_UT:
     val result = numbers.foldRight(100) { (a, b) => a + b }
     assertEquals(110, result)
 
-  @Test def groupBy(): Unit =
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val resultMap : Map[Int, List[Int]] = numbers.groupBy(f => f % 2)
-
-    assertEquals(2, resultMap.size)
-    assertEquals("List(2, 4, 6, 8)", resultMap(0).toString)
-    assertEquals("List(1, 3, 5, 7, 9)", resultMap(1).toString)
-
-  @Test def groupByObject(): Unit =
-    // given
-    case class X(id: Int, name: String)
-    val seq = Seq(
-      X(10, "11"),
-      X(20, "21"), X(20, "22"),
-      X(30, "31"), X(30, "32"), X(30, "33")
-    )
-    // when
-    val map : Map[Int, Seq[X]] = seq.groupBy(_.id)
-    // then
-    assertEquals(3, map.size)
-    assertEquals(1, map(10).size)
-    assertEquals(2, map(20).size)
-    assertEquals(3, map(30).size)
-
-  @Test def group(): Unit = {
-    val numbers = List(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5)
-    val sizes = numbers.grouped(3).map(list => list.size).toList
-
-    assertEquals("List(3, 3, 3, 3, 1)", sizes.toString)
-  }

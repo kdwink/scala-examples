@@ -42,4 +42,4 @@ class StrictOptimizedIterableOps_UT:
   val sortedList: List[String] = list.sortBy(_.length)
 
   // then
-  assertEquals(List("a", "bb", "ccc", "eee", "gggg", "ddddd", "fffffff", "zz"), sortedList)
+  assertEquals(List("a", "zz", "bb", "ccc", "eee", "gggg", "ddddd", "fffffff"), sortedList)
