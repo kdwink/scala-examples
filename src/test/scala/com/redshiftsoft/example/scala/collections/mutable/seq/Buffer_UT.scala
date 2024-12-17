@@ -3,8 +3,9 @@ package com.redshiftsoft.example.scala.collections.mutable.seq
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-import scala.collection.mutable
+import scala.collection.{immutable, mutable}
 
+//noinspection AccessorLikeMethodIsUnit
 class Buffer_UT:
 
   @Test def construct(): Unit =
@@ -26,11 +27,11 @@ class Buffer_UT:
     assertEquals(4, seq1.size)
     assertEquals(4, seq2.size)
 
-  @Test def returnTypeOfToSeq(): Unit =
+  @Test def toSeq_converts_from_mutable_to_immutable(): Unit =
     val buf1 = mutable.ArrayBuffer(1, 2, 3, 4)
 
     // This is expensive, iterates over all elements.
-    val seq1: Seq[Int] = buf1.toSeq
+    val seq1: immutable.Seq[Int] = buf1.toSeq
 
     assertEquals("scala.collection.immutable.$colon$colon", buf1.toSeq.getClass.getName)
 
