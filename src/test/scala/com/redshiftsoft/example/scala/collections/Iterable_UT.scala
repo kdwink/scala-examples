@@ -35,7 +35,7 @@ class Iterable_UT:
     val i5: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toIndexedSeq
     val i6: immutable.Iterable[String] = ArrayBuffer("a", "b", "c").toSeq
 
-  @Test def returnTypeOfMap(): Unit =
+  @Test def map_return_type(): Unit =
     val i1 = Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i2 = immutable.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
     val i3 = scala.collection.Iterable("aa", "bb", "cc", "dd", "ee").map(_.toLowerCase())
