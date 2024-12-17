@@ -1,7 +1,7 @@
 package com.redshiftsoft.example.scala.collections
 
 
-import org.junit.jupiter.api.Assertions.{assertEquals, fail}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertThrows, fail}
 import org.junit.jupiter.api.Test
 
 import scala.collection.mutable.ArrayBuffer
@@ -54,29 +54,25 @@ class Iterable_UT:
     val list = Iterable("aaa", "bbb", "ccc")
     assertEquals("aaa", list.head)
 
-  //noinspection ScalaUnusedExpression
   @Test def head_throws_when_empty(): Unit =
     val list = List()
-    try {
-      list.head
-      fail()
-    } catch {
-      case e: NoSuchElementException =>
-    }
+    assertThrows(classOf[NoSuchElementException], () => list.head)
+
+  @Test def last(): Unit =
+    val list = Iterable("aaa", "bbb", "ccc", "ddd", "eee", "fff")
+    assertEquals("fff", list.last)
+
+  @Test def last_(): Unit =
+    val list = Iterable()
+    assertThrows(classOf[NoSuchElementException], () => list.last)
 
   @Test def tail(): Unit =
     val list = Iterable("aaa", "bbb", "ccc", "ddd", "eee", "fff")
     assertEquals("List(bbb, ccc, ddd, eee, fff)", list.tail.toString())
 
-  //noinspection ScalaUnusedExpression
   @Test def tail_throws_when_empty(): Unit =
     val list = List()
-    try {
-      list.tail
-      fail()
-    } catch {
-      case e: UnsupportedOperationException =>
-    }
+    assertThrows(classOf[UnsupportedOperationException], () => list.tail)
 
   @Test def slice(): Unit =
     val nums = collection.mutable.Buffer(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
