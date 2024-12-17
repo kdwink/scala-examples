@@ -98,9 +98,22 @@ class Iterable_UT:
     assertEquals(2, map(20).size)
     assertEquals(3, map(30).size)
 
-@Test def group(): Unit = {
-  val numbers = Iterable(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5)
-  val sizes = numbers.grouped(3).map(list => list.size).toList
+  @Test def group(): Unit =
+    val numbers = Iterable(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5)
+    val sizes = numbers.grouped(3).map(list => list.size).toList
 
-  assertEquals("List(3, 3, 3, 3, 1)", sizes.toString)
-}
+    assertEquals("List(3, 3, 3, 3, 1)", sizes.toString)
+
+  @Test def flatten(): Unit =
+    // given
+    val seq1 = Iterable("aa", "bb")
+    val seq2 = Iterable("11", "22")
+    val seq3 = Iterable("--", "++")
+    val seq4 = Iterable(seq1, seq2, seq3)
+
+    // when
+    val flatSeq = seq4.flatten
+
+    // then
+    assertEquals(6, flatSeq.size)
+    assertEquals("aa,bb,11,22,--,++", flatSeq.mkString(","))

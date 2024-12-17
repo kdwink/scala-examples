@@ -20,21 +20,6 @@ class Seq_UT {
     assertEquals("scala.collection.mutable.ArrayBuffer", x4.getClass.getName)
   }
 
-  @Test def flatten(): Unit = {
-    // given
-    val seq1 = Seq("aa", "bb")
-    val seq2 = Seq("11", "22")
-    val seq3 = Seq("--", "++")
-    val seq4 = Seq(seq1, seq2, seq3)
-
-    // when
-    val flatSeq = seq4.flatten
-
-    // then
-    assertEquals(6, flatSeq.size)
-    assertEquals("aa,bb,11,22,--,++", flatSeq.mkString(","))
-  }
-
   @Test def diff(): Unit = {
     val seq1 = Seq(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 10)
     val seq2 = Seq(4, 5, 6, 10, 10)
