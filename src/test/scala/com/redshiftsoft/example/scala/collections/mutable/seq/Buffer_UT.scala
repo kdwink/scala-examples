@@ -15,10 +15,6 @@ class Buffer_UT:
     assertEquals(3, nums1.size)
     assertEquals(3, nums1.size)
 
-    for (i <- 1 to 100) nums1 += i
-    for (i <- 1 to 100) nums2 += i
-    assertEquals(103, nums1.size)
-    assertEquals(103, nums2.size)
 
   @Test def assign(): Unit =
     val seq1: mutable.Seq[Int] = mutable.ArrayBuffer(1, 2, 3, 4)
@@ -48,6 +44,13 @@ class Buffer_UT:
     nums.append(100)
     // then
     assertEquals("ArrayBuffer(1, 2, 3, 100)", nums.toString)
+
+  @Test def append_2(): Unit =
+    val nums = collection.mutable.Buffer(1, 2, 3)
+    // when
+    for (i <- 1 to 100) nums += i
+    // then
+    assertEquals(103, nums.size)
 
   @Test def take(): Unit =
     // given
