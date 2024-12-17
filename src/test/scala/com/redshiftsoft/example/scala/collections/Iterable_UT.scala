@@ -75,8 +75,8 @@ class Iterable_UT:
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Test def groupBy(): Unit =
-    val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
-    val resultMap: Map[Int, List[Int]] = numbers.groupBy(f => f % 2)
+    val numbers = Iterable(1, 2, 3, 4, 5, 6, 7, 8, 9)
+    val resultMap: Map[Int, Iterable[Int]] = numbers.groupBy(f => f % 2)
 
     assertEquals(2, resultMap.size)
     assertEquals("List(2, 4, 6, 8)", resultMap(0).toString)
@@ -103,4 +103,4 @@ class Iterable_UT:
   val sizes = numbers.grouped(3).map(list => list.size).toList
 
   assertEquals("List(3, 3, 3, 3, 1)", sizes.toString)
-}    
+}
