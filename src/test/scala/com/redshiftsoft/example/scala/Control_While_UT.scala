@@ -2,7 +2,7 @@ package com.redshiftsoft.example.scala
 
 import com.redshiftsoft.example.scalatest.BaseSpec
 
-class Control_While extends BaseSpec {
+class Control_While_UT extends BaseSpec {
 
   "do while" should "work as expected" in {
     var i = 0
