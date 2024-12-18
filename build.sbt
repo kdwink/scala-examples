@@ -6,8 +6,10 @@ lazy val scalaProject = (project in file("."))
     name := "scala",
 
     scalacOptions ++= Seq(
+      "-explain", // Explain errors in more detail.
       "-deprecation", // Emit warning and location for usages of deprecated APIs.
       "-feature", // Emit warning and location for usages of features that should be imported explicitly.
+      "-new-syntax" // Compile error if old control structure syntax is used.
     ),
 
     // https://github.com/scala/scala-parallel-collections
