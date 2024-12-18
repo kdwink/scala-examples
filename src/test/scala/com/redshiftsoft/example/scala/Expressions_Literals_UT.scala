@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class Literals_UT:
+class Expressions_Literals_UT:
 
   @Test def floatingPoint(): Unit = 
     val x = 2.333333333333333d
