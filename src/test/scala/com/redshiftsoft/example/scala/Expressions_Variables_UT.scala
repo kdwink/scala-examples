@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class Values_UT:
+class Expressions_Variables_UT:
 
   @Test
   def declaring(): Unit = 
