@@ -5,14 +5,12 @@ import org.junit.jupiter.api.Test
 class TryCatch_UT:
 
   @Test def tryCatch(): Unit =
-    try {
+    try
       throw new NullPointerException()
-    } catch {
+    catch
       case e: NullPointerException =>
-    }
-    try {
+    try
       throw new NullPointerException("message")
-    } catch {
+    catch
       case e: NullPointerException =>
-    }
   

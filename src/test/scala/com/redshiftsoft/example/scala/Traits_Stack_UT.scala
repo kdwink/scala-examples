@@ -47,12 +47,11 @@ class Traits_Stack_UT:
 
   trait TransactionalStuff extends Stuff:
     abstract override def doStuff(): String =
-      try {
+      try
         "transaction " + super.doStuff()
-      } catch {
+      catch
         case e: Exception =>
           "exception happened"
-      }
 
   class RealStuff extends Stuff:
     override def doStuff(): String = "real stuff"

@@ -4,23 +4,21 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class Functions_Invoking_UT {
+class Functions_Invoking_UT:
 
-  @Test def invokeWithOperatorNotation(): Unit = {
+  @Test def invokeWithOperatorNotation(): Unit =
     // In earlier versions of scala the period proceeding the substring function could be omitted.
     assertEquals("eith", "Keith".substring(1))
     assertEquals("ei", "Keith".substring(1, 3))
-  }
 
   @annotation.nowarn
-  @Test def withAndWithoutParenthesis(): Unit = {
+  @Test def withAndWithoutParenthesis(): Unit =
     def accessDBFunc(): Int = 20
 
     // assertEquals(20, accessDBFunc) <--- cannot do in scala 3
     assertEquals(20, accessDBFunc())
-  }
 
-  @Test def withApply(): Unit = {
+  @Test def withApply(): Unit =
 
     val doubler1: Int => Int = (i: Int) => i * 2
 
@@ -37,6 +35,4 @@ class Functions_Invoking_UT {
     assertEquals(14, doubler1.apply(7))
     //assertEquals(14, doubler2.apply(7))
 
-  }
 
-}

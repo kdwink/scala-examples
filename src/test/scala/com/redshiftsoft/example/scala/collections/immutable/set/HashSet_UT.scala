@@ -6,16 +6,15 @@ import org.junit.jupiter.api.Test
 import scala.collection.immutable.HashSet
 
 
-class HashSet_UT {
+class HashSet_UT:
 
-  @Test def construction(): Unit = {
+  @Test def construction(): Unit =
     val set = HashSet(1, 10, 100, 1000, 10000)
 
     assertTrue(set.contains(1000))
     assertFalse(set.contains(2000))
-  }
 
-  @Test def constructionFromSeq(): Unit = {
+  @Test def constructionFromSeq(): Unit =
     // given
     val seq = Seq(1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000)
 
@@ -34,21 +33,18 @@ class HashSet_UT {
     assertEquals("HashSet", set1.getClass.getSimpleName)
     assertEquals("HashSet", set2.getClass.getSimpleName)
 
-  }
 
-  @Test def assignableToIterable(): Unit = {
+  @Test def assignableToIterable(): Unit =
     val set: Iterable[Int] = HashSet(3, 10, 100, 1000, 10000)
 
     assertTrue(set.forall(e => e > 2))
-  }
 
-  @Test def hashCodeInteraction(): Unit = {
+  @Test def hashCodeInteraction(): Unit =
     class X(name: String, value: Int)
-    class Y(name: String, var value: Int) {
+    class Y(name: String, var value: Int):
       override def hashCode(): Int = Integer.hashCode(value)
 
       override def equals(y1: Any): Boolean = y1.asInstanceOf[Y].value == this.value
-    }
 
     // when
     val set1 = HashSet(new X("n1", 1), new X("n1", 1), new X("n1", 1))
@@ -57,6 +53,4 @@ class HashSet_UT {
     // then
     assertEquals(3, set1.size)
     assertEquals(1, set2.size)
-  }
 
-}

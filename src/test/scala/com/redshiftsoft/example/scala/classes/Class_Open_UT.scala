@@ -13,7 +13,6 @@ class Class_Open_UT:
   open class Person(val name: String)
 
   @Test
-  def test(): Unit = {
+  def test(): Unit =
     val p = Person("george")
     assertEquals("george", p.name)
-  }

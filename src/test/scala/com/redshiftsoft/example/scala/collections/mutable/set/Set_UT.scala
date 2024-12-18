@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test
 
 import scala.collection.mutable
 
-class Set_UT {
+class Set_UT:
 
   @Test
-  def add(): Unit = {
+  def add(): Unit =
     // given
     val fruit = mutable.Set("apple", "orange", "peach", "banana")
 
@@ -18,10 +18,9 @@ class Set_UT {
 
     // then
     assertEquals("banana,orange,peach,apple,kiwi", fruit.mkString(","))
-  }
 
   @Test
-  def diff(): Unit = {
+  def diff(): Unit =
 
     // given
     val fruit = mutable.Set("apple", "orange", "peach", "banana")
@@ -32,7 +31,5 @@ class Set_UT {
     // then
     assertEquals(Set("apple", "orange", "banana"), result)
     assertEquals(Set("apple", "orange", "peach", "banana"), fruit)
-  }
 
 
-}

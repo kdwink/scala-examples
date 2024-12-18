@@ -31,12 +31,10 @@ class Traits_UT:
     assertEquals(new Frigatebird().fly(), "I'm an poor flyer")
 
   @Test def twoTraitsSameProps(): Unit = 
-    trait Flying1 {
+    trait Flying1:
       def fly(): String = "one"
-    }
-    trait Flying2 {
+    trait Flying2:
       def fly(): String = "two"
-    }
 
     val x1 = new Object with Flying1
     val x2 = new Object with Flying2

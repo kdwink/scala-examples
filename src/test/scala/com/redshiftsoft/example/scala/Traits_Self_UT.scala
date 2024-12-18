@@ -12,15 +12,13 @@ class Traits_Self_UT:
 
   @Test def test(): Unit = 
 
-    class A(lastName: String) {
+    class A(lastName: String):
       def hi(firstName: String): String = s"hi $lastName,$firstName"
-    }
 
     /* B can't extend A directly because A has parameters. 'self' here can actually be any identifier */
-    trait B {
+    trait B:
       self: A =>
       override def toString: String = "B: " + self.hi("Bob")
-    }
 
     class C(name: String) extends A(name) with B
 

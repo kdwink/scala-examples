@@ -4,9 +4,9 @@ import org.junit.*
 import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
 import org.junit.jupiter.api.Test
 
-class Class_Constructor_UT {
+class Class_Constructor_UT:
 
-  @Test def constructor(): Unit = {
+  @Test def constructor(): Unit =
     // given
     class User(n: String):
       val name: String = n
@@ -24,9 +24,8 @@ class Class_Constructor_UT {
     assertEquals("keith", u.name)
     assertEquals("hello from keith", u.greet)
     assertEquals("User(keith)", u.toString)
-  }
 
-  @Test def constructor_parameters_with_val_are_public_and_immutable(): Unit = {
+  @Test def constructor_parameters_with_val_are_public_and_immutable(): Unit =
     class User(val name: String):
       def greet: String = s"hello from $name"
 
@@ -36,9 +35,8 @@ class Class_Constructor_UT {
     val u = new User("keith")
     // Can't do this unless constructor arg has 'val' modifier.
     assertEquals("keith", u.name)
-  }
 
-  @Test def constructor_parameters_with_var_are_public_and_mutable(): Unit = {
+  @Test def constructor_parameters_with_var_are_public_and_mutable(): Unit =
     class User(var name: String):
       def greet: String = s"hello from $name"
 
@@ -48,9 +46,8 @@ class Class_Constructor_UT {
     u.name = "George"
     // Can't do this unless constructor arg has 'val' modifier.
     assertEquals("George", u.name)
-  }
 
-  @Test def constructor_alternate(): Unit = {
+  @Test def constructor_alternate(): Unit =
     class User(n: String):
       val name: String = n
 
@@ -63,28 +60,21 @@ class Class_Constructor_UT {
 
     val noArg = new User()
     assertEquals("John-Smith", noArg.name)
-  }
 
-  @Test def constructor_inCompanionObject(): Unit = {
-    class User(n: String) {
+  @Test def constructor_inCompanionObject(): Unit =
+    class User(n: String):
       val name: String = n
-    }
-    object User {
-      def apply(x: String, y: String): User = {
+    object User:
+      def apply(x: String, y: String): User =
         new User(x + "==" + y)
-      }
 
-      def apply(): User = {
+      def apply(): User =
         User("John", "Smith")
-      }
-    }
 
     val twoArg = User("keith", "winkler")
     assertEquals("keith==winkler", twoArg.name)
 
     val noArg = User()
     assertEquals("John==Smith", noArg.name)
-  }
 
 
-}

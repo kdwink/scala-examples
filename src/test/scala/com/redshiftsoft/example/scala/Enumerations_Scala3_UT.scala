@@ -2,23 +2,21 @@ package com.redshiftsoft.example.scala
 
 import com.redshiftsoft.example.scalatest.BaseSpec
 
-class Enumerations_Scala3_UT extends BaseSpec {
+class Enumerations_Scala3_UT extends BaseSpec:
 
-  "enumerations" should "be easy" in {
+  "enumerations" should "be easy" in:
 
     enum Color:
       case Red, Green, Blue
 
-  }
 
-  "enumerations" should "be parameterized" in {
+  "enumerations" should "be parameterized" in:
     enum Color(val rgb: Int):
       case Red extends Color(0xFF0000)
       case Green extends Color(0x00FF00)
       case Blue extends Color(0x0000FF)
-  }
 
-  "enumeration" should "have valueOf" in {
+  "enumeration" should "have valueOf" in:
     enum Color:
       case Red, Green, Blue
 
@@ -30,9 +28,8 @@ class Enumerations_Scala3_UT extends BaseSpec {
     val t = intercept[IllegalArgumentException](Color.valueOf("RED"))
     t.getMessage.contains("has no case with name: RED") should be(true)
 
-  }
 
-  "enumeration" should "have members" in {
+  "enumeration" should "have members" in:
     enum Planet(mass: Double, radius: Double):
       private final val G = 6.67300E-11
 
@@ -49,6 +46,4 @@ class Enumerations_Scala3_UT extends BaseSpec {
       case Uranus extends Planet(8.686e+25, 2.5559e7)
       case Neptune extends Planet(1.024e+26, 2.4746e7)
     end Planet
-  }
 
-}

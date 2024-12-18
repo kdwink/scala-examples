@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
 import org.junit.jupiter.api.Test
 
 
-class Class_UT {
+class Class_UT:
 
   @Test def simplest(): Unit =
     class User
@@ -63,4 +63,3 @@ class Class_UT {
     john.name = "John Doe"
     assertEquals("John Doe", john.name)
 
-}

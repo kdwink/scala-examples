@@ -17,9 +17,8 @@ class Class_Inheritance_Extension_UT:
   extension (a: A)
     def method3: Long = 42L
     def method4: Long = 142L
-    def incrementField(): Unit = {
+    def incrementField(): Unit =
       a.field = a.field + 1_000
-    }
 
   @Test def inheritance_extension(): Unit =
 

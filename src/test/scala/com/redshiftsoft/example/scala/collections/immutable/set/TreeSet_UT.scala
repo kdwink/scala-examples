@@ -6,14 +6,12 @@ import org.junit.jupiter.api.Test
 import scala.collection.immutable.TreeSet
 
 
-class TreeSet_UT {
+class TreeSet_UT:
 
-  @Test def construction(): Unit = {
+  @Test def construction(): Unit =
     val set = TreeSet(1, 10, 100, 1000, 10000)
 
     assertTrue(set.contains(1000))
     assertFalse(set.contains(2000))
-  }
 
 
-}

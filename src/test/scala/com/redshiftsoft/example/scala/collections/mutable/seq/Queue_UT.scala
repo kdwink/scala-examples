@@ -4,9 +4,9 @@ import com.redshiftsoft.example.scalatest.BaseSpec
 
 import scala.collection.mutable
 
-class Queue_UT extends BaseSpec {
+class Queue_UT extends BaseSpec:
 
-  "dequeue" should "be fifo" in {
+  "dequeue" should "be fifo" in:
 
     // given
     val q = mutable.Queue[String]()
@@ -20,6 +20,4 @@ class Queue_UT extends BaseSpec {
     q.dequeue() should be("bb")
     q.dequeue() should be("cc")
 
-  }
 
-}

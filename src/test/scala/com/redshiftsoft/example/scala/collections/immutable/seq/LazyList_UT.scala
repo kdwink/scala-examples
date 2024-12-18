@@ -11,10 +11,9 @@ class LazyList_UT:
   @Test def bounded(): Unit =
 
     //noinspection SimplifyBooleanMatch
-    def to(head: Char, end: Char): LazyList[Char] = head > end match {
+    def to(head: Char, end: Char): LazyList[Char] = head > end match
       case true => LazyList.empty
       case false => head #:: to((head + 1).toChar, end)
-    }
 
     assertEquals(List('a', 'b', 'c', 'd', 'e', 'f'), to('a', 'f'))
     assertEquals(List(), to('f', 'a'))

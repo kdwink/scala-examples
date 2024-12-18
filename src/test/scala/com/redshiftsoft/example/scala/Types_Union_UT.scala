@@ -5,7 +5,7 @@ import com.redshiftsoft.example.scalatest.BaseSpec
 /**
  * https://docs.scala-lang.org/scala3/reference/new-types/union-types.html
  */
-class Types_Union_UT extends BaseSpec {
+class Types_Union_UT extends BaseSpec:
 
   class Hash(val name: String)
 
@@ -21,12 +21,10 @@ class Types_Union_UT extends BaseSpec {
       case Password(hash) => hash.name
     user
 
-  "either class" should "be a valid argument to help" in {
+  "either class" should "be a valid argument to help" in:
     val u1 = UserName("username_username")
     val p1 = Password(Hash("password_username"))
 
     help(u1) should be("username_username")
     help(p1) should be("password_username")
-  }
 
-}

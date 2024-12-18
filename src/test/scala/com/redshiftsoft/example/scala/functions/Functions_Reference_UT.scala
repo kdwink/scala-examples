@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class Functions_Reference_UT {
 
   //noinspection ScalaUnnecessaryParentheses
-  @Test def functionReference(): Unit = {
+  @Test def functionReference(): Unit =
     def doString() = "whatever"
 
     def doDouble(x: Int): Int = 2 * x
@@ -31,21 +31,18 @@ class Functions_Reference_UT {
 
     assertEquals(11, sumPointer1(5, 6))
     assertEquals(11, sumPointer2(5, 6))
-  }
 
-  @Test def refToAnonymousFunctionLiteral(): Unit = {
+  @Test def refToAnonymousFunctionLiteral(): Unit =
     val doubler1 = (x: Int) => x * 2
     assertEquals(100, doubler1(50))
-  }
 
-  @Test def placeholder(): Unit = {
+  @Test def placeholder(): Unit =
     val doubler: Int => Int = _ * 2
     assertEquals(100, doubler(50))
 
     val subtractFunc: (Int, Int) => Int = _ - _
     assertEquals(49, subtractFunc(50, 1))
     assertEquals(-49, subtractFunc(1, 50))
-  }
 
 
 }

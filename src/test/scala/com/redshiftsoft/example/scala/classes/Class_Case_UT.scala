@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
  *
  * copy, equals, hashCode, toString, unapply
  */
-class Class_Case_UT {
+class Class_Case_UT:
 
   case class Character(name: String, isThief: Boolean, age: Int = 18)
 
@@ -54,11 +54,10 @@ class Class_Case_UT {
 
   @Test
   def multipleConstructors(): Unit = 
-    case class Foo(bar: Int, baz: Int) {
+    case class Foo(bar: Int, baz: Int):
       def this(bar: Int) = this(bar, 100)
 
       def this(bar: Int, x: Int, y: Int) = this(bar, x + y)
-    }
 
     val f1 = Foo(1, 2)
     val f2 = new Foo(1)
@@ -98,4 +97,3 @@ class Class_Case_UT {
     assertEquals("ddd", foo.b)
     assertEquals("bla", foo.c)
 
-}

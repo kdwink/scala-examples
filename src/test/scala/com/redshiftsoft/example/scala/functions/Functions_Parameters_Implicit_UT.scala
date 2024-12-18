@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class Functions_Parameters_Implicit_UT {
+class Functions_Parameters_Implicit_UT:
 
 
-  @Test def implicitParameterGroup(): Unit = {
+  @Test def implicitParameterGroup(): Unit =
 
     implicit val someVal1: Int = 100
 
@@ -22,9 +22,8 @@ class Functions_Parameters_Implicit_UT {
     // then -- the same single implicit value is used for both implicit parameters
     // 1 + 2 * 100 - 100
     assertEquals(101, f(1, 2))
-  }
 
-  @Test def using_instead_of_implicit_means_the_using_group_MUST_be_implicit(): Unit = {
+  @Test def using_instead_of_implicit_means_the_using_group_MUST_be_implicit(): Unit =
 
     implicit val someVal1: Int = 100
 
@@ -33,6 +32,4 @@ class Functions_Parameters_Implicit_UT {
     // then -- the same single implicit value is used for both implicit parameters
     // 1 + 2 * 100 - 100
     assertEquals(101, f(1, 2))
-  }
 
-}
