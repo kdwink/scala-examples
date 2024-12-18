@@ -33,15 +33,14 @@ class Traits_Sealed_UT:
 
   @Test def sealed_trait_example(): Unit =
 
-    val x1 = if (Random.nextBoolean()) Yes1 else No1
+    val x1 = if Random.nextBoolean() then Yes1 else No1
 
-    x1 match {
+    x1 match
       case No1 => println("No")
       case Yes1 => println("Yes")
-    }
 
 
-    val x2 = if (Random.nextBoolean()) Yes2 else No2
+    val x2 = if Random.nextBoolean() then Yes2 else No2
 
     x2 match {
       case No2 => println("No")

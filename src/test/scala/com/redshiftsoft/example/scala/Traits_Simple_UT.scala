@@ -20,15 +20,13 @@ class Traits_Simple_UT:
   @Test
   def polymorphism(): Unit =
 
-    trait Person {
+    trait Person:
       def isChild(x: Any): Boolean
 
       def isAdult(x: Any): Boolean = !isChild(x)
-    }
 
-    class Teacher extends Person {
+    class Teacher extends Person:
       override def isChild(x: Any): Boolean = false
-    }
 
     val person: Person = new Teacher
     assertFalse(person.isChild("x"))
@@ -38,10 +36,9 @@ class Traits_Simple_UT:
 
   @Test
   def fields(): Unit =
-    trait Pet {
+    trait Pet:
       val name: String
       val age: Int
-    }
 
     class Cat(val name: String, val age: Int) extends Pet
     class Dog(val name: String, val age: Int) extends Pet
@@ -58,19 +55,17 @@ class Traits_Simple_UT:
   def polymorphismAndCaseClasses(): Unit =
 
     // Defines fields common to all locations
-    trait Location {
+    trait Location:
       val key: Long
 
       val id: String
       val name: String
       val locType: String
-    }
 
     // Fields common to all locations that have parent.
-    trait ChildLocation extends Location {
+    trait ChildLocation extends Location:
       val parentKey: Long
       val seasonId: Long
-    }
 
     // home site
     case class HomeSite(key: Long, id: String, name: String, locType: String) extends Location
@@ -85,6 +80,6 @@ class Traits_Simple_UT:
 
     val ss = SubSite(1000, 100, 9855L, "id", "name", "subsite", "100")
 
-    val parentKey = if (ss.isInstanceOf[ChildLocation]) Some(100) else None
+    val parentKey = if ss.isInstanceOf[ChildLocation] then Some(100) else None
 
 

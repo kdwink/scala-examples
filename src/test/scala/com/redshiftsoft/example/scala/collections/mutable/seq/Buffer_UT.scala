@@ -41,7 +41,7 @@ class Buffer_UT:
   @Test def append_2(): Unit =
     val nums = collection.mutable.Buffer(1, 2, 3)
     // when
-    for (i <- 1 to 100) nums += i
+    for i <- 1 to 100 do nums += i
     // then
     assertEquals(103, nums.size)
 

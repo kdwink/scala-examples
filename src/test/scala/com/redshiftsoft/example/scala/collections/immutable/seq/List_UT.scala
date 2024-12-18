@@ -32,19 +32,17 @@ class List_UT:
   @Test def iterating(): Unit =
     val numbers = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
     var sum = 0
-    for (x <- numbers) sum += x
+    for x <- numbers do sum += x
     assertEquals(45, sum)
 
   @Test def iterating_manually(): Unit =
 
     @tailrec
-    def visit(inList: List[Int], output: StringBuilder): Unit = {
-      if (inList.nonEmpty) {
+    def visit(inList: List[Int], output: StringBuilder): Unit =
+      if inList.nonEmpty then
         output.append(inList.head)
         output.append(",")
         visit(inList.tail, output)
-      }
-    }
 
     val inputList = List(1, 2, 3, 4, 5)
     val output = new StringBuilder()

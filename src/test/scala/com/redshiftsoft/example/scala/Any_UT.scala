@@ -10,11 +10,10 @@ class Any_UT:
     val name: String = n
     val age: Int = a
 
-    override def equals(other: Any): Boolean = {
-      if (!other.isInstanceOf[Person]) return false
+    override def equals(other: Any): Boolean =
+      if !other.isInstanceOf[Person] then return false
       val otherPerson = other.asInstanceOf[Person]
       this.name.equals(otherPerson.name) && Math.abs(age - otherPerson.age) < 10
-    }
 
     override def hashCode: Int = name.hashCode
 
@@ -23,13 +22,12 @@ class Any_UT:
   val person3 = new Person("keith", 300)
 
   /* In scala "==" is same as calling equals(). Use .eq() for identity/reference check.  */
-  @Test def equals(): Unit = {
+  @Test def equals(): Unit =
     assertTrue(person1 == person2)
     assertTrue(person1.equals(person2))
 
     assertFalse(person1 == person3)
     assertFalse(person1.equals(person3))
-  }
 
   /* In scala eq is identity equals  */
   @Test def referenceEquality(): Unit = {

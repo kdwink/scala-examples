@@ -35,7 +35,7 @@ class Map_UT:
 
   @Test def iterating(): Unit =
     var sum = 0
-    for (pair <- colorMap) sum = sum + pair._2
+    for pair <- colorMap do sum = sum + pair._2
 
     assertEquals(16715775, sum)
 
@@ -49,9 +49,8 @@ class Map_UT:
   @Test def mapToTuples(): Unit =
     val tuplesIterator: Iterable[(String, Int)] = colorMap.keys.map(k => (k, colorMap(k)))
     var count = 0
-    for (x <- tuplesIterator) {
+    for x <- tuplesIterator do
       count = count + 1
-    }
     assertEquals(3, count)
 
   @Test def values(): Unit =

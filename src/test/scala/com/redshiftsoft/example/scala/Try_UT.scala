@@ -41,12 +41,10 @@ class Try_UT:
 
   @Test def tryWithFunction(): Unit = 
 
-    def loopAndFail(end: Int, failAt: Int): Int = {
-      for (i <- 1 to end) {
-        if (i == failAt) throw new Exception("Too many iterations")
-      }
+    def loopAndFail(end: Int, failAt: Int): Int =
+      for i <- 1 to end do
+        if i == failAt then throw new Exception("Too many iterations")
       end
-    }
 
     val trySuccess = util.Try(loopAndFail(5, 9))
     val tryFail = util.Try(loopAndFail(5, 2))
@@ -62,22 +60,20 @@ class Try_UT:
     assertEquals(123, inputInt.get)
 
   @Test def getOrElse(): Unit = 
-    try {
+    try
       Try(1 / 0).getOrElse(throw new IllegalStateException())
       fail()
-    } catch {
+    catch
       case e: IllegalStateException =>
-    }
 
   @Test def matching(): Unit = 
     val theTry: Try[Int] = Failure(new AssertionError())
 
-    val r = theTry match {
+    val r = theTry match
       case Success(s) =>
         "good:" + s.toString
       case Failure(x) =>
         "bad:" + x.toString
-    }
 
     assertEquals("bad:java.lang.AssertionError", r)
 
@@ -92,18 +88,16 @@ class Try_UT:
     assertEquals(2000, r2.get)
 
     // map with partial matching case statements
-    val r3 = Try(1 + 1).map {
+    val r3 = Try(1 + 1).map:
       case 20 => 4000
       case 30 => 3000
-    }
     assertTrue(r3.isFailure)
     assertTrue(r3.failed.get.isInstanceOf[MatchError])
 
     // map with partial matching case statements
-    val r4 = Try(1 + 1).map {
+    val r4 = Try(1 + 1).map:
       case 2 => throw new IllegalStateException("x y z")
       case 3 => 3000
-    }
     assertTrue(r4.isFailure)
     assertEquals(r4.failed.get.getMessage, "x y z")
 

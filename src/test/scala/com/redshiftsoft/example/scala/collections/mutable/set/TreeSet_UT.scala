@@ -22,11 +22,10 @@ class TreeSet_UT:
     val collection = mutable.TreeSet.empty[String]
     val startTime = System.currentTimeMillis()
 
-    for (i <- 1 to 20_000) collection.add(String.valueOf(Random.nextLong()))
+    for i <- 1 to 20_000 do collection.add(String.valueOf(Random.nextLong()))
 
-    for (i <- 1 to 20_000) {
+    for i <- 1 to 20_000 do
       val value: String = String.valueOf(Random.nextLong())
-      if (collection.contains(value)) printf("yes")
-    }
+      if collection.contains(value) then printf("yes")
 
     printf("elapsed: " + (System.currentTimeMillis() - startTime))

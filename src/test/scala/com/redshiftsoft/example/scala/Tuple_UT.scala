@@ -12,11 +12,10 @@ class Tuple_UT:
     val t3: (String, Int, Double) = new Tuple3[String, Int, Double]("keith", 100, 3.14159)
 
 
-    for (x <- List(t1, t2, t3)) {
+    for x <- List(t1, t2, t3) do
       assertEquals("keith", x._1)
       assertEquals(100, x._2)
       assertEquals(3.14159d, x._3, 1e-9)
-    }
 
   @Test def declaringTwoTuplesWithArrow(): Unit = 
     /* arrow operator only works for 2-tuples */
