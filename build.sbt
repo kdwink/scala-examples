@@ -12,6 +12,7 @@ lazy val scalaProject = (project in file("."))
       "-feature", // Emit warning and location for usages of features that should be imported explicitly.
       "-new-syntax", // Compile error if old control structure syntax is used.
       "-Xfatal-warnings", //Fail the compilation if there are any warnings.
+      "--unchecked" // Enable additional warnings where generated code depends on assumptions.
     ),
 
     // https://github.com/scala/scala-parallel-collections
