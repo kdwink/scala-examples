@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test
 
 import scala.collection.parallel.CollectionConverters.*
 
-class Parallel_Grouped_IT {
-
-  @Test def test(): Unit = {
+class Parallel_Grouped_IT:
+  
+  @Test def test(): Unit =
 
     val list = 1 to 9_999
 
@@ -24,6 +24,4 @@ class Parallel_Grouped_IT {
     })
 
     assertFalse(false)
-  }
-
-}
+  
