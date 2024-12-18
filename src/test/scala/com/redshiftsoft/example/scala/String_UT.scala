@@ -5,19 +5,17 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
 
-class String_UT {
+class String_UT:
 
-  @Test def constructor(): Unit = {
+  @Test def constructor(): Unit = 
     val string1 = new String("this is a string")
-  }
 
-  @Test def constructorNull(): Unit = {
+  @Test def constructorNull(): Unit = 
     assertThrows(classOf[NullPointerException], () => {
       new String(null, "UTF-8")
     })
-  }
 
-  @Test def multiLineStrings(): Unit = {
+  @Test def multiLineStrings(): Unit = 
     val multiLineString =
       """
         stuff
@@ -25,12 +23,11 @@ class String_UT {
       """.stripMargin
 
     assertEquals("        stuff        and more stuff      ", multiLineString.replace("\n", ""))
-  }
 
   /**
    * stripMargin removes the pipe and whitespace before the pipe.
    */
-  @Test def multiLineStrings_stripMargin(): Unit = {
+  @Test def multiLineStrings_stripMargin(): Unit = 
     val x =
       """
         |line zero
@@ -39,15 +36,11 @@ class String_UT {
         |   line three""".stripMargin
 
     assertEquals("\nline zero\n line one\n  line two\n   line three", x)
-  }
 
-  @Test def split(): Unit = {
+  @Test def split(): Unit =
     val string = "one,two,  three  ,four,  five, six"
     val split: Array[String] = string.split(",").map(_.trim)
     assertEquals(6, split.length)
     assertEquals("one", split(0))
     assertEquals("two", split(1))
     assertEquals("three", split(2))
-  }
-
-}

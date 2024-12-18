@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
 
-class Traits_UT {
+class Traits_UT:
 
-  @Test def birdsExample(): Unit = {
+  @Test def birdsExample(): Unit =
     val flyingBirds: Seq[Flying] = Seq(
       new Pigeon,
       new Hawk,
@@ -20,20 +20,17 @@ class Traits_UT {
       new Penguin)
 
     swimmingBirds.foreach(bird => bird.swim())
-  }
 
-  @Test def birdsFlyingPenguinExample(): Unit = {
+  @Test def birdsFlyingPenguinExample(): Unit = 
     val flyingPenguin = new Penguin with Flying
 
     assertEquals(flyingPenguin.fly(), "default fly message")
-  }
 
-  @Test def flying(): Unit = {
+  @Test def flying(): Unit = 
     assertEquals(new Hawk().fly(), "I'm an excellent flyer")
     assertEquals(new Frigatebird().fly(), "I'm an poor flyer")
-  }
 
-  @Test def twoTraitsSameProps(): Unit = {
+  @Test def twoTraitsSameProps(): Unit = 
     trait Flying1 {
       def fly(): String = "one"
     }
@@ -47,41 +44,33 @@ class Traits_UT {
 
     assertEquals(x1.fly(), "one")
     assertEquals(x2.fly(), "two")
-  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Traits
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  trait Swimming {
+  trait Swimming:
     def swim(): Unit = println("I'm swimming")
-  }
 
-  trait Flying {
+  trait Flying:
     def flyMessage: String = "default fly message"
 
     def fly(): String = flyMessage
-  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   // Birds
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  abstract class Bird {
-  }
+  abstract class Bird
 
-  class Pigeon extends Bird with Swimming with Flying {
+  class Pigeon extends Bird with Swimming with Flying:
     override val flyMessage = "I'm a good flyer"
-  }
 
-  class Hawk extends Bird with Swimming with Flying {
+  class Hawk extends Bird with Swimming with Flying:
     override val flyMessage = "I'm an excellent flyer"
-  }
 
-  class Frigatebird extends Bird with Flying {
+  class Frigatebird extends Bird with Flying:
     override val flyMessage = "I'm an poor flyer"
-  }
 
   class Penguin extends Bird with Swimming
 
-}

@@ -2,9 +2,9 @@ package com.redshiftsoft.example.scala
 
 import org.junit.jupiter.api.Test
 
-class TryCatch_UT {
+class TryCatch_UT:
 
-  @Test def tryCatch(): Unit = {
+  @Test def tryCatch(): Unit =
     try {
       throw new NullPointerException()
     } catch {
@@ -15,6 +15,4 @@ class TryCatch_UT {
     } catch {
       case e: NullPointerException =>
     }
-  }
-
-}
+  

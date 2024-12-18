@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test
  * Trait self types are Traits that require that they can only ever be mixed into a class which is a subtype of
  * a specified class.
  */
-class Traits_Self_UT {
+class Traits_Self_UT:
 
-  @Test def test(): Unit = {
+  @Test def test(): Unit = 
 
     class A(lastName: String) {
       def hi(firstName: String): String = s"hi $lastName,$firstName"
@@ -27,6 +27,4 @@ class Traits_Self_UT {
     val c: C = new C("Smith")
 
     assertEquals("B: hi Smith,Bob", c.toString)
-  }
 
-}

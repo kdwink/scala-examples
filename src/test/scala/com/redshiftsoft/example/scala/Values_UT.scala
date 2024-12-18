@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class Values_UT {
+class Values_UT:
 
   @Test
-  def declaring(): Unit = {
+  def declaring(): Unit = 
 
     val x1 = 20
     val y1 = "abcd"
@@ -21,10 +21,9 @@ class Values_UT {
     assertEquals(x1, x2)
     assertEquals(y1, y2)
     assertEquals(z1, z2)
-  }
 
   @Test
-  def tupleUnpacking(): Unit = {
+  def tupleUnpacking(): Unit = 
     // when
     val (x, y, z) = (1, 2, 3)
 
@@ -32,6 +31,3 @@ class Values_UT {
     assertEquals(x, 1)
     assertEquals(y, 2)
     assertEquals(z, 3)
-  }
-
-}

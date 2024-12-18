@@ -4,18 +4,17 @@ import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
 import org.junit.jupiter.api.Test
 
 
-class Expressions_UT {
+class Expressions_UT:
 
-  @Test def block(): Unit = {
+  @Test def block(): Unit =
     val x = {
       val y = 100
       val z = 10
       y + 1 + z
     }
     assertEquals(111, x)
-  }
 
-  @Test def blockNested(): Unit = {
+  @Test def blockNested(): Unit =
     val x = {
       val y = 100
       val z = {
@@ -24,9 +23,8 @@ class Expressions_UT {
       y + 1 + z
     }
     assertEquals(106, x)
-  }
 
-  @Test def ifElse(): Unit = {
+  @Test def ifElse(): Unit =
     val x = 10
     val y = 100
     val z = if (x > y) -10 else 10
@@ -37,9 +35,8 @@ class Expressions_UT {
       flag = true
     }
     assertTrue(flag)
-  }
 
-  @Test def ifExpression(): Unit = {
+  @Test def ifExpression(): Unit =
     val string1: String = null
     val string2: String = "hello"
 
@@ -51,6 +48,3 @@ class Expressions_UT {
 
     assertEquals("x", r1)
     assertEquals("hello", r2)
-  }
-
-}

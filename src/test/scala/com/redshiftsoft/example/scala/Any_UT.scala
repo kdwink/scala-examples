@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Assertions.{assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
 
-class Any_UT {
+class Any_UT:
 
-  class Person(n: String, a: Int) {
+  class Person(n: String, a: Int):
     val name: String = n
     val age: Int = a
 
@@ -17,7 +17,6 @@ class Any_UT {
     }
 
     override def hashCode: Int = name.hashCode
-  }
 
   val person1 = new Person("keith", 200)
   val person2 = new Person("keith", 205)
@@ -37,6 +36,3 @@ class Any_UT {
     assertTrue(person1.eq(person1))
     assertFalse(person1.eq(person2))
   }
-
-
-}

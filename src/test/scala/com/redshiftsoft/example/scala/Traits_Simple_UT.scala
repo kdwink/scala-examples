@@ -15,10 +15,10 @@ import scala.collection.mutable.ArrayBuffer
  * Traits are used to define object types by specifying the signature of the supported methods. Scala also allows
  * traits to be partially implemented but traits may not have constructor parameters.
  */
-class Traits_Simple_UT {
+class Traits_Simple_UT:
 
   @Test
-  def polymorphism(): Unit = {
+  def polymorphism(): Unit =
 
     trait Person {
       def isChild(x: Any): Boolean
@@ -33,12 +33,11 @@ class Traits_Simple_UT {
     val person: Person = new Teacher
     assertFalse(person.isChild("x"))
     assertTrue(person.isAdult("x"))
-  }
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   @Test
-  def fields(): Unit = {
+  def fields(): Unit =
     trait Pet {
       val name: String
       val age: Int
@@ -53,11 +52,10 @@ class Traits_Simple_UT {
     val animals = ArrayBuffer.empty[Pet]
     animals.append(dog)
     animals.append(cat)
-  }
 
 
   @Test
-  def polymorphismAndCaseClasses(): Unit = {
+  def polymorphismAndCaseClasses(): Unit =
 
     // Defines fields common to all locations
     trait Location {
@@ -89,6 +87,4 @@ class Traits_Simple_UT {
 
     val parentKey = if (ss.isInstanceOf[ChildLocation]) Some(100) else None
 
-  }
 
-}
