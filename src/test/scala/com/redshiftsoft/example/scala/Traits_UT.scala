@@ -1,36 +1,28 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
 class Traits_UT:
 
-  @Test def birdsExample(): Unit =
-    val flyingBirds: Seq[Flying] = Seq(
-      new Pigeon,
-      new Hawk,
-      new Frigatebird)
+  @Test def birds_example(): Unit =
+    val flyingBirds: Seq[Flying] = Seq(new Pigeon, new Hawk, new FrigateBird)
+    val swimmingBirds: Seq[Swimming] = Seq(new Pigeon, new Hawk, new Penguin)
 
     flyingBirds.foreach(bird => bird.fly())
-
-    val swimmingBirds: Seq[Swimming] = Seq(
-      new Pigeon,
-      new Hawk,
-      new Penguin)
-
     swimmingBirds.foreach(bird => bird.swim())
 
-  @Test def birdsFlyingPenguinExample(): Unit = 
+  @Test def birdsFlyingPenguinExample(): Unit =
     val flyingPenguin = new Penguin with Flying
 
     assertEquals(flyingPenguin.fly(), "default fly message")
 
-  @Test def flying(): Unit = 
+  @Test def flying(): Unit =
     assertEquals(new Hawk().fly(), "I'm an excellent flyer")
-    assertEquals(new Frigatebird().fly(), "I'm an poor flyer")
+    assertEquals(new FrigateBird().fly(), "I'm an poor flyer")
 
-  @Test def twoTraitsSameProps(): Unit = 
+  @Test def twoTraitsSameProps(): Unit =
     trait Flying1:
       def fly(): String = "one"
     trait Flying2:
@@ -56,7 +48,7 @@ class Traits_UT:
     def fly(): String = flyMessage
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  // Birds
+  // Bird Classes
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   abstract class Bird
@@ -67,7 +59,7 @@ class Traits_UT:
   class Hawk extends Bird with Swimming with Flying:
     override val flyMessage = "I'm an excellent flyer"
 
-  class Frigatebird extends Bird with Flying:
+  class FrigateBird extends Bird with Flying:
     override val flyMessage = "I'm an poor flyer"
 
   class Penguin extends Bird with Swimming
