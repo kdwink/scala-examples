@@ -13,7 +13,7 @@ class Traits_UT:
     flyingBirds.foreach(bird => bird.fly())
     swimmingBirds.foreach(bird => bird.swim())
 
-  @Test def birdsFlyingPenguinExample(): Unit =
+  @Test def birds_flying_penguin_example(): Unit =
     val flyingPenguin = new Penguin with Flying
 
     assertEquals(flyingPenguin.fly(), "default fly message")
@@ -22,7 +22,7 @@ class Traits_UT:
     assertEquals(new Hawk().fly(), "I'm an excellent flyer")
     assertEquals(new FrigateBird().fly(), "I'm an poor flyer")
 
-  @Test def twoTraitsSameProps(): Unit =
+  @Test def two_traits_same_methods_not_allowed(): Unit =
     trait Flying1:
       def fly(): String = "one"
     trait Flying2:
