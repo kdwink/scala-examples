@@ -26,6 +26,16 @@ class Control_For_UT:
       count = count + x
     assertEquals(1, count)
 
+  @Test def for_do_multi_line(): Unit =
+    val seq = Seq("a", "bb", "ccc", "dddd", "eeeee")
+    var i = 0
+    var j = 0
+    for s <- seq do
+      i = i + 1
+      j = j + 1
+    assertEquals(5, i)
+    assertEquals(5, j)
+
   @Test def for_do_guard(): Unit =
     val result = ListBuffer.empty[Int]
     for x <- 1 to 10 if x % 3 == 0 do
@@ -46,12 +56,8 @@ class Control_For_UT:
       buffer.append(seq(i))
     assertEquals(Seq("a", "bb", "ccc", "dddd", "eeeee"), buffer.toSeq)
 
-  @Test def for_do_multi_line(): Unit =
-    val seq = Seq("a", "bb", "ccc", "dddd", "eeeee")
-    var i = 0
-    var j = 0
-    for s <- seq do
-      i = i + 1
-      j = j + 1
-    assertEquals(5, i)
-    assertEquals(5, j)
+  @Test def for_do_map(): Unit =
+    val states = Map("AK" -> "Alaska", "AL" -> "Alabama", "AR" -> "Arizona")
+    var i = 0;
+    for (abbrev, fullName) <- states do i = i + abbrev.length + fullName.length
+    assertEquals(26, i)
