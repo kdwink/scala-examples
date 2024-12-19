@@ -13,8 +13,7 @@ import scala.collection.immutable.Seq
 class For_Comprehensions_UT:
 
   @Test def for_yield(): Unit =
-    val twos = for x <- 1 to 7 yield
-      2 * x
+    val twos : IndexedSeq[Long] = for x <- 1 to 7 yield 2 * x
     assertEquals("Vector(2, 4, 6, 8, 10, 12, 14)", twos.toString)
 
   @Test def for_yield_alternate_syntax(): Unit =
