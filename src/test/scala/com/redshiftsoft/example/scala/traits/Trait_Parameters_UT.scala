@@ -17,6 +17,7 @@ class Trait_Parameters_UT:
 
       def msg = s"How are you, $name"
 
+    // Note that T2 extends T1 but cannot pass a parameter. Extenders of T2 must extend T1 and provide the param.
     trait T2 extends T1:
       override def isFoo1: Boolean = true
 
