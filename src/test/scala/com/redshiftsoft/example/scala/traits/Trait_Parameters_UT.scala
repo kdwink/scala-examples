@@ -2,6 +2,9 @@ package com.redshiftsoft.example.scala.traits
 
 import org.junit.jupiter.api.Test
 
+/**
+ * https://docs.scala-lang.org/scala3/reference/other-new-features/trait-parameters.html
+ */
 class Trait_Parameters_UT:
 
   @Test def scala_3_traits_can_have_parameters(): Unit =
