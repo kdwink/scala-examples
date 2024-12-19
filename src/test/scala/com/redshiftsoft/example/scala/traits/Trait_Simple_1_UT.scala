@@ -17,24 +17,7 @@ import scala.collection.mutable.ArrayBuffer
 class Trait_Simple_1_UT:
 
   @Test
-  def polymorphism(): Unit =
-
-    trait Person:
-      def isChild(x: Any): Boolean
-
-      def isAdult(x: Any): Boolean = !isChild(x)
-
-    class Teacher extends Person:
-      override def isChild(x: Any): Boolean = false
-
-    val person: Person = new Teacher
-    assertFalse(person.isChild("x"))
-    assertTrue(person.isAdult("x"))
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-  @Test
-  def fields(): Unit =
+  def trait_fields(): Unit =
     trait Pet:
       val name: String
       val age: Int
@@ -49,9 +32,23 @@ class Trait_Simple_1_UT:
     animals.append(dog)
     animals.append(cat)
 
+  @Test
+  def trait_polymorphism(): Unit =
+
+    trait Person:
+      def isChild(x: Any): Boolean
+
+      def isAdult(x: Any): Boolean = !isChild(x)
+
+    class Teacher extends Person:
+      override def isChild(x: Any): Boolean = false
+
+    val person: Person = new Teacher
+    assertFalse(person.isChild("x"))
+    assertTrue(person.isAdult("x"))
 
   @Test
-  def polymorphism_and_case_classes(): Unit =
+  def trait_polymorphism_and_case_classes(): Unit =
 
     // Defines fields common to all locations
     trait Location:
