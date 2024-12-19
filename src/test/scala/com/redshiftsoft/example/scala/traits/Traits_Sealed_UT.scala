@@ -1,4 +1,4 @@
-package com.redshiftsoft.example.scala
+package com.redshiftsoft.example.scala.traits
 
 import org.junit.jupiter.api.Test
 
