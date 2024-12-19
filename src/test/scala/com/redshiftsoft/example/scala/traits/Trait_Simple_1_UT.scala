@@ -48,6 +48,20 @@ class Trait_Simple_1_UT:
     assertTrue(person.isAdult("x"))
 
   @Test
+  def trait_polymorphism_trait_extends_trait(): Unit =
+
+    trait T1:
+      def isFoo1: Boolean = true
+    trait T2 extends T1:
+      override def isFoo1: Boolean = true
+      def isFoo2: Boolean = true
+    trait T3 extends T2:
+      override def isFoo1: Boolean = true
+      override def isFoo2: Boolean = true
+      def isFoo3: Boolean = false
+
+
+  @Test
   def trait_polymorphism_and_case_classes(): Unit =
 
     // Defines fields common to all locations
