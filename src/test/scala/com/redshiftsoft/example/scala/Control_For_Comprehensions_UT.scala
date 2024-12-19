@@ -10,7 +10,7 @@ import scala.collection.immutable.Seq
  *
  * https://docs.scala-lang.org/tour/for-comprehensions.html
  */
-class For_Comprehensions_UT:
+class Control_For_Comprehensions_UT:
 
   @Test def for_yield(): Unit =
     val twos : IndexedSeq[Long] = for x <- 1 to 7 yield 2 * x
