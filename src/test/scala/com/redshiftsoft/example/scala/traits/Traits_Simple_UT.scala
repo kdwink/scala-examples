@@ -51,7 +51,7 @@ class Traits_Simple_UT:
 
 
   @Test
-  def polymorphismAndCaseClasses(): Unit =
+  def polymorphism_and_case_classes(): Unit =
 
     // Defines fields common to all locations
     trait Location:
