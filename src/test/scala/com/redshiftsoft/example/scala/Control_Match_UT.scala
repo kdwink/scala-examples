@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
  * There is no "fall through" in the matching cases, one and only one case statement is executed.
  * If multiple case conditions match, the first is executed.
  */
-class Expressions_Match_UT:
+class Control_Match_UT:
 
   @Test def match_simple(): Unit =
     val x = 100
