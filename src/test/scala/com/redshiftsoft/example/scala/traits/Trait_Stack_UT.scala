@@ -3,7 +3,7 @@ package com.redshiftsoft.example.scala.traits
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class Traits_Stack_UT:
+class Trait_Stack_UT:
 
   @Test def test1(): Unit =
     // given

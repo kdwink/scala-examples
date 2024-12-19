@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class Traits_UT:
+class Trait_Simple_2_UT:
 
   @Test def birds_example(): Unit =
     val flyingBirds: Seq[Flying] = Seq(new Pigeon, new Hawk, new FrigateBird)

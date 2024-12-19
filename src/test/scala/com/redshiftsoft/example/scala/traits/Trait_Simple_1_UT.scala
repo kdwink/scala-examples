@@ -14,7 +14,7 @@ import scala.collection.mutable.ArrayBuffer
  * Traits are used to define object types by specifying the signature of the supported methods. Scala also allows
  * traits to be partially implemented but traits may not have constructor parameters.
  */
-class Traits_Simple_UT:
+class Trait_Simple_1_UT:
 
   @Test
   def polymorphism(): Unit =
