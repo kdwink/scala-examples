@@ -1,6 +1,6 @@
 package com.redshiftsoft.example.scala
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertTrue}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
 import org.junit.jupiter.api.Test
 
 class Control_If_Then_UT:
@@ -40,3 +40,22 @@ class Control_If_Then_UT:
     assertTrue(flag1)
     assertTrue(flag2)
 
+
+  @Test def if_then_else_if_multiline(): Unit =
+    val x = 0
+
+    var flag1 = false
+    var flag2 = false
+
+    if x > 1 then
+      flag1 = true
+      flag2 = true
+    else if x == 0 then
+      flag1 = true
+      flag2 = false
+    else
+      flag1 = false
+      flag2 = false
+
+    assertTrue(flag1)
+    assertFalse(flag2)
