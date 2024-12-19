@@ -12,26 +12,33 @@ class Traits_Stack_UT:
     // then
     assertEquals("real stuff", stuff.doStuff())
 
-  @Test def test2(): Unit =
+  @Test def test_loggable(): Unit =
     // given
     val stuff = new RealStuff with LoggableStuff
 
     // then
     assertEquals("loggable real stuff", stuff.doStuff())
 
-  @Test def test3(): Unit =
+  @Test def test_transaction(): Unit =
     // given
     val stuff = new RealStuff with TransactionalStuff
 
     // then
     assertEquals("transaction real stuff", stuff.doStuff())
 
-  @Test def test4(): Unit =
+  @Test def test_transaction_loggable(): Unit =
     // given
     val stuff = new RealStuff with LoggableStuff with TransactionalStuff
 
     // then
     assertEquals("transaction loggable real stuff", stuff.doStuff())
+
+  @Test def test_loggable_transaction(): Unit =
+    // given
+    val stuff = new RealStuff with TransactionalStuff with LoggableStuff
+
+    // then
+    assertEquals("loggable transaction real stuff", stuff.doStuff())
 
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
