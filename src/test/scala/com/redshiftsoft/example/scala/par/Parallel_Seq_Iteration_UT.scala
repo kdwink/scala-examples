@@ -30,7 +30,7 @@ class Parallel_Seq_Iteration_UT:
     implicit val ec: ExecutionContextExecutor = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(2))
 
     // when
-    val threadNames: ParArray[String] = parArray.map(i => Thread.currentThread().getName).distinct
+    val threadNames: ParArray[String] = parArray.map(_ => Thread.currentThread().getName).distinct
 
     // then
     assertTrue(threadNames.size > 2)
@@ -41,7 +41,7 @@ class Parallel_Seq_Iteration_UT:
     parArray.tasksupport = new ForkJoinTaskSupport(new java.util.concurrent.ForkJoinPool(3))
 
     // when
-    val threadNames: ParArray[String] = parArray.map(i => Thread.currentThread().getName).distinct
+    val threadNames: ParArray[String] = parArray.map(_ => Thread.currentThread().getName).distinct
 
     // then
     assertEquals("worker-1,worker-2,worker-3",
