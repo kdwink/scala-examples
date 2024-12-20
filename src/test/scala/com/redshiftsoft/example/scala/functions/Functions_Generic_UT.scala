@@ -1,12 +1,12 @@
 package com.redshiftsoft.example.scala.functions
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertTrue}
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
 class Functions_Generic_UT {
 
-  @Test def test(): Unit =
+  @Test def generic_add(): Unit =
 
     def add[A](x: A, y: A)(implicit numeric: Numeric[A]): A = numeric.plus(x, y)
 
@@ -16,16 +16,13 @@ class Functions_Generic_UT {
     assertEquals(9.9f, add(4.4f, 5.5f), 1e-9)
 
 
-  @Test def tryIt(): Unit =
+  @Test def generic_function_with_function_argument(): Unit =
 
-    def f1(x: Int): List[Int] =
-      List(1, 2, 3, x)
+    def f1(x: Int): List[Int] = List(1, 2, 3, x)
 
-    def f2(x: Int): String =
-      "hello" + x
+    def f2(x: Int): String = "hello" + x
 
-    def takesFunction[T](x: Int, func: Int => T): T =
-      func(x)
+    def takesFunction[T](x: Int, func: Int => T): T = func(x)
 
     val result1: List[Int] = takesFunction(10, f1)
     val result2: String = takesFunction(10, f2)
@@ -34,7 +31,7 @@ class Functions_Generic_UT {
     assertEquals("hello10", result2)
 
 
-  @Test def identityFunction(): Unit =
+  @Test def identity_function(): Unit =
     def identity[A](a: A): A = a
 
     assertEquals("whatever", identity[String]("whatever"))
