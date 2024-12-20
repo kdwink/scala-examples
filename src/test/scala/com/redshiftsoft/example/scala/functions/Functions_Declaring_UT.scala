@@ -83,7 +83,7 @@ class Functions_Declaring_UT {
         return sum
       add(n - 1, sum + n)
 
-    assertEquals(800020000, add(n = 40000))
+    assertEquals(800_020_000, add(n = 40_000))
 
   @Test def declaringWithVarArg(): Unit =
     def add(n: Int*): Int =
