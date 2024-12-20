@@ -25,6 +25,23 @@ class Class_Constructor_UT:
     assertEquals("hello from keith", u.greet)
     assertEquals("User(keith)", u.toString)
 
+  @Test def constructor_private(): Unit =
+    // given
+    class User private(n: String):
+      val name: String = n
+
+      def this() = this("keith")
+
+      def greet: String = s"hello from $name"
+
+      override def toString = s"User($name)"
+
+    // when -- invoked WITHOUT 'new' keyword.
+    val u = User()
+
+    // then
+    assertEquals("keith", u.name)
+
   @Test def constructor_parameters_with_val_are_public_and_immutable(): Unit =
     class User(val name: String):
       def greet: String = s"hello from $name"
