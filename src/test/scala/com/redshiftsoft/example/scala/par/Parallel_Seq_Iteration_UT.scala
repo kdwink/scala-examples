@@ -11,7 +11,7 @@ import scala.concurrent.{ExecutionContext, ExecutionContextExecutor}
 
 class Parallel_Seq_Iteration_UT:
 
-  private val parArray: ParArray[Int] = Range.inclusive(0, 5000).toArray.par
+  private val parArray: ParArray[Int] = Range.inclusive(0, 40_000).toArray.par
 
   /**
    * When using this .par property of the collections there seems to be no way to change the number of threads
