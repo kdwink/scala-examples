@@ -28,13 +28,13 @@ class Parallel_Seq_Iteration_UT:
   @Test def par_array_does_not_use_implicit_execution_context(): Unit =
 
     // This has no affect.
-    implicit val ec: ExecutionContextExecutor = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(2))
+    implicit val ec: ExecutionContextExecutor = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(1))
 
     // when
     val threadNames: ParArray[String] = parArray.map(_ => Thread.currentThread().getName).distinct
 
     // then
-    assertTrue(threadNames.size > 2)
+    assertTrue(threadNames.size > 1)
 
   @Test def par_array_set_thread_count(): Unit =
     // given
