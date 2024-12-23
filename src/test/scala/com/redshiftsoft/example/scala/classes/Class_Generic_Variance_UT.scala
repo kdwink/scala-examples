@@ -21,20 +21,23 @@ class Class_Generic_Variance_UT:
     def isbn: String
 
   // - - - - - - - - - - - - - - - - - - - - - -
-  //
+  // Concrete types for use in the examples
   // - - - - - - - - - - - - - - - - - - - - - -
 
-  // an example of an INVARIANT type
-  trait Pipeline[T]:
-    def process(t: T): T
+  class MyItem extends Item:
+    override def productNumber: String = "i1"
 
-  // an example of a COVARIANT type
-  trait Producer[+T]:
-    def make: T
+  class MyBuyable extends Buyable:
+    override def price: Int = 25
 
-  // an example of a CONTRAVARIANT type
-  trait Consumer[-T]:
-    def take(t: T): Unit
+    override def productNumber: String = "b1"
+
+  class MyBook extends Book:
+    override def isbn: String = "b1"
+
+    override def price: Int = 25
+
+    override def productNumber: String = "b1"
 
   /**
    * In this method the type parameter of Pipeline is INVARIANT, so instances of p1 and p2 passed to oneOf must be
@@ -42,22 +45,54 @@ class Class_Generic_Variance_UT:
    */
   @Test def example_invariant(): Unit =
 
+    // an example of an INVARIANT type
+    trait Pipeline[T]:
+      def process(t: T): T
+
     def oneOf(p1: Pipeline[Buyable], p2: Pipeline[Buyable], b: Buyable): Buyable =
       val b1 = p1.process(b)
       val b2 = p2.process(b)
       if b1.price < b2.price then b1 else b2
 
-
     class BP extends Pipeline[Buyable]:
       def process(b: Buyable): Buyable = b
 
-    class B extends Buyable:
-      override def price: Int = 25
-
-      override def productNumber: String = "b1"
-
     val p1 = new BP
     val p2 = new BP
-    val b = new B
+    val b = new MyBuyable
     val b1 = oneOf(p1, p2, b)
     println(b1.price)
+
+  /**
+   * In this method the type parameter of Producer is COVARIANT, so instances of p passed to makeTow must be
+   * can have generic type parameter Buyable or Book
+   */
+  @Test def example_covariant(): Unit =
+
+    // an example of a COVARIANT type
+    trait Producer[+T]:
+      def make: T
+
+    def makeTwo(p: Producer[Buyable]): Int =
+      p.make.price + p.make.price
+
+    class ItemProducer extends Producer[Item]:
+      def make: Item = new MyItem()
+
+    class BuyableProducer extends Producer[Buyable]:
+      def make: Buyable = new MyBuyable()
+
+    class BookProducer extends Producer[Book]:
+      def make: Book = new MyBook()
+
+      // makeTwo(new ItemProducer())  does not compile
+      makeTwo(new BuyableProducer())
+      makeTwo(new BookProducer())
+
+  /**
+   *
+   */
+  @Test def example_contravariant(): Unit =
+    // an example of a CONTRAVARIANT type
+    trait Consumer[-T]:
+      def take(t: T): Unit
