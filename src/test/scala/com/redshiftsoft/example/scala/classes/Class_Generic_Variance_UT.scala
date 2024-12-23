@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test
  */
 class Class_Generic_Variance_UT:
 
+  // - - - - - - - - - - - - - - - - - - - - - -
+  // Book <: Buyable <: Item
+  // - - - - - - - - - - - - - - - - - - - - - -
+
   trait Item:
     def productNumber: String
 
@@ -16,19 +20,26 @@ class Class_Generic_Variance_UT:
   trait Book extends Buyable:
     def isbn: String
 
-  // an example of an invariant type
+  // - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - -
+
+  // an example of an INVARIANT type
   trait Pipeline[T]:
     def process(t: T): T
 
-  // an example of a covariant type
+  // an example of a COVARIANT type
   trait Producer[+T]:
     def make: T
 
-  // an example of a contravariant type
+  // an example of a CONTRAVARIANT type
   trait Consumer[-T]:
     def take(t: T): Unit
 
-
+  /**
+   * In this method the type parameter of Pipeline is INVARIANT, so instances of p1 and p2 passed to oneOf must be
+   * exactly Pipeline[Buyable]
+   */
   @Test def example_invariant(): Unit =
 
     def oneOf(p1: Pipeline[Buyable], p2: Pipeline[Buyable], b: Buyable): Buyable =
