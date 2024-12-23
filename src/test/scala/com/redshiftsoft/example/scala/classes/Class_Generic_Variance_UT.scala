@@ -109,13 +109,13 @@ class Class_Generic_Variance_UT:
       def take(t: T): Unit
 
     class ItemConsumer extends Consumer[Item]:
-      override def take(t: Item): Unit = None
+      override def take(t: Item): Unit = t.productNumber
 
     class BuyableConsumer extends Consumer[Buyable]:
-      override def take(t: Buyable): Unit = None
+      override def take(t: Buyable): Unit = t.price
 
     class BookConsumer extends Consumer[Book]:
-      override def take(t: Book): Unit = None
+      override def take(t: Book): Unit = t.isbn
 
     def someMethod1(c: Consumer[Item]): Unit = c.take(new MyItem())
 
