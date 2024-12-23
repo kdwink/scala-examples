@@ -73,8 +73,9 @@ class Class_Generic_Variance_UT:
     trait Producer[+T]:
       def make: T
 
-    def makeTwo(p: Producer[Buyable]): Int =
-      p.make.price + p.make.price
+    def addItem(p: Producer[Item]): Int = 100
+    def addBuyable(p: Producer[Buyable]): Int = p.make.price + p.make.price
+    def addBook(p: Producer[Book]): Int = p.make.price + p.make.price
 
     class ItemProducer extends Producer[Item]:
       def make: Item = new MyItem()
@@ -85,9 +86,17 @@ class Class_Generic_Variance_UT:
     class BookProducer extends Producer[Book]:
       def make: Book = new MyBook()
 
-      // makeTwo(new ItemProducer())  does not compile
-      makeTwo(new BuyableProducer())
-      makeTwo(new BookProducer())
+    addItem(new ItemProducer())
+    addItem(new BuyableProducer())
+    addItem(new BookProducer())
+
+    // add1(new ItemProducer()) ---- does not compile
+    addBuyable(new BuyableProducer())
+    addBuyable(new BookProducer())
+
+    // addBook(new ItemProducer()) ---- does not compile
+    // addBook(new BuyableProducer()) ---- does not compile
+    addBook(new BookProducer());
 
   /**
    *
