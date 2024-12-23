@@ -96,3 +96,30 @@ class Class_Generic_Variance_UT:
     // an example of a CONTRAVARIANT type
     trait Consumer[-T]:
       def take(t: T): Unit
+
+    class ItemConsumer extends Consumer[Item]:
+      override def take(t: Item): Unit = None
+
+    class BuyableConsumer extends Consumer[Buyable]:
+      override def take(t: Buyable): Unit = None
+
+    class BookConsumer extends Consumer[Book]:
+      override def take(t: Book): Unit = None
+
+    def someMethod1(c: Consumer[Item]): Unit = None
+
+    def someMethod2(c: Consumer[Buyable]): Unit = None
+
+    def someMethod3(c: Consumer[Book]): Unit = None
+
+    someMethod1(new ItemConsumer())
+    // someMethod1(new BookConsumer())
+    // someMethod1(new BuyableConsumer())
+
+    someMethod2(new ItemConsumer())
+    someMethod2(new BuyableConsumer())
+    //someMethod2(new BookConsumer())
+
+    someMethod3(new ItemConsumer())
+    someMethod3(new BuyableConsumer())
+    someMethod3(new BookConsumer())
