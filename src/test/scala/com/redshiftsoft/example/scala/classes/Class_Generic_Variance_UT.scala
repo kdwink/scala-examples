@@ -74,7 +74,9 @@ class Class_Generic_Variance_UT:
       def make: T
 
     def addItem(p: Producer[Item]): Int = 100
+
     def addBuyable(p: Producer[Buyable]): Int = p.make.price + p.make.price
+
     def addBook(p: Producer[Book]): Int = p.make.price + p.make.price
 
     class ItemProducer extends Producer[Item]:
@@ -115,11 +117,11 @@ class Class_Generic_Variance_UT:
     class BookConsumer extends Consumer[Book]:
       override def take(t: Book): Unit = None
 
-    def someMethod1(c: Consumer[Item]): Unit = None
+    def someMethod1(c: Consumer[Item]): Unit = c.take(new MyItem())
 
-    def someMethod2(c: Consumer[Buyable]): Unit = None
+    def someMethod2(c: Consumer[Buyable]): Unit = c.take(new MyBuyable())
 
-    def someMethod3(c: Consumer[Book]): Unit = None
+    def someMethod3(c: Consumer[Book]): Unit = c.take(new MyBook())
 
     someMethod1(new ItemConsumer())
     // someMethod1(new BookConsumer())
