@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test
 
 /**
  * https://docs.scala-lang.org/tour/generic-classes.html
+ *
+ * https://docs.scala-lang.org/scala3/book/types-generics.html
  */
 class Class_Generic_UT:
 
