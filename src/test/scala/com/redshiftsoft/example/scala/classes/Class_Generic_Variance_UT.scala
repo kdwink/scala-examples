@@ -104,6 +104,7 @@ class Class_Generic_Variance_UT:
    *
    */
   @Test def example_contravariant(): Unit =
+
     // an example of a CONTRAVARIANT type
     trait Consumer[-T]:
       def take(t: T): Unit
