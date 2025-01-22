@@ -44,3 +44,8 @@ class String_UT:
     assertEquals("one", split(0))
     assertEquals("two", split(1))
     assertEquals("three", split(2))
+
+  @Test def replaceAll(): Unit = {
+    val result = "param1=value1&param2=value2&param3=value3".replaceAll("=.*?(&|$)", "=***$1")
+    assertEquals("param1=***&param2=***&param3=***", result)
+  }
