@@ -9,9 +9,9 @@ import scala.collection.immutable.TreeSet
 class TreeSet_UT:
 
   @Test def construction(): Unit =
-    val set = TreeSet(1, 10, 100, 1000, 10000)
+    val set = TreeSet(1, 10, 100, 1_000, 10_000, 20_000, 100_000, 1_000_000, 1_000_000_000)
 
-    assertTrue(set.contains(1000))
-    assertFalse(set.contains(2000))
+    assertTrue(set.contains(1_000))
+    assertFalse(set.contains(2_000))
 
 
