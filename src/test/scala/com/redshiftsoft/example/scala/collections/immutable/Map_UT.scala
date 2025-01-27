@@ -29,6 +29,20 @@ class Map_UT {
     Assert.assertEquals(0xFF0000, maybeInt.get)
   }
 
+  @Test def addEntry(): Unit = {
+    // given
+    var recentRequests = Map.empty[String, Long]
+    val before = System.identityHashCode(recentRequests)
+
+    // when
+    recentRequests += "key" -> 24L
+
+    // then
+    val after = System.identityHashCode(recentRequests)
+    Assert.assertNotEquals(before, after)
+    Assert.assertEquals(1, recentRequests.size)
+  }
+
   @Test def contains(): Unit = {
     Assert.assertTrue(colorMap.contains("red"))
     Assert.assertFalse(colorMap.contains("yellow"))
@@ -62,6 +76,7 @@ class Map_UT {
     val values = colorMap.values.toSeq
     Assert.assertEquals(Seq(0xFF0000, 0xF00, 0xFF), values)
   }
+
 
 
 }
