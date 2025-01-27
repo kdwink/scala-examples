@@ -1,6 +1,6 @@
 package com.redshiftsoft.example.scala.collections.immutable.map
 
-import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertThrows, assertTrue}
+import org.junit.jupiter.api.Assertions.{assertEquals, assertFalse, assertNotEquals, assertThrows, assertTrue}
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
 
@@ -28,6 +28,20 @@ class Map_UT:
       val maybeInt: Option[Int] = colorMap.get("frank")
       assertEquals(0xFF0000, maybeInt.get)
     })
+
+  @Test def addEntry(): Unit = {
+    // given
+    var recentRequests = Map.empty[String, Long]
+    val before = System.identityHashCode(recentRequests)
+
+    // when
+    recentRequests += "key" -> 24L
+
+    // then
+    val after = System.identityHashCode(recentRequests)
+    assertNotEquals(before, after)
+    assertEquals(1, recentRequests.size)
+  }
 
   @Test def contains(): Unit =
     assertTrue(colorMap.contains("red"))
