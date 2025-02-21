@@ -23,11 +23,8 @@ class Class_Object_Singleton_UT:
   @Test
   def singleInstanceOfClass(): Unit =
 
-    class MyClass(name: String, age: Int) {
-
+    class MyClass(name: String, age: Int):
       def calculate(x: Int): String = name + "->" + (age * x)
-
-    }
 
     object MyClass extends MyClass("George", 42):
       val Whatever = 100
