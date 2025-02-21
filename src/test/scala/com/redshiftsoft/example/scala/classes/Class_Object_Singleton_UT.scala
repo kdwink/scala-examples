@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 class Class_Object_Singleton_UT:
 
   @Test
-  def basicUsage(): Unit =
+  def mostBasicUsage(): Unit =
 
     object MyObject:
       val WHATEVER = 100
@@ -19,4 +19,19 @@ class Class_Object_Singleton_UT:
     MyObject.age = 20
     MyObject.name = "keith"
 
+
+  @Test
+  def singleInstanceOfClass(): Unit =
+
+    class MyClass(name: String, age: Int) {
+
+      def calculate(x: Int): String = name + "->" + (age * x)
+
+    }
+
+    object MyClass extends MyClass("George", 42):
+      val Whatever = 100
+
+    assertEquals(100, MyClass.Whatever)
+    assertEquals("George->420", MyClass.calculate(10))
 
