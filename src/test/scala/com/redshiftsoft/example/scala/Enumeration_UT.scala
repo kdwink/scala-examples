@@ -1,14 +1,17 @@
 package com.redshiftsoft.example.scala
 
+import org.junit.Assert.assertEquals
 import org.junit.{Assert, Test}
 
 
 class Enumeration_UT {
 
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
   // simple example
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   object Breed extends Enumeration {
     type Breed = Value
@@ -42,9 +45,11 @@ class Enumeration_UT {
     Assert.assertFalse(Breed.isTerrier(Breed.portie))
   }
 
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
   // more involved example
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  //
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   object Color extends Enumeration {
 
@@ -62,6 +67,19 @@ class Enumeration_UT {
 
     }
 
+    //def withName(s: String): Option[Value] = values.find(_.toString == s)
+
+  }
+
+  @Test
+  def withName_should_work_if_case_matches(): Unit = {
+    val red = Color.withName("RED")
+    assertEquals(Color.RED, red)
+  }
+
+  @Test
+  def withName_should_return_none_if_case_matches(): Unit = {
+    Assert.assertThrows(classOf[NoSuchElementException], () => Color.withName("red"))
   }
 
   @Test
