@@ -28,7 +28,7 @@ class Enumeration_UT {
   @Test
   def test(): Unit = {
     var count = 0
-    for (breed <- Breed.values) {
+    for (_ <- Breed.values) {
       count = count + 1
     }
     Assert.assertEquals(5, count)
@@ -55,9 +55,9 @@ class Enumeration_UT {
 
     type Color = ColorVal
 
-    val RED: ColorVal = ColorVal("Blue", 1000)
+    val RED: ColorVal = ColorVal("Red", 1000)
     val BLUE: ColorVal = ColorVal("Blue", 2000)
-    val GREEN: ColorVal = ColorVal("Blue", 3000)
+    val GREEN: ColorVal = ColorVal("Green", 3000)
 
     case class ColorVal(name: String, colorId: Int) extends super.Val {
 
@@ -67,19 +67,28 @@ class Enumeration_UT {
 
     }
 
-    //def withName(s: String): Option[Value] = values.find(_.toString == s)
+    def seq(): Seq[Color] = Color.values.toSeq.map(_.asInstanceOf[Color])
+
+    // case-insensitive
+    def fromName(s: String): Option[Value] = seq().find(_.name.equalsIgnoreCase(s))
 
   }
 
   @Test
   def withName_should_work_if_case_matches(): Unit = {
-    val red = Color.withName("RED")
-    assertEquals(Color.RED, red)
+    assertEquals(Color.RED, Color.withName("RED"))
   }
 
   @Test
-  def withName_should_return_none_if_case_matches(): Unit = {
+  def withName_should_throw_if_case_matches(): Unit = {
     Assert.assertThrows(classOf[NoSuchElementException], () => Color.withName("red"))
+  }
+
+  @Test
+  def fromName_should_work_if_case_matches(): Unit = {
+    assertEquals(Color.RED, Color.fromName("RED").get)
+    assertEquals(Color.RED, Color.fromName("red").get)
+    assertEquals(Color.RED, Color.fromName("ReD").get)
   }
 
   @Test
