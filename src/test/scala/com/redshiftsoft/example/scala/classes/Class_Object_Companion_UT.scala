@@ -19,6 +19,7 @@ class Class_Object_Companion_UT:
 
       def getName: String =
         name
+    
     object MyClass:
 
       def apply(s: String): MyClass =
