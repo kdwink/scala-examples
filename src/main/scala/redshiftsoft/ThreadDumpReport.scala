@@ -3,6 +3,9 @@ package redshiftsoft
 import java.nio.file.{Files, Paths}
 import scala.jdk.javaapi.CollectionConverters
 
+/**
+ * Parses a JVM thread dump and prints a count of threads by thread-name prefix.
+ */
 object ThreadDumpReport:
 
   def main(args: Array[String]): Unit =
