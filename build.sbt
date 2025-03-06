@@ -16,7 +16,7 @@ lazy val scalaProject = (project in file("."))
     ),
 
     // https://github.com/scala/scala-parallel-collections
-    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.1.0",
+    libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.2.0",
     // test
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,
     libraryDependencies += "com.github.sbt.junit" % "jupiter-interface" % JupiterKeys.jupiterVersion.value % Test
