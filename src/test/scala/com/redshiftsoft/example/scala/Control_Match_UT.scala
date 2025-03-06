@@ -39,6 +39,19 @@ class Control_Match_UT:
         "case 3"
     assertEquals("case 1", message)
 
+  // This is possible.
+  @Test def match_with_guard_only(): Unit =
+    val x = Option(90)
+    val y = 10
+    val message = x match
+      case _ if x.get < 10 =>
+        "case 1"
+      case _ if y < 100 =>
+        "case 2"
+      case _ =>
+        "case 3"
+    assertEquals("case 2", message)
+
   @Test def match_class(): Unit =
     val x: Any = ""
     val message = x match
