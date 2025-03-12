@@ -1,4 +1,10 @@
+# IntelliJ directoreis
 .idea/
 *.iml
-out/
+
+# scala build directories
+.bsp/
 target/
+
+# output directory for scala-cli compilation
+src/main/scripts/.scala-build
