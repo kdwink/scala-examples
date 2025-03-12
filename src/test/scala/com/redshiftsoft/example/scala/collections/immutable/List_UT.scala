@@ -118,6 +118,19 @@ class List_UT {
     assertEquals("aa,bb,11,22,--,++", flatList.mkString(","))
   }
 
+  @Test def flatten_on_already_flat_list_of_strings(): Unit = {
+    // given
+    val list1 = List("aaa", "bbb", "ccc")
+
+    // when
+    val flatList = list1.flatten
+
+    // then
+    assertEquals(9, flatList.size)
+    assertEquals("a,a,a,b,b,b,c,c,c", flatList.mkString(","))
+  }
+
+
   @Test def filter(): Unit = {
     val list1 = List("aa", "bb", "cc")
     val list2 = list1.filter(e => e.startsWith("bb"))
