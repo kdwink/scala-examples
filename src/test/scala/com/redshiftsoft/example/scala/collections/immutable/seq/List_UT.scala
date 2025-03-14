@@ -119,19 +119,23 @@ class List_UT:
 
     assertEquals(2, list1.size)
     assertEquals(3, list2.size)
-    assertEquals("aa", list2.head)
-    assertEquals("bb", list2(1))
-    assertEquals("cc", list2(2))
+    assertEquals(List("aa", "bb", "cc"), list2)
 
-  @Test def operator_prependElement(): Unit =
+  @Test def operator_prependElement_1(): Unit =
+    val list1 = List("aa", "bb")
+    val list2 = "cc" +: list1
+
+    assertEquals(2, list1.size)
+    assertEquals(3, list2.size)
+    assertEquals(List("cc", "aa", "bb"), list2)
+
+  @Test def operator_prependElement_2(): Unit =
     val list1 = List("aa", "bb")
     val list2 = "cc" :: list1
 
     assertEquals(2, list1.size)
     assertEquals(3, list2.size)
-    assertEquals("cc", list2.head)
-    assertEquals("aa", list2(1))
-    assertEquals("bb", list2(2))
+    assertEquals(List("cc", "aa", "bb"), list2)
 
   @Test def operator_appendSet(): Unit =
     val list1 = List("aa", "bb")
@@ -167,17 +171,21 @@ class List_UT:
   /* Fold is similar to reduce, expect you can provide a starting value/accumulator, which lets you use a
    * different accumulator type than the list type if desired */
   @Test def fold(): Unit =
-    val numbers = List(1, 2, 3, 4)
-    val result = numbers.fold(100) { (a, b) => a + b }
-    assertEquals(110, result)
+    val numbers: Seq[Int] = List(1, 2, 3, 4)
+    val result: Int = numbers.fold(100) { (accumulator, item) => accumulator - item }
+    // (((100 - 1) - 2) - 3) - 4 = 90
+    assertEquals(90, result)
 
+  // Same as fold
   @Test def foldLeft(): Unit =
-    val numbers = List(1, 2, 3, 4)
-    val result = numbers.foldLeft(100) { (a, b) => a + b }
-    assertEquals(110, result)
+    val numbers: Seq[Int] = List(1, 2, 3, 4)
+    val result: Int = numbers.foldLeft(100) { (accumulator, item) => accumulator - item }
+    // (((100 - 1) - 2) - 3) - 4 = 90
+    assertEquals(90, result)
 
   @Test def foldRight(): Unit =
-    val numbers = List(1, 2, 3, 4)
-    val result = numbers.foldRight(100) { (a, b) => a + b }
-    assertEquals(110, result)
+    val numbers : Seq[Int] = List(1, 2, 3, 4)
+    val result: Int = numbers.foldRight(100) { (item, accumulator) => item - accumulator }
+    // 1 - (2 - ((3 - (4 - 100)))) = 98
+    assertEquals(98, result)
 
