@@ -1,7 +1,8 @@
 package com.redshiftsoft.example.scala.collections.monadic
 
-import java.util.concurrent.atomic.LongAdder
+import org.junit.Assert.{assertFalse, assertTrue}
 
+import java.util.concurrent.atomic.LongAdder
 import org.junit.{Assert, Test}
 
 class Option_UT {
@@ -30,8 +31,10 @@ class Option_UT {
 
   @Test def none() : Unit = {
     val none: Option[String] = None
-    Assert.assertTrue(none.isEmpty)
-    Assert.assertFalse(none.isDefined)
+    // then
+    assertTrue(none.isEmpty)
+    assertFalse(none.isDefined)
+    assertFalse(none.contains(null))
   }
 
   @Test def getOrElse(): Unit = {
