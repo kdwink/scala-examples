@@ -4,7 +4,7 @@ import org.junit.{Assert, Test}
 
 class Map_UT {
 
-  val colorMap = Map("red" -> 0xFF0000, "green" -> 0xF00, "blue" -> 0xFF)
+  private val colorMap: Map[String, Int] = Map("red" -> 0xFF0000, "green" -> 0xF00, "blue" -> 0xFF)
 
   @Test def declaring(): Unit = {
     Assert.assertEquals(3, colorMap.size)
